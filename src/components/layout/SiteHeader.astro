@@ -9,10 +9,14 @@ import styles from './SiteHeader.module.css';
 ---
 
 <header class={styles.header} data-eos-header>
+  <div class={styles.chrome} aria-hidden="true"></div>
   <PageContainer>
     <div class={styles.inner}>
       <div class={styles.identityGroup}>
-        <a href={withBasePath('/')} class={styles.identity}>{site.ownerName}</a>
+        <a href={withBasePath('/')} class={styles.identity}>
+          <span class={styles.sysIndicator} aria-hidden="true"></span>
+          {site.ownerName}
+        </a>
         <SystemLabel class={styles.systemTag}>Engineering OS</SystemLabel>
       </div>
       <div class={styles.navGroup}>

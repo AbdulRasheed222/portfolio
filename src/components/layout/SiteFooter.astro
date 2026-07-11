@@ -1,5 +1,6 @@
 ---
 import { navigation } from '../../config/navigation';
+import { publicLocation } from '../../config/homepage';
 import { site } from '../../config/site';
 import { withBasePath } from '../../lib/url';
 import SystemLabel from '../ui/SystemLabel.astro';
@@ -15,7 +16,8 @@ const year = new Date().getFullYear();
       <div class={styles.meta}>
         <p class={styles.name}>{site.ownerName}</p>
         <SystemLabel>Engineering OS</SystemLabel>
-        <p class={styles.versionBlock}>SYS · VER 1.1 · EOS v1.1 · STATUS: POLISHED EXPERIENCE</p>
+        <p class={styles.location}>{publicLocation}</p>
+        <p class={styles.versionBlock}>SYS · VER 1.1 · EOS v1.1 · STATUS: LAUNCH READY</p>
         <p class={styles.copyright}>
           © {year} {site.ownerName}. All rights reserved.
         </p>

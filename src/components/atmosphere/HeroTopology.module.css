@@ -1,54 +1,96 @@
 .topology {
   width: 100%;
   height: auto;
-  min-height: 280px;
-  color: var(--color-paint-bright);
+  min-height: 200px;
+  color: var(--color-text-muted);
+}
+
+.archGlow {
+  opacity: 0.85;
 }
 
 .edges {
+  opacity: 0.75;
+}
+
+.flowPrimary {
+  stroke-width: 1.75;
+  opacity: 0.9;
+}
+
+.flowSecondary {
+  stroke-width: 1;
+  opacity: 0.45;
+  stroke-dasharray: 4 5;
+}
+
+.flowTertiary {
+  stroke-width: 0.75;
+  opacity: 0.25;
+  stroke-dasharray: 2 6;
+}
+
+.nodes {
+  opacity: 0.95;
+}
+
+.nodeIntent {
+  fill: var(--color-accent);
+}
+
+.nodeArch {
+  fill: var(--color-paint-bright);
+  stroke: rgba(120, 180, 255, 0.5);
+  stroke-width: 1.5;
+}
+
+.nodeEvidence {
+  fill: var(--color-text-primary);
+  opacity: 0.85;
+}
+
+.nodeSecondary {
+  fill: var(--color-paint-lit);
   opacity: 0.7;
 }
 
-.flowLine {
-  stroke-dasharray: 8 6;
+.nodeTertiary {
+  fill: var(--color-paint-mid);
+  opacity: 0.5;
+}
+
+.labels text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  opacity: 0.45;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .topology {
-    animation: eos-topology-drift var(--duration-ambient) var(--ease-in-out) infinite;
+    animation: eos-topology-drift 56s var(--ease-in-out) infinite;
   }
 
-  .flowLine {
-    animation: eos-line-flow 4s linear infinite;
+  .flowPrimary {
+    animation: eos-line-flow 6s linear infinite;
+    stroke-dasharray: 6 8;
     stroke-dashoffset: 28;
   }
 
-  .flowLine:nth-child(odd) {
-    animation-duration: 5.5s;
+  .flowSecondary {
+    animation: eos-line-flow 8s linear infinite reverse;
+    stroke-dashoffset: 20;
   }
-}
-
-.nodes {
-  opacity: 0.9;
-}
-
-.intent {
-  fill: var(--color-accent);
-  filter: drop-shadow(0 0 12px rgba(201, 168, 106, 0.5));
-}
-
-.core {
-  fill: var(--color-paint-bright);
-  filter: drop-shadow(0 0 20px var(--color-paint-glow));
-}
-
-.evidence {
-  fill: var(--color-text-primary);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25));
 }
 
 @media (min-width: 1024px) {
   .topology {
-    min-height: 420px;
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 767px) {
+  .labels {
+    display: none;
   }
 }

@@ -1,5 +1,6 @@
 ---
 import { isExternalUrl, withBasePath } from '../../lib/url';
+import ArtifactGraphic from './ArtifactGraphic.astro';
 import MetadataRail from './MetadataRail.astro';
 import StatusChip from './StatusChip.astro';
 import styles from './PublicationArtifact.module.css';
@@ -55,6 +56,9 @@ const accentClass = {
 
 <article class:list={[styles.artifact, styles[layout], accentClass]} data-accent={accent}>
   <div class={styles.glow} aria-hidden="true"></div>
+  <div class={styles.graphic} aria-hidden="true">
+    <ArtifactGraphic visual={layout} />
+  </div>
   <div class={styles.inner}>
     <header class={styles.header}>
       <MetadataRail items={metaItems} />

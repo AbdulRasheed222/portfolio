@@ -59,3 +59,21 @@
     grid-row: span 2;
   }
 }
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: var(--space-7);
+  }
+
+  .header {
+    margin-bottom: var(--space-5);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .grid {
+    gap: var(--space-4);
+  }
+}

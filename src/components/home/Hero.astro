@@ -11,11 +11,16 @@ const { hero } = homepage;
 
 <section class={styles.hero} id="arrival" data-hero-parallax>
   <div class={styles.backdrop} aria-hidden="true">
-    <div class={styles.core} data-hero-core></div>
     <div class={styles.topologyLayer} data-hero-topology>
       <HeroTopology />
     </div>
+    <div class={styles.systemCore} data-hero-core>
+      <div class={styles.coreLayer}></div>
+      <div class={styles.coreLayer}></div>
+      <div class={styles.coreFacet}></div>
+    </div>
     <div class={styles.lightSweep}></div>
+    <div class={styles.textScrim}></div>
   </div>
 
   <PageContainer class={styles.container}>
@@ -25,7 +30,10 @@ const { hero } = homepage;
       </div>
       <p class:list={[styles.eyebrow, styles.stagger, styles.d2]}>{hero.eyebrow}</p>
       <h1 class:list={[styles.title, styles.stagger, styles.d3]}>{hero.name}</h1>
-      <p class:list={[styles.positioning, styles.stagger, styles.d4]}>{hero.positioning}</p>
+      <p class:list={[styles.roleLead, styles.stagger, styles.d4]}>
+        <span class={styles.rolePrimary}>{hero.rolePrimary}</span>
+        <span class={styles.roleSecondary}>{hero.roleSecondary}</span>
+      </p>
       <p class:list={[styles.supporting, styles.stagger, styles.d5]}>{hero.supporting}</p>
       <div class:list={[styles.actions, styles.stagger, styles.d6]}>
         <ButtonLink href="#flagship-leen" variant="primary">Explore Leen flagship</ButtonLink>
@@ -33,10 +41,6 @@ const { hero } = homepage;
       </div>
     </div>
   </PageContainer>
-
-  <div class={styles.flowCue} aria-hidden="true">
-    <span>INTENT → ARCHITECTURE → EXECUTION → EVIDENCE</span>
-  </div>
 </section>
 
 <script>
@@ -50,10 +54,10 @@ const { hero } = homepage;
         const rect = hero.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const tx = x * 12;
-        const ty = y * 8;
+        const tx = x * 8;
+        const ty = y * 5;
         if (layer) layer.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
-        if (core) core.style.transform = `translate3d(${tx * 0.5}px, ${ty * 0.5}px, 0) translateX(-50%)`;
+        if (core) core.style.transform = `translate3d(${tx * 0.35}px, ${ty * 0.35}px, 0)`;
       },
       { passive: true },
     );

@@ -13,12 +13,16 @@ const { capabilityProof } = homepage;
       <div class={styles.intro}>
         <span class={styles.index}>{capabilityProof.systemIndex}</span>
         <h2 class={styles.title}>{capabilityProof.title}</h2>
+        <p class={styles.lead}>Engineering domains demonstrated through publications and verified delivery.</p>
       </div>
-      <ul class={styles.domains}>
-        {capabilityProof.domains.map((domain, i) => (
-          <li class={styles.domain} style={`--i: ${i}`}>
-            <span class={styles.marker} aria-hidden="true"></span>
-            {domain}
+      <ul class={styles.groups}>
+        {capabilityProof.groups.map((group, i) => (
+          <li class={styles.group} style={`--i: ${i}`}>
+            <div class={styles.groupHeader}>
+              <span class={styles.marker} aria-hidden="true"></span>
+              <h3 class={styles.groupTitle}>{group.title}</h3>
+            </div>
+            <p class={styles.groupContext}>{group.context}</p>
           </li>
         ))}
       </ul>

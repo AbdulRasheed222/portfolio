@@ -14,7 +14,9 @@ const currentPathname = Astro.url.pathname;
 
 <nav class:list={[styles.nav, className]} aria-label="Mobile">
   <details class={styles.details}>
-    <summary class={styles.summary}>Navigation</summary>
+    <summary class={styles.summary}>
+      <span class={styles.summaryLabel}>Menu</span>
+    </summary>
     <div class={styles.panel}>
       <ul class={styles.list}>
         {

@@ -34,13 +34,16 @@ export type EngineeringPrinciple = {
 
 const workRegistryHref = '/work/';
 
+/** Approved public location line — do not imply visa/sponsorship status */
+export const publicLocation = 'Istanbul · Remote · Open to relocation' as const;
+
 export const homepage = {
   hero: {
     systemId: 'SYS-ARR',
     eyebrow: '01 — ARRIVAL',
-    name: 'Abdul Rasheed',
-    positioning:
-      'Full-stack software engineer building AI systems, workflow automation, and scalable business software.',
+    name: 'Abdul Rasheed Keramat',
+    rolePrimary: 'Full-stack Software Engineer',
+    roleSecondary: 'building AI platforms, workflow systems, and intelligent products.',
     supporting:
       'I design and ship platform software — from intelligent workflows and agent systems to full-stack products that hold up under real constraints.',
     metadata: ['SYS-ARR', 'VER 1.1', 'EOS v1.1'] as const,
@@ -76,12 +79,27 @@ export const homepage = {
   capabilityProof: {
     systemIndex: '03 — CAPABILITY PROOF',
     title: 'What gets built',
-    domains: [
-      'AI systems & agent platforms',
-      'Workflow & automation engines',
-      'Full-stack product delivery',
-      'Integration & platform layers',
-      'Architecture & technical leadership',
+    groups: [
+      {
+        title: 'AI Platforms',
+        context: 'Agent runtimes, copilots, and intelligent workflow systems',
+      },
+      {
+        title: 'Workflow Systems',
+        context: 'Durable automation engines and governed execution pipelines',
+      },
+      {
+        title: 'Integration Architecture',
+        context: 'Platform layers, APIs, and cross-system data flows',
+      },
+      {
+        title: 'Full-stack Product Delivery',
+        context: 'Interfaces, backends, and maintainable product software',
+      },
+      {
+        title: 'Technical Leadership',
+        context: 'Architecture decisions, boundaries, and team-scale delivery',
+      },
     ] as const,
   },
 
@@ -170,9 +188,10 @@ export const homepage = {
 
   currentFocus: {
     systemIndex: '07 — CURRENT FOCUS',
+    statusLabel: 'Open to Opportunities',
+    locationLabel: publicLocation,
     statement:
-      'Open to full-stack and AI engineering roles in Istanbul and remote — platform systems, intelligent workflows, and maintainable product software.',
-    metadata: ['ROLE: FULL-STACK / AI', 'LOC: ISTANBUL · REMOTE'] as const,
+      'Seeking full-stack and AI engineering roles — platform systems, intelligent workflows, and maintainable product software.',
   },
 
   operatorProfile: {
@@ -182,18 +201,19 @@ export const homepage = {
     summary:
       'I build software that connects business problems to maintainable systems — from product interfaces to AI workflows and platform integrations.',
     href: '/about/',
-    metadata: ['ISTANBUL', 'BSC SOFTWARE ENGINEERING', 'EN · PS · DR'] as const,
+    metadata: [publicLocation, 'BSC SOFTWARE ENGINEERING', 'English • Pashto • Dari'] as const,
   },
 
   contactCta: {
     systemIndex: '08 — CHANNEL',
     heading: "Let's build what's next",
     supporting:
-      'For engineering opportunities in Istanbul or remote. Reach out directly — responses are read personally.',
+      'Open to engineering opportunities in Istanbul, remotely, or with relocation flexibility. Reach out directly — I read every message personally.',
     email: 'keramat.rasheed222@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdul-rasheed-keramat-1b26b3277/',
     github: 'https://github.com/AbdulRasheed222',
     primaryLabel: 'View résumé',
     secondaryLabel: 'Contact page',
+    channelMeta: ['EMAIL', 'LINKEDIN', 'GITHUB', publicLocation] as const,
   },
 } as const;

@@ -1,5 +1,5 @@
 /**
- * Engineering OS — Polished surface materials (Stage 2D-R)
+ * Engineering OS — Polished surface materials (Stage 2D-R / 2D-S)
  */
 
 .surface-lacquer {
@@ -9,9 +9,9 @@
     linear-gradient(
       145deg,
       var(--color-paint-lit) 0%,
-      var(--color-paint-mid) 38%,
-      var(--color-paint-base) 72%,
-      var(--color-paint-deep, #081830) 100%
+      var(--color-paint-mid) 32%,
+      var(--color-paint-base) 68%,
+      var(--color-paint-deep) 100%
     );
   border: var(--border-width) solid var(--color-border-highlight);
   box-shadow: var(--shadow-lacquer);
@@ -24,10 +24,10 @@
   background: linear-gradient(
     118deg,
     transparent 0%,
-    var(--color-highlight-streak) 42%,
-    transparent 58%
+    var(--color-highlight-streak) 38%,
+    transparent 52%
   );
-  opacity: 0.55;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -35,7 +35,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--color-gloss-overlay);
+  background:
+    var(--color-gloss-overlay),
+    radial-gradient(ellipse at 100% 0%, var(--color-corner-light) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -43,11 +45,22 @@
   position: relative;
   background: linear-gradient(
     180deg,
-    rgba(16, 24, 39, 0.95) 0%,
-    rgba(11, 16, 32, 0.98) 100%
+    rgba(18, 28, 48, 0.96) 0%,
+    rgba(11, 16, 32, 0.99) 100%
   );
   border: var(--border-width) solid var(--color-border);
   box-shadow: var(--shadow-elevated);
+}
+
+.surface-satin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-highlight-streak), transparent);
+  opacity: 0.5;
 }
 
 .surface-matte {
@@ -67,19 +80,19 @@
   }
 
   15% {
-    opacity: 0.4;
+    opacity: 0.35;
   }
 
   50% {
     transform: translateX(120%) skewX(-12deg);
-    opacity: 0.25;
+    opacity: 0.2;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .surface-sweep::before {
     animation: none;
-    opacity: 0.2;
+    opacity: 0.15;
     transform: none;
   }
 }
