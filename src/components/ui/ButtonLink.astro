@@ -1,0 +1,39 @@
+---
+import { isExternalUrl, withBasePath } from '../../lib/url';
+import styles from './ButtonLink.module.css';
+
+type Variant = 'primary' | 'secondary';
+
+interface Props {
+  href: string;
+  variant?: Variant;
+  external?: boolean;
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  external,
+  class: className,
+  target,
+  rel,
+} = Astro.props;
+
+const isExternal = external ?? isExternalUrl(href);
+const resolvedHref = isExternal ? href : withBasePath(href);
+const resolvedRel = target === '_blank' ? rel ?? 'noopener noreferrer' : rel;
+
+const variantClass = variant === 'secondary' ? styles.secondary : styles.primary;
+---
+
+<a
+  href={resolvedHref}
+  class:list={[styles.button, variantClass, className]}
+  target={target}
+  rel={resolvedRel}
+>
+  <slot />
+</a>

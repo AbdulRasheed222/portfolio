@@ -6,7 +6,7 @@ This project is a static Astro site built for GitHub Pages, presenting evidence-
 
 ## Current status
 
-**Foundation stage (Stage 1B complete).** Engineering architecture, shared layout, URL utilities, and documentation are in place. Visual design and public pages are not yet implemented.
+**Design system and structural shell (Stage 2B complete).** Tokens, fonts, header, footer, navigation, and layout primitives are implemented. Homepage content and case studies are not yet implemented.
 
 ## Stack
 

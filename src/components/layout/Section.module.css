@@ -1,0 +1,25 @@
+.section {
+  padding-block: var(--space-8);
+}
+
+.compact {
+  padding-block: var(--space-6);
+}
+
+.spacious {
+  padding-block: var(--space-9);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-9);
+  }
+
+  .compact {
+    padding-block: var(--space-7);
+  }
+
+  .spacious {
+    padding-block: var(--space-10);
+  }
+}

@@ -1,0 +1,32 @@
+---
+import { isExternalUrl, withBasePath } from '../../lib/url';
+import styles from './TextLink.module.css';
+
+interface Props {
+  href: string;
+  external?: boolean;
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const { href, external, class: className, target, rel } = Astro.props;
+
+const isExternal = external ?? isExternalUrl(href);
+const resolvedHref = isExternal ? href : withBasePath(href);
+const resolvedRel = target === '_blank' ? rel ?? 'noopener noreferrer' : rel;
+---
+
+<a
+  href={resolvedHref}
+  class:list={[styles.link, className]}
+  target={target}
+  rel={resolvedRel}
+>
+  <slot />
+  {
+    isExternal && target === '_blank' && (
+      <span class={styles.srOnly}> (opens in a new tab)</span>
+    )
+  }
+</a>

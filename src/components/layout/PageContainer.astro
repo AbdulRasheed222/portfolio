@@ -1,0 +1,22 @@
+---
+import styles from './PageContainer.module.css';
+
+type Variant = 'page' | 'wide' | 'reading';
+
+interface Props {
+  variant?: Variant;
+  class?: string;
+}
+
+const { variant = 'page', class: className } = Astro.props;
+
+const variantClass = {
+  page: styles.page,
+  wide: styles.wide,
+  reading: styles.reading,
+}[variant];
+---
+
+<div class:list={[styles.container, variantClass, className]}>
+  <slot />
+</div>
