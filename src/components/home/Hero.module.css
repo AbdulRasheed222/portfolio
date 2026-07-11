@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   min-height: var(--hero-min-height);
-  padding-block: calc(var(--header-height) + var(--space-6)) var(--space-8);
+  padding-block: calc(var(--header-height) + var(--space-5)) var(--space-7);
   overflow: hidden;
 }
 
@@ -13,66 +13,113 @@
   inset: 0;
   z-index: var(--z-hero-visual);
   pointer-events: none;
+  mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
-.core {
+.textScrim {
   position: absolute;
-  top: 18%;
-  left: 50%;
-  width: min(42rem, 85vw);
-  height: min(22rem, 45vh);
-  transform: translateX(-50%);
-  border-radius: 50% 50% 45% 55% / 40% 45% 55% 60%;
-  background:
-    radial-gradient(
-      ellipse 80% 70% at 35% 25%,
-      rgba(120, 180, 255, 0.35) 0%,
-      transparent 50%
-    ),
-    linear-gradient(
-      155deg,
-      var(--color-paint-bright) 0%,
-      var(--color-paint-violet) 45%,
-      var(--color-paint-base) 100%
-    );
-  opacity: 0.55;
-  filter: blur(0.5px);
-  box-shadow:
-    0 0 80px var(--color-paint-glow),
-    0 0 160px var(--color-paint-bloom),
-    inset 0 1px 0 var(--color-highlight-streak);
-  transition: transform var(--duration-base) var(--ease-out);
+  inset: 0 0 55%;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 10, 16, 0.92) 0%,
+    rgba(7, 10, 16, 0.55) 55%,
+    transparent 100%
+  );
 }
 
 .topologyLayer {
   position: absolute;
-  inset: 8% 0 0;
+  inset: auto 0 0;
+  height: 52%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  opacity: 0.95;
+  opacity: 0.42;
   transition: transform var(--duration-base) var(--ease-out);
+}
+
+.systemCore {
+  position: absolute;
+  bottom: 8%;
+  right: 5%;
+  width: min(11rem, 28vw);
+  height: min(8rem, 18vh);
+  transition: transform var(--duration-base) var(--ease-out);
+  opacity: 0.75;
+}
+
+.coreLayer {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-border-highlight);
+  background: linear-gradient(
+    145deg,
+    rgba(45, 91, 255, 0.22) 0%,
+    rgba(30, 74, 140, 0.35) 40%,
+    rgba(12, 30, 61, 0.65) 100%
+  );
+  box-shadow:
+    var(--shadow-lacquer-inner),
+    inset 0 1px 0 var(--color-highlight-streak);
+}
+
+.coreLayer:first-child {
+  transform: rotate(-4deg) translate(-6%, 4%);
+  opacity: 0.55;
+}
+
+.coreLayer:nth-child(2) {
+  transform: rotate(3deg) translate(4%, -3%);
+  opacity: 0.7;
+}
+
+.coreFacet {
+  position: absolute;
+  inset: 18% 12%;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    rgba(120, 180, 255, 0.18) 0%,
+    rgba(45, 91, 255, 0.35) 50%,
+    rgba(79, 70, 229, 0.25) 100%
+  );
+  border: var(--border-width) solid rgba(120, 180, 255, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 32px rgba(45, 91, 255, 0.2);
+}
+
+.coreFacet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-highlight-streak), transparent);
 }
 
 .lightSweep {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  opacity: 0.6;
 }
 
 .lightSweep::before {
   content: '';
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: -50%;
-  width: 40%;
-  height: 60%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.06),
-    transparent
-  );
+  width: 35%;
+  height: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
   transform: skewX(-18deg);
 }
 
@@ -80,26 +127,27 @@
   .lightSweep::before {
     animation: eos-light-sweep var(--duration-sweep) var(--ease-in-out) infinite;
   }
-
-  .core {
-    animation: eos-core-pulse 6s var(--ease-in-out) infinite;
-  }
 }
 
 .container {
   position: relative;
   z-index: var(--z-hero-content);
+  isolation: isolate;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  max-width: 40rem;
+  gap: var(--space-4);
+  max-width: 38rem;
 }
 
 .meta {
-  opacity: 0.9;
+  opacity: 1;
+}
+
+.meta :global(p) {
+  color: var(--color-text-metadata);
 }
 
 .eyebrow {
@@ -114,109 +162,157 @@
   font-size: var(--font-size-hero);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--color-text-primary);
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
 }
 
-.positioning {
+.roleLead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-width: 34rem;
+}
+
+.rolePrimary {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.roleSecondary {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
-  color: var(--color-text-primary);
-  max-width: 36rem;
+  color: var(--color-text-secondary);
 }
 
 .supporting {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
   color: var(--color-text-secondary);
-  max-width: 34rem;
+  max-width: 42ch;
+  padding-top: var(--space-1);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  padding-top: var(--space-2);
-}
-
-.flowCue {
-  position: relative;
-  z-index: var(--z-hero-content);
-  padding-block: var(--space-4);
-  text-align: center;
-}
-
-.flowCue span {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  padding-top: var(--space-3);
 }
 
 .stagger {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .stagger {
-    opacity: 0;
-    animation: eos-hero-stagger var(--duration-slow) var(--ease-enter) forwards;
+    animation: hero-enter var(--duration-slow) var(--ease-enter) both;
   }
 
-  .d1 {
-    animation-delay: 60ms;
+  @keyframes hero-enter {
+    from {
+      transform: translateY(0.75rem);
+    }
+
+    to {
+      transform: translateY(0);
+    }
   }
 
-  .d2 {
-    animation-delay: 120ms;
-  }
-
-  .d3 {
-    animation-delay: 180ms;
-  }
-
-  .d4 {
-    animation-delay: 240ms;
-  }
-
-  .d5 {
-    animation-delay: 300ms;
-  }
-
-  .d6 {
-    animation-delay: 360ms;
-  }
+  .d1 { animation-delay: 40ms; }
+  .d2 { animation-delay: 90ms; }
+  .d3 { animation-delay: 150ms; }
+  .d4 { animation-delay: 210ms; }
+  .d5 { animation-delay: 270ms; }
+  .d6 { animation-delay: 330ms; }
 }
 
 @media (min-width: 768px) {
   .hero {
-    padding-bottom: var(--space-9);
+    padding-bottom: var(--space-8);
   }
 
   .content {
-    max-width: 44rem;
+    max-width: 42rem;
+    gap: var(--space-5);
+  }
+
+  .topologyLayer {
+    height: 48%;
+    opacity: 0.48;
+  }
+
+  .systemCore {
+    bottom: 10%;
+    right: 8%;
+    width: 12rem;
+    height: 8.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .core {
-    top: 12%;
-    width: 48rem;
-    height: 26rem;
-    opacity: 0.65;
+  .content {
+    max-width: 44rem;
   }
 
   .topologyLayer {
-    inset: 0;
+    height: 46%;
+    opacity: 0.5;
+  }
+
+  .systemCore {
+    right: 10%;
   }
 }
 
-@media (min-width: 1440px) {
+@media (max-width: 767px) {
+  .hero {
+    min-height: min(88vh, 42rem);
+    padding-block: calc(var(--header-height) + var(--space-4)) var(--space-6);
+  }
+
   .content {
-    max-width: 48rem;
+    gap: var(--space-3);
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: clamp(1.875rem, 7.5vw, 2.5rem);
+    line-height: 1.12;
+  }
+
+  .rolePrimary {
+    font-size: var(--font-size-md);
+  }
+
+  .roleSecondary {
+    font-size: var(--font-size-sm);
+  }
+
+  .textScrim {
+    inset: 0 0 48%;
+  }
+
+  .topologyLayer {
+    opacity: 0.3;
+    height: 38%;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+  }
+
+  .actions :global(a) {
+    width: 100%;
+  }
+
+  .systemCore {
+    display: none;
   }
 }
 

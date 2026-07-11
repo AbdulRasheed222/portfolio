@@ -18,10 +18,7 @@ const { contactCta } = homepage;
         <span class={styles.index}>{contactCta.systemIndex}</span>
         <h2 class={styles.heading}>{contactCta.heading}</h2>
         <p class={styles.supporting}>{contactCta.supporting}</p>
-        <MetadataRail
-          items={['EMAIL', 'LINKEDIN', 'GITHUB', 'ISTANBUL · REMOTE']}
-          class={styles.channelMeta}
-        />
+        <MetadataRail items={contactCta.channelMeta} class={styles.channelMeta} />
         <div class={styles.links}>
           <TextLink href={`mailto:${contactCta.email}`}>{contactCta.email}</TextLink>
           <TextLink href={contactCta.linkedIn} external>LinkedIn</TextLink>

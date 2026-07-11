@@ -4,63 +4,75 @@ import styles from './HeroTopology.module.css';
 
 <svg
   class={styles.topology}
-  viewBox="0 0 1200 700"
+  viewBox="0 0 1200 520"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
   focusable="false"
 >
   <defs>
-    <radialGradient id="coreGlow" cx="50%" cy="45%" r="50%">
-      <stop offset="0%" stop-color="rgba(45, 91, 255, 0.55)" />
-      <stop offset="55%" stop-color="rgba(79, 70, 229, 0.2)" />
+    <linearGradient id="heroEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(201, 168, 106, 0.35)" />
+      <stop offset="35%" stop-color="rgba(45, 91, 255, 0.55)" />
+      <stop offset="65%" stop-color="rgba(120, 180, 255, 0.65)" />
+      <stop offset="100%" stop-color="rgba(244, 240, 232, 0.4)" />
+    </linearGradient>
+    <radialGradient id="archGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(45, 91, 255, 0.5)" />
+      <stop offset="70%" stop-color="rgba(45, 91, 255, 0.08)" />
       <stop offset="100%" stop-color="rgba(7, 10, 16, 0)" />
     </radialGradient>
-    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="rgba(45, 91, 255, 0.15)" />
-      <stop offset="50%" stop-color="rgba(120, 180, 255, 0.55)" />
-      <stop offset="100%" stop-color="rgba(45, 91, 255, 0.15)" />
-    </linearGradient>
+    <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
-  <rect width="1200" height="700" fill="url(#coreGlow)" />
+  <!-- Architecture core glow -->
+  <ellipse cx="520" cy="280" rx="140" ry="90" fill="url(#archGlow)" class={styles.archGlow} />
 
-  <g class={styles.edges} stroke="url(#edgeGrad)" stroke-width="1.25" stroke-linecap="round">
-    <path class={styles.flowLine} d="M120 350 L280 220" />
-    <path class={styles.flowLine} d="M120 350 L280 350" />
-    <path class={styles.flowLine} d="M120 350 L280 480" />
-    <path class={styles.flowLine} d="M280 220 L440 280" />
-    <path class={styles.flowLine} d="M280 350 L440 350" />
-    <path class={styles.flowLine} d="M280 480 L440 420" />
-    <path class={styles.flowLine} d="M440 280 L600 320" />
-    <path class={styles.flowLine} d="M440 350 L600 350" />
-    <path class={styles.flowLine} d="M440 420 L600 380" />
-    <path class={styles.flowLine} d="M600 320 L760 300" />
-    <path class={styles.flowLine} d="M600 350 L760 350" />
-    <path class={styles.flowLine} d="M600 380 L760 400" />
-    <path class={styles.flowLine} d="M760 300 L920 340" />
-    <path class={styles.flowLine} d="M760 350 L920 350" />
-    <path class={styles.flowLine} d="M760 400 L920 360" />
-    <path class={styles.flowLine} d="M920 340 L1080 350" />
-    <path class={styles.flowLine} d="M920 350 L1080 350" />
-    <path class={styles.flowLine} d="M920 360 L1080 350" />
+  <!-- Primary flow: Intent → Architecture → Execution → Evidence -->
+  <g class={styles.edges} stroke="url(#heroEdge)" stroke-width="1.5" stroke-linecap="round">
+    <path class={styles.flowPrimary} d="M 100 300 C 220 300, 300 280, 420 280" />
+    <path class={styles.flowPrimary} d="M 420 280 C 480 280, 500 280, 520 280" />
+    <path class={styles.flowPrimary} d="M 520 280 C 640 280, 720 290, 840 300" />
+    <path class={styles.flowPrimary} d="M 840 300 C 920 305, 1000 310, 1100 310" />
+    <!-- Secondary branches -->
+    <path class={styles.flowSecondary} d="M 420 280 L 380 220" />
+    <path class={styles.flowSecondary} d="M 420 280 L 390 340" />
+    <path class={styles.flowSecondary} d="M 520 280 L 520 200" />
+    <path class={styles.flowSecondary} d="M 520 280 L 520 360" />
+    <path class={styles.flowSecondary} d="M 840 300 L 820 240" />
+    <path class={styles.flowSecondary} d="M 840 300 L 830 360" />
+    <path class={styles.flowTertiary} d="M 380 220 L 350 180" />
+    <path class={styles.flowTertiary} d="M 390 340 L 360 380" />
+    <path class={styles.flowTertiary} d="M 820 240 L 800 200" />
   </g>
 
-  <g class={styles.nodes} fill="currentColor">
-    <circle cx="120" cy="350" r="10" class={styles.intent} />
-    <circle cx="280" cy="220" r="6" />
-    <circle cx="280" cy="350" r="7" />
-    <circle cx="280" cy="480" r="6" />
-    <circle cx="440" cy="280" r="6" />
-    <circle cx="440" cy="350" r="8" class={styles.core} />
-    <circle cx="440" cy="420" r="6" />
-    <circle cx="600" cy="320" r="6" />
-    <circle cx="600" cy="350" r="7" />
-    <circle cx="600" cy="380" r="6" />
-    <circle cx="760" cy="300" r="6" />
-    <circle cx="760" cy="350" r="7" />
-    <circle cx="760" cy="400" r="6" />
-    <circle cx="920" cy="350" r="7" />
-    <circle cx="1080" cy="350" r="10" class={styles.evidence} />
+  <!-- Nodes with hierarchy -->
+  <g class={styles.nodes}>
+    <circle cx="100" cy="300" r="8" class={styles.nodeIntent} />
+    <circle cx="420" cy="280" r="5" class={styles.nodeSecondary} />
+    <circle cx="520" cy="280" r="14" class={styles.nodeArch} filter="url(#nodeGlow)" />
+    <circle cx="840" cy="300" r="6" class={styles.nodeSecondary} />
+    <circle cx="1100" cy="310" r="8" class={styles.nodeEvidence} />
+    <!-- Branch nodes -->
+    <circle cx="380" cy="220" r="3.5" class={styles.nodeTertiary} />
+    <circle cx="390" cy="340" r="3.5" class={styles.nodeTertiary} />
+    <circle cx="520" cy="200" r="3" class={styles.nodeTertiary} />
+    <circle cx="520" cy="360" r="3" class={styles.nodeTertiary} />
+    <circle cx="820" cy="240" r="3" class={styles.nodeTertiary} />
+    <circle cx="830" cy="360" r="3" class={styles.nodeTertiary} />
+  </g>
+
+  <!-- Subtle stage labels -->
+  <g class={styles.labels} fill="currentColor">
+    <text x="100" y="340" text-anchor="middle">INTENT</text>
+    <text x="520" y="340" text-anchor="middle">ARCHITECTURE</text>
+    <text x="840" y="340" text-anchor="middle">EXECUTION</text>
+    <text x="1100" y="350" text-anchor="middle">EVIDENCE</text>
   </g>
 </svg>

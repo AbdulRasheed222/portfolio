@@ -5,6 +5,7 @@ import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
 import StatusChip from '../ui/StatusChip.astro';
+import LeenArchitecture from './LeenArchitecture.astro';
 import styles from './FlagshipLeen.module.css';
 
 const pub = homepage.featuredPublication;
@@ -20,11 +21,7 @@ const metaItems = [pub.ref, pub.pub, `TIER: ${pub.tier}`, pub.version, `READ ${p
 
     <article class={styles.panel}>
       <div class={styles.visual} aria-hidden="true">
-        <div class={styles.orbit}></div>
-        <div class={styles.coreRing}></div>
-        <ul class={styles.chapters}>
-          {pub.chapters?.map((ch) => <li>{ch}</li>)}
-        </ul>
+        <LeenArchitecture />
       </div>
 
       <div class={styles.content}>

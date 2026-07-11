@@ -1,0 +1,32 @@
+.architecture {
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  color: var(--color-text-cool);
+}
+
+.coreLayer {
+  filter: drop-shadow(0 0 16px rgba(45, 91, 255, 0.35));
+}
+
+.labels text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  opacity: 0.55;
+}
+
+.coreLayer + line + rect + line + rect .labels text,
+.labels text:nth-child(3) {
+  opacity: 0.7;
+}
+
+.connections {
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stack {
+    animation: eos-reveal var(--duration-moderate) var(--ease-out) both;
+  }
+}
