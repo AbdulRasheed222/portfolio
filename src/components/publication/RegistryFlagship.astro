@@ -1,0 +1,51 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import { formatLabel, publicationPath } from '../../lib/publications';
+import { withBasePath } from '../../lib/url';
+import StatusChip from '../ui/StatusChip.astro';
+import styles from './RegistryFlagship.module.css';
+
+interface Props {
+  publication: PublicationEntry;
+}
+
+const { publication } = Astro.props;
+const data = publication.data;
+---
+
+<section class={styles.section} aria-labelledby="registry-flagship-title">
+  <span class={styles.label}>Flagship platform</span>
+
+  <article class={styles.panel}>
+    <div class={styles.chips}>
+      <StatusChip variant="muted">{formatLabel(data.format)}</StatusChip>
+      <StatusChip variant="warning">{data.status}</StatusChip>
+    </div>
+
+    <h2 class={styles.title} id="registry-flagship-title">
+      <a href={withBasePath(publicationPath(data.slug))} class={styles.titleLink}>{data.title}</a>
+    </h2>
+    <p class={styles.summary}>{data.summary}</p>
+
+    <dl class={styles.meta}>
+      <div>
+        <dt>Role</dt>
+        <dd>{data.role}</dd>
+      </div>
+      <div>
+        <dt>Timeframe</dt>
+        <dd>{data.timeframe}</dd>
+      </div>
+      {
+        data.readingTime && (
+          <div>
+            <dt>Reading time</dt>
+            <dd>{data.readingTime}</dd>
+          </div>
+        )
+      }
+    </dl>
+
+    <span class={styles.action} aria-hidden="true">Read flagship case study →</span>
+  </article>
+</section>

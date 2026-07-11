@@ -1,0 +1,110 @@
+.figure {
+  margin: 0 0 var(--space-6);
+}
+
+.reading {
+  max-width: 42rem;
+}
+
+.wide {
+  max-width: none;
+  margin-inline: calc(-1 * var(--gutter-mobile));
+  padding-inline: var(--gutter-mobile);
+}
+
+.frame {
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-subtle);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.reserve {
+  display: grid;
+  place-content: center;
+  gap: var(--space-2);
+  min-height: 10rem;
+  padding: var(--space-6);
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(148, 163, 184, 0.04),
+      rgba(148, 163, 184, 0.04) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+}
+
+.placeholder .reserve {
+  min-height: 8rem;
+}
+
+.reserveLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+  text-align: center;
+}
+
+.reserveDetail {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.caption {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.captionRef {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-metadata);
+}
+
+.captionText {
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+
+.metaItem {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 640px) {
+  .wide {
+    margin-inline: calc(-1 * var(--gutter-tablet));
+    padding-inline: var(--gutter-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wide {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}

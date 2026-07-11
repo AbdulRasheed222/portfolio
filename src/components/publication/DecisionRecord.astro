@@ -1,0 +1,59 @@
+---
+import StatusChip from '../ui/StatusChip.astro';
+import styles from './DecisionRecord.module.css';
+
+interface Props {
+  reference: string;
+  title: string;
+  context: string;
+  decision: string;
+  tradeoff: string;
+  status: string;
+  verificationState: string;
+  template?: boolean;
+}
+
+const {
+  reference,
+  title,
+  context,
+  decision,
+  tradeoff,
+  status,
+  verificationState,
+  template = false,
+} = Astro.props;
+---
+
+<article class:list={[styles.record, template && styles.template]} aria-labelledby={`adr-${reference}`}>
+  <header class={styles.header}>
+    <div class={styles.meta}>
+      <span class={styles.ref}>{reference}</span>
+      {template && <StatusChip variant="muted">Template demonstration</StatusChip>}
+    </div>
+    <h3 class={styles.title} id={`adr-${reference}`}>{title}</h3>
+  </header>
+
+  <dl class={styles.body}>
+    <div class={styles.row}>
+      <dt>Context</dt>
+      <dd>{context}</dd>
+    </div>
+    <div class={styles.row}>
+      <dt>Decision</dt>
+      <dd>{decision}</dd>
+    </div>
+    <div class={styles.row}>
+      <dt>Tradeoff</dt>
+      <dd>{tradeoff}</dd>
+    </div>
+    <div class={styles.row}>
+      <dt>Status</dt>
+      <dd>{status}</dd>
+    </div>
+    <div class={styles.row}>
+      <dt>Verification</dt>
+      <dd>{verificationState}</dd>
+    </div>
+  </dl>
+</article>

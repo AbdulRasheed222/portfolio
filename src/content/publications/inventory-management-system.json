@@ -1,0 +1,56 @@
+{
+  "format": "project-brief",
+  "title": "Inventory Management System",
+  "slug": "inventory-management-system",
+  "reference": "REF-INV-001",
+  "summary": "SME stock-integrity platform — stock movements, alerts, and operational reporting with concurrent update discipline.",
+  "status": "PROVISIONAL",
+  "evidenceLevel": "provisional",
+  "role": "Full Stack Software Developer",
+  "timeframe": "2022 – 2024 (sector-level delivery context)",
+  "technologies": ["Full-stack web application", "Relational database", "REST APIs", "Concurrent data handling"],
+  "contributionSummary": "Delivered inventory and operations software for SME contexts during freelance and agency work. Project-specific scope and attribution are pending verification — sector-level context is CV-supported.",
+  "maturityNotice": "Project details beyond sector-level delivery context are provisional until verified. No client names, metrics, or screenshots are stated.",
+  "order": 4,
+  "accent": "gold",
+  "noindex": true,
+  "statusNote": "Provisional — additional verification required before detailed publication.",
+  "sections": [
+    {
+      "title": "Overview",
+      "anchor": "overview",
+      "paragraphs": [
+        "Inventory management software for small and medium businesses — tracking stock movements, alerting on thresholds, and supporting operational reporting.",
+        "This brief reflects verified sector-level delivery experience from CV baseline. Specific project naming and deployment status are not stated."
+      ]
+    },
+    {
+      "title": "What was built",
+      "anchor": "what-was-built",
+      "paragraphs": [
+        "A full-stack stock-integrity application for operators managing inventory day to day."
+      ],
+      "bullets": [
+        "Stock movement recording and history",
+        "Threshold alerts for low or critical inventory",
+        "Operational reporting for business owners",
+        "Concurrent update handling for multi-user environments"
+      ]
+    },
+    {
+      "title": "My contribution",
+      "anchor": "my-contribution",
+      "paragraphs": [
+        "Full-stack development across interface, backend, and data layers during the 2022–2024 delivery period. Exact team composition and per-feature attribution pending verification."
+      ]
+    },
+    {
+      "title": "Technologies and status",
+      "anchor": "technologies-and-status",
+      "paragraphs": [
+        "Built as a conventional full-stack web product with relational data modeling and API-backed interfaces.",
+        "Launch status and client references are not published until verified."
+      ]
+    }
+  ]
+}

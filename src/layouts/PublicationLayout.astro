@@ -1,0 +1,118 @@
+---
+import type { PublicationEntry } from '../lib/publications';
+import { getAdjacentPublications, publicationPath } from '../lib/publications';
+import { canonicalUrl } from '../lib/seo';
+import BaseLayout from './BaseLayout.astro';
+import PageContainer from '../components/layout/PageContainer.astro';
+import Section from '../components/layout/Section.astro';
+import ContributionSummary from '../components/publication/ContributionSummary.astro';
+import DecisionRecord from '../components/publication/DecisionRecord.astro';
+import EvidenceFigure from '../components/publication/EvidenceFigure.astro';
+import ProjectBriefFooter from '../components/publication/ProjectBriefFooter.astro';
+import PublicationFooterNav from '../components/publication/PublicationFooterNav.astro';
+import PublicationOpeningBand from '../components/publication/PublicationOpeningBand.astro';
+import PublicationSection from '../components/publication/PublicationSection.astro';
+import PublicationStatusNote from '../components/publication/PublicationStatusNote.astro';
+import ReadingProgress from '../components/publication/ReadingProgress.astro';
+import SectionList from '../components/publication/SectionList.astro';
+import SectionNavigation from '../components/publication/SectionNavigation.astro';
+import TechnologyList from '../components/publication/TechnologyList.astro';
+import styles from './PublicationLayout.module.css';
+
+interface Props {
+  publication: PublicationEntry;
+  publications: PublicationEntry[];
+  title: string;
+  description: string;
+}
+
+const { publication, publications, title, description } = Astro.props;
+const data = publication.data;
+const { previous, next } = getAdjacentPublications(publications, data.slug);
+const canonical = canonicalUrl(publicationPath(data.slug));
+
+const isFlagship = data.format === 'flagship';
+const isCaseStudy = data.format === 'case-study';
+const isBrief = data.format === 'project-brief';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  noindex={data.noindex ?? true}
+  ogTitle={title}
+  ogDescription={description}
+  ogType="article"
+>
+  {isFlagship && <ReadingProgress />}
+
+  <Section variant="compact" mode="reading" reveal={false}>
+    <PageContainer variant={isBrief ? 'reading' : 'wide'}>
+      <PublicationOpeningBand publication={data} />
+    </PageContainer>
+  </Section>
+
+  <Section variant="compact" mode="reading" reveal={false}>
+    <PageContainer variant={isBrief ? 'reading' : 'wide'}>
+      <div class:list={[styles.layout, isFlagship && styles.layoutFlagship]}>
+        {isFlagship && (
+          <aside class={styles.sidebar}>
+            <SectionNavigation sections={data.sections} />
+          </aside>
+        )}
+
+        <article class={styles.article} data-publication-article>
+          {isCaseStudy && <SectionList sections={data.sections} />}
+
+          <div class={styles.body}>
+            {data.sections.map((section) => (
+              <PublicationSection section={section} />
+            ))}
+          </div>
+
+          {
+            data.figures?.map((figure) => (
+              <EvidenceFigure
+                reference={figure.reference}
+                caption={figure.caption}
+                alt={figure.alt}
+                evidenceType={figure.evidenceType ?? 'structural-placeholder'}
+                verificationStatus={figure.placeholder ? 'placeholder' : 'pending'}
+                placeholder={figure.placeholder}
+              />
+            ))
+          }
+
+          {
+            isFlagship &&
+              data.decisions?.map((record) => (
+                <DecisionRecord
+                  reference={record.reference}
+                  title={record.title}
+                  context={record.context}
+                  decision={record.decision}
+                  tradeoff={record.tradeoff}
+                  status={record.status ?? 'Documented'}
+                  verificationState="Directional — full evidence pending"
+                />
+              ))
+          }
+
+          {!isBrief && <ContributionSummary summary={data.contributionSummary} />}
+
+          {isCaseStudy && data.statusNote && <PublicationStatusNote note={data.statusNote} />}
+
+          {isBrief && (
+            <>
+              <TechnologyList technologies={data.technologies} />
+              <ProjectBriefFooter statusNote={data.statusNote} />
+            </>
+          )}
+
+          {!isBrief && <PublicationFooterNav previous={previous} next={next} />}
+        </article>
+      </div>
+    </PageContainer>
+  </Section>
+</BaseLayout>

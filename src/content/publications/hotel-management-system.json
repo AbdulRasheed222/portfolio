@@ -1,0 +1,56 @@
+{
+  "format": "project-brief",
+  "title": "Hotel Management System",
+  "slug": "hotel-management-system",
+  "reference": "REF-HOTEL-001",
+  "summary": "Full-stack hospitality software for SME properties — reservations, room inventory, and guest workflows.",
+  "status": "PROVISIONAL",
+  "evidenceLevel": "provisional",
+  "role": "Full Stack Software Developer",
+  "timeframe": "2022 – 2024 (sector-level delivery context)",
+  "technologies": ["Full-stack web application", "Relational database", "REST APIs", "Role-based access"],
+  "contributionSummary": "Delivered full-stack product software in the hospitality sector during freelance and agency work. Project-specific scope and attribution are pending verification — sector-level context is CV-supported.",
+  "maturityNotice": "Project details beyond sector-level delivery context are provisional until verified. No client names, metrics, or screenshots are stated.",
+  "order": 3,
+  "accent": "slate",
+  "noindex": true,
+  "statusNote": "Provisional — additional verification required before detailed publication.",
+  "sections": [
+    {
+      "title": "Overview",
+      "anchor": "overview",
+      "paragraphs": [
+        "Hotel management software for small and medium hospitality properties — covering reservations, room availability, and operational guest workflows.",
+        "This brief reflects verified sector-level delivery experience from CV baseline. Specific project naming and deployment status are not stated."
+      ]
+    },
+    {
+      "title": "What was built",
+      "anchor": "what-was-built",
+      "paragraphs": [
+        "A full-stack operations application for property staff to manage day-to-day hospitality workflows."
+      ],
+      "bullets": [
+        "Reservation and booking management",
+        "Room inventory tracking",
+        "Guest workflow interfaces for front-desk operations",
+        "Backend services with persistent data storage"
+      ]
+    },
+    {
+      "title": "My contribution",
+      "anchor": "my-contribution",
+      "paragraphs": [
+        "Full-stack development across interface, backend, and data layers during the 2022–2024 delivery period. Exact team composition and per-feature attribution pending verification."
+      ]
+    },
+    {
+      "title": "Technologies and status",
+      "anchor": "technologies-and-status",
+      "paragraphs": [
+        "Built as a conventional full-stack web product with relational data modeling and API-backed interfaces.",
+        "Launch status and client references are not published until verified."
+      ]
+    }
+  ]
+}

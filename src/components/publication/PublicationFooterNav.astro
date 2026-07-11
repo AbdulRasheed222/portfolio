@@ -1,0 +1,50 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import { publicationPath, WORK_REGISTRY_PATH } from '../../lib/publications';
+import { withBasePath } from '../../lib/url';
+import ButtonLink from '../ui/ButtonLink.astro';
+import TextLink from '../ui/TextLink.astro';
+import styles from './PublicationFooterNav.module.css';
+
+interface Props {
+  previous?: PublicationEntry;
+  next?: PublicationEntry;
+}
+
+const { previous, next } = Astro.props;
+---
+
+<nav class={styles.nav} aria-label="Publication navigation">
+  <div class={styles.registry}>
+    <TextLink href={withBasePath(WORK_REGISTRY_PATH)}>← Back to Publication Registry</TextLink>
+  </div>
+
+  <div class={styles.adjacent}>
+    {
+      previous ? (
+        <a class={styles.link} href={withBasePath(publicationPath(previous.data.slug))}>
+          <span class={styles.direction}>Previous</span>
+          <span class={styles.title}>{previous.data.title}</span>
+        </a>
+      ) : (
+        <span class={styles.empty} aria-hidden="true"></span>
+      )
+    }
+
+    {
+      next ? (
+        <a class:list={[styles.link, styles.linkNext]} href={withBasePath(publicationPath(next.data.slug))}>
+          <span class={styles.direction}>Next</span>
+          <span class={styles.title}>{next.data.title}</span>
+        </a>
+      ) : (
+        <span class={styles.empty} aria-hidden="true"></span>
+      )
+    }
+  </div>
+
+  <div class={styles.cta}>
+    <ButtonLink href={withBasePath('/about/')} variant="secondary">Operator profile</ButtonLink>
+    <ButtonLink href={withBasePath('/contact/')} variant="primary">Contact</ButtonLink>
+  </div>
+</nav>

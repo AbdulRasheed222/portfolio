@@ -1,0 +1,127 @@
+{
+  "format": "flagship",
+  "title": "Leen — AI Operating System",
+  "slug": "leen-ai-operating-system",
+  "reference": "REF-LEEN-001",
+  "summary": "An AI operating environment for agents, durable workflows, memory, integrations, and governed execution — the platform direction I co-founded and architect.",
+  "status": "IN DEVELOPMENT",
+  "evidenceLevel": "gathering",
+  "role": "Co-Founder and Technical Architect",
+  "timeframe": "2025 – Present",
+  "technologies": ["TypeScript", "Python", "AI / LLM integrations", "Workflow orchestration", "Multi-tenant SaaS"],
+  "contributionSummary": "Co-founded the platform direction and serve as technical architect. Scope spans platform boundaries, core subsystem design, and engineering leadership. Detailed subsystem attribution is being documented — solo ownership of the full stack is not claimed.",
+  "maturityNotice": "Leen is in active development. This page summarizes the platform direction and my role. Production launch, customer metrics, and deployment scale are not stated until verified.",
+  "order": 1,
+  "readingTime": "8 min",
+  "accent": "cobalt",
+  "noindex": true,
+  "relatedSlugs": ["omnichannel-ai-support-platform"],
+  "sections": [
+    {
+      "title": "What Leen is",
+      "anchor": "what-leen-is",
+      "paragraphs": [
+        "Leen is an AI operating environment — a platform for building and running intelligent business systems. The direction combines conversational copilots, durable workflow execution, agent runtimes, shared memory, and governed integrations into one coherent stack.",
+        "The goal is not a single chatbot or automation script. It is an operating layer where business operations can be expressed, executed, and evolved with appropriate controls."
+      ]
+    },
+    {
+      "title": "The problem",
+      "anchor": "the-problem",
+      "paragraphs": [
+        "Teams adopting AI often end up with disconnected tools: a copilot here, a webhook automation there, brittle prompts with no memory, and no clear boundary between experimentation and production execution.",
+        "Leen addresses the platform gap — giving operators a structured environment for agents, workflows, and integrations rather than one-off AI features."
+      ],
+      "bullets": [
+        "Fragmented AI tooling that does not compose into durable systems",
+        "Workflow logic that breaks when context or channels change",
+        "Lack of governance over what agents can access and execute"
+      ]
+    },
+    {
+      "title": "Platform architecture",
+      "anchor": "platform-architecture",
+      "paragraphs": [
+        "The platform is organized as a set of core systems that compose together. Each area below is a major boundary in the architecture — not a separate product silo."
+      ],
+      "subsections": [
+        {
+          "title": "Copilot",
+          "items": ["Conversational interface layer for operators and business users"]
+        },
+        {
+          "title": "Workflows",
+          "items": ["Durable workflow engine for multi-step, governed automation"]
+        },
+        {
+          "title": "Agent Runtime",
+          "items": ["Execution environment for agent tasks and tool use"]
+        },
+        {
+          "title": "Teams",
+          "items": ["Multi-actor coordination and role boundaries within the platform"]
+        },
+        {
+          "title": "Memory",
+          "items": ["Persistent context and knowledge retention across sessions"]
+        },
+        {
+          "title": "Business Solutions",
+          "items": ["Vertical and operational solution patterns built on platform primitives"]
+        },
+        {
+          "title": "Apps Platform",
+          "items": ["Extensibility layer for applications and integrations"]
+        },
+        {
+          "title": "Governance and Security",
+          "items": ["Access control, execution policy, and operational guardrails"]
+        }
+      ]
+    },
+    {
+      "title": "My contribution",
+      "anchor": "my-contribution",
+      "paragraphs": [
+        "As Co-Founder and Technical Architect, I lead platform direction, architectural boundaries, and core engineering decisions. Work spans subsystem design, integration strategy, and hands-on implementation across the stack.",
+        "Team contribution exists across the platform. This page does not imply solo delivery of every subsystem."
+      ]
+    },
+    {
+      "title": "Key engineering decisions",
+      "anchor": "key-engineering-decisions",
+      "paragraphs": [
+        "The platform prioritizes composable primitives over monolithic features — agents, workflows, and memory are first-class boundaries rather than bolt-ons.",
+        "Governed execution is treated as a platform concern, not an afterthought in individual features."
+      ],
+      "bullets": [
+        "Separate conversational, workflow, and agent layers with explicit integration contracts",
+        "Design for evolution — prior support-platform work informed this direction",
+        "Evidence-backed publication of specific ADRs deferred until diagrams and scope are verified"
+      ]
+    },
+    {
+      "title": "Current status and lessons",
+      "anchor": "current-status-and-lessons",
+      "paragraphs": [
+        "Leen is in active development. Engineering continues across core subsystems. This is not presented as a commercially launched product.",
+        "Early work on customer-support automation (see Omnichannel case study) informed the broader platform direction — evolution, not abandonment."
+      ],
+      "bullets": [
+        "Platform thinking early prevents expensive rework when AI features multiply",
+        "Clear contribution boundaries matter as team scale grows",
+        "Publication of detailed metrics and customer evidence awaits verification"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "reference": "ADR-LEEN-001",
+      "title": "Platform primitives over feature silos",
+      "context": "AI capabilities were accumulating as isolated features without shared execution or memory boundaries.",
+      "decision": "Organize the platform around composable primitives — copilot, workflows, agents, memory, and governance — with explicit integration contracts.",
+      "tradeoff": "Higher upfront architectural investment; clearer long-term evolution and less duplication.",
+      "status": "Active direction — detailed evidence publication pending"
+    }
+  ]
+}

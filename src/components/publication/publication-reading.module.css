@@ -1,0 +1,107 @@
+.reading {
+  --reading-measure: 42rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.reading p {
+  margin: 0 0 var(--space-5);
+  max-width: var(--reading-measure);
+}
+
+.reading h2,
+.reading h3,
+.reading h4 {
+  color: var(--color-text-primary);
+  line-height: var(--line-height-heading);
+  max-width: var(--reading-measure);
+}
+
+.reading h2 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: var(--space-7) 0 var(--space-4);
+}
+
+.reading h3 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.reading ul,
+.reading ol {
+  margin: 0 0 var(--space-5);
+  padding-left: var(--space-5);
+  max-width: var(--reading-measure);
+}
+
+.reading li + li {
+  margin-top: var(--space-2);
+}
+
+.reading blockquote {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--color-accent);
+  background: rgba(201, 168, 106, 0.06);
+  color: var(--color-text-secondary);
+  max-width: var(--reading-measure);
+}
+
+.reading code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--color-bg-subtle);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+}
+
+.reading pre {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4);
+  overflow-x: auto;
+  background: var(--color-bg-subtle);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  max-width: 100%;
+}
+
+.reading pre code {
+  background: none;
+  padding: 0;
+}
+
+.reading table {
+  width: 100%;
+  margin: 0 0 var(--space-5);
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.reading th,
+.reading td {
+  padding: var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  text-align: left;
+}
+
+.reading th {
+  color: var(--color-text-primary);
+  background: var(--color-bg-subtle);
+}
+
+.panelLabel {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+}
+
+.sectionBlock {
+  margin-top: var(--space-7);
+}

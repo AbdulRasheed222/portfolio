@@ -6,7 +6,7 @@ This project is a static Astro site built for GitHub Pages, presenting evidence-
 
 ## Current status
 
-**Stage 2D-R — Polished Product Experience** complete on `main`. The homepage has been rebuilt with ink/cobalt polished surfaces, immersive hero topology, flagship Leen presentation, publication artifacts, editorial principles track, operator portrait, and cinematic contact closing. Case-study pages remain placeholders.
+**Stage 2E — Engineering Publication Foundation** complete on `main`. The homepage and publication registry are live with four honest placeholder publication routes, a reusable reading shell, and evidence-backed metadata. About, Résumé, and Contact remain structural placeholders.
 
 ## Stack
 
@@ -33,7 +33,7 @@ Development server: `http://localhost:4321/portfolio/`
 | `npm start` | Alias for development server |
 | `npm run build` | Build static output to `dist/` |
 | `npm run preview` | Preview production build locally |
-| `npm run verify:urls` | Validate base-path URL utilities |
+| `npm run verify:urls` | Validate base-path URL utilities and publication routes |
 | `npm run astro` | Run Astro CLI |
 
 ## Deployment target
