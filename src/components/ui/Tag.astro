@@ -1,0 +1,16 @@
+---
+import styles from './Tag.module.css';
+
+type Variant = 'default' | 'status';
+
+interface Props {
+  variant?: Variant;
+  class?: string;
+}
+
+const { variant = 'default', class: className } = Astro.props;
+---
+
+<span class:list={[styles.tag, variant === 'status' && styles.status, className]}>
+  <slot />
+</span>

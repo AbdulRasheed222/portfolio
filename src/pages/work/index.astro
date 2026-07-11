@@ -1,0 +1,16 @@
+---
+import { site } from '../../config/site';
+import PlaceholderPage from '../../components/layout/PlaceholderPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = `Selected Work | ${site.ownerName}`;
+const description = 'Verified project case studies are being prepared.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PlaceholderPage
+    eyebrow="Work"
+    title="Selected Work"
+    message="Verified project case studies are being prepared."
+  />
+</BaseLayout>
