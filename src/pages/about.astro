@@ -1,0 +1,16 @@
+---
+import { site } from '../config/site';
+import PlaceholderPage from '../components/layout/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = `About | ${site.ownerName}`;
+const description = 'A verified professional background and working approach will be added before launch.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PlaceholderPage
+    eyebrow="About"
+    title="About"
+    message="A verified professional background and working approach will be added before launch."
+  />
+</BaseLayout>

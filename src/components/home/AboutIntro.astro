@@ -1,0 +1,26 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import TextLink from '../ui/TextLink.astro';
+import styles from './AboutIntro.module.css';
+
+const { aboutIntro } = homepage;
+---
+
+<Section>
+  <PageContainer variant="reading">
+    <div class={styles.content}>
+      <SectionHeading
+        eyebrow="About"
+        title="Approach and interests"
+        level="h2"
+      />
+      <p class={styles.summary}>{aboutIntro.summary}</p>
+      <p class={styles.linkWrap}>
+        <TextLink href="/about/">Read more about my approach</TextLink>
+      </p>
+    </div>
+  </PageContainer>
+</Section>

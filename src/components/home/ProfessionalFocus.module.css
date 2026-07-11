@@ -1,0 +1,22 @@
+.band {
+  padding: var(--space-6);
+  background-color: var(--color-bg-subtle);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.heading {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-mono);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.statement {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  max-width: 48ch;
+}

@@ -1,0 +1,16 @@
+---
+import { site } from '../config/site';
+import PlaceholderPage from '../components/layout/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = `Contact | ${site.ownerName}`;
+const description = 'Verified professional contact details will be added before public launch.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PlaceholderPage
+    eyebrow="Contact"
+    title="Contact"
+    message="Verified professional contact details will be added before public launch."
+  />
+</BaseLayout>

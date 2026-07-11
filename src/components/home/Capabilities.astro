@@ -1,0 +1,32 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import CapabilityItem from '../ui/CapabilityItem.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import styles from './Capabilities.module.css';
+
+const { capabilities } = homepage;
+---
+
+<Section>
+  <PageContainer>
+    <SectionHeading
+      eyebrow="Capabilities"
+      title="Work across product, platform, and architecture"
+      description="Capability areas supported by platform case studies and engineering evidence."
+      level="h2"
+    />
+    <div class={styles.grid}>
+      {
+        capabilities.map((capability, index) => (
+          <CapabilityItem
+            title={capability.title}
+            description={capability.description}
+            index={index + 1}
+          />
+        ))
+      }
+    </div>
+  </PageContainer>
+</Section>

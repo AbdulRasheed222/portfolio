@@ -1,0 +1,39 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import ProjectCard from '../ui/ProjectCard.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import styles from './SelectedWork.module.css';
+
+const { selectedWork } = homepage;
+const workOverviewHref = '/work/';
+---
+
+<Section id="selected-work">
+  <PageContainer variant="wide">
+    <SectionHeading
+      eyebrow="Selected Work"
+      title="Platform work in preparation"
+      description="Provisional case studies drawn from current platform and product engineering work."
+      level="h2"
+    />
+    <div class={styles.grid}>
+      {
+        selectedWork.map((project) => (
+          <ProjectCard
+            title={project.title}
+            summary={project.summary}
+            href={workOverviewHref}
+            category={project.category}
+            status={project.status}
+            featured={project.featured}
+          />
+        ))
+      }
+    </div>
+    <p class={styles.note}>
+      Detailed case studies with verified contribution, outcomes, and supporting evidence are being prepared.
+    </p>
+  </PageContainer>
+</Section>

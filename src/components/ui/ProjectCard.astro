@@ -1,0 +1,31 @@
+---
+import { withBasePath, isExternalUrl } from '../../lib/url';
+import Tag from './Tag.astro';
+import styles from './ProjectCard.module.css';
+
+interface Props {
+  title: string;
+  summary: string;
+  href: string;
+  category: string;
+  status: string;
+  featured?: boolean;
+}
+
+const { title, summary, href, category, status, featured = false } = Astro.props;
+const resolvedHref = isExternalUrl(href) ? href : withBasePath(href);
+---
+
+<article class={styles.card} data-featured={featured || undefined}>
+  <div class={styles.header}>
+    <Tag>{category}</Tag>
+    <Tag variant="status">{status}</Tag>
+  </div>
+  <h3 class={styles.title}>
+    <a href={resolvedHref} class={styles.titleLink}>{title}</a>
+  </h3>
+  <p class={styles.summary}>{summary}</p>
+  <div class={styles.footer}>
+    <span class={styles.action} aria-hidden="true">View overview</span>
+  </div>
+</article>

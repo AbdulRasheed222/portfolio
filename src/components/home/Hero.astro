@@ -1,0 +1,24 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import ButtonLink from '../ui/ButtonLink.astro';
+import styles from './Hero.module.css';
+
+const { hero } = homepage;
+---
+
+<Section variant="compact" class={styles.hero}>
+  <PageContainer>
+    <div class={styles.inner}>
+      <p class={styles.eyebrow}>{hero.eyebrow}</p>
+      <h1 class={styles.title}>{hero.name}</h1>
+      <p class={styles.positioning}>{hero.positioning}</p>
+      <p class={styles.supporting}>{hero.supporting}</p>
+      <div class={styles.actions}>
+        <ButtonLink href="#selected-work" variant="primary">View selected work</ButtonLink>
+        <ButtonLink href="/about/" variant="secondary">About me</ButtonLink>
+      </div>
+    </div>
+  </PageContainer>
+</Section>
