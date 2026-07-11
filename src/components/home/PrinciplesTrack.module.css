@@ -1,0 +1,132 @@
+.section {
+  position: relative;
+}
+
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.index {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+}
+
+.itemAlt .body {
+  margin-left: auto;
+  max-width: 36rem;
+  text-align: right;
+}
+
+.rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node {
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-paint-bright);
+  box-shadow: 0 0 16px var(--color-paint-glow);
+  border: 2px solid var(--color-bg-page);
+}
+
+.line {
+  flex: 1;
+  width: 2px;
+  min-height: var(--space-6);
+  margin-top: var(--space-2);
+  background: linear-gradient(
+    180deg,
+    var(--color-paint-bright) 0%,
+    var(--color-border) 100%
+  );
+}
+
+.body {
+  max-width: 40rem;
+}
+
+.number {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(45, 91, 255, 0.25);
+}
+
+.principleTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-3);
+}
+
+.description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 768px) {
+  .item {
+    grid-template-columns: 4rem 1fr;
+    gap: var(--space-7);
+    padding-block: var(--space-7);
+  }
+
+  .itemAlt {
+    grid-template-columns: 1fr 4rem;
+  }
+
+  .itemAlt .rail {
+    order: 2;
+  }
+
+  .itemAlt .body {
+    order: 1;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .item {
+    animation: eos-reveal var(--duration-moderate) var(--ease-out) both;
+    animation-delay: calc(var(--i) * 100ms);
+  }
+}

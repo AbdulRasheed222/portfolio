@@ -1,0 +1,54 @@
+.topology {
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+  color: var(--color-paint-bright);
+}
+
+.edges {
+  opacity: 0.7;
+}
+
+.flowLine {
+  stroke-dasharray: 8 6;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .topology {
+    animation: eos-topology-drift var(--duration-ambient) var(--ease-in-out) infinite;
+  }
+
+  .flowLine {
+    animation: eos-line-flow 4s linear infinite;
+    stroke-dashoffset: 28;
+  }
+
+  .flowLine:nth-child(odd) {
+    animation-duration: 5.5s;
+  }
+}
+
+.nodes {
+  opacity: 0.9;
+}
+
+.intent {
+  fill: var(--color-accent);
+  filter: drop-shadow(0 0 12px rgba(201, 168, 106, 0.5));
+}
+
+.core {
+  fill: var(--color-paint-bright);
+  filter: drop-shadow(0 0 20px var(--color-paint-glow));
+}
+
+.evidence {
+  fill: var(--color-text-primary);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25));
+}
+
+@media (min-width: 1024px) {
+  .topology {
+    min-height: 420px;
+  }
+}

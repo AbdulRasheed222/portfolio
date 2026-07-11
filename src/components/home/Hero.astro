@@ -1,42 +1,61 @@
 ---
 import { homepage } from '../../config/homepage';
-import TopologyField from '../atmosphere/TopologyField.astro';
+import HeroTopology from '../atmosphere/HeroTopology.astro';
 import PageContainer from '../layout/PageContainer.astro';
-import Section from '../layout/Section.astro';
 import ButtonLink from '../ui/ButtonLink.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
-import SystemLabel from '../ui/SystemLabel.astro';
 import styles from './Hero.module.css';
 
 const { hero } = homepage;
 ---
 
-<Section variant="compact" mode="atmosphere" class={styles.hero} reveal={false}>
-  <div class={styles.blueprint} aria-hidden="true"></div>
-  <PageContainer>
-    <div class={styles.grid}>
-      <div class={styles.content}>
-        <div class={styles.meta}>
-          <SystemLabel>{hero.systemLabel}</SystemLabel>
-          <MetadataRail items={hero.metadata} />
-        </div>
-        <p class:list={[styles.eyebrow, styles.stagger, styles.delay1]}>{hero.eyebrow}</p>
-        <h1 class:list={[styles.title, styles.stagger, styles.delay2]}>{hero.name}</h1>
-        <p class:list={[styles.positioning, styles.stagger, styles.delay3]}>{hero.positioning}</p>
-        <p class:list={[styles.supporting, styles.stagger, styles.delay4]}>{hero.supporting}</p>
-        <div class:list={[styles.actions, styles.stagger, styles.delay5]}>
-          <ButtonLink href="#featured-publication" variant="primary">
-            View flagship publication
-          </ButtonLink>
-          <ButtonLink href="/work/" variant="secondary">Publication registry</ButtonLink>
-        </div>
+<section class={styles.hero} id="arrival" data-hero-parallax>
+  <div class={styles.backdrop} aria-hidden="true">
+    <div class={styles.core} data-hero-core></div>
+    <div class={styles.topologyLayer} data-hero-topology>
+      <HeroTopology />
+    </div>
+    <div class={styles.lightSweep}></div>
+  </div>
+
+  <PageContainer class={styles.container}>
+    <div class={styles.content}>
+      <div class:list={[styles.meta, styles.stagger, styles.d1]}>
+        <MetadataRail items={hero.metadata} />
       </div>
-      <div class={styles.visual} aria-hidden="true">
-        <div class={styles.topologyFrame}>
-          <TopologyField variant="hero" />
-        </div>
-        <p class={styles.topologyCaption}>INTENT → STRUCTURE → EVIDENCE</p>
+      <p class:list={[styles.eyebrow, styles.stagger, styles.d2]}>{hero.eyebrow}</p>
+      <h1 class:list={[styles.title, styles.stagger, styles.d3]}>{hero.name}</h1>
+      <p class:list={[styles.positioning, styles.stagger, styles.d4]}>{hero.positioning}</p>
+      <p class:list={[styles.supporting, styles.stagger, styles.d5]}>{hero.supporting}</p>
+      <div class:list={[styles.actions, styles.stagger, styles.d6]}>
+        <ButtonLink href="#flagship-leen" variant="primary">Explore Leen flagship</ButtonLink>
+        <ButtonLink href="#supporting-systems" variant="secondary">View all systems</ButtonLink>
       </div>
     </div>
   </PageContainer>
-</Section>
+
+  <div class={styles.flowCue} aria-hidden="true">
+    <span>INTENT → ARCHITECTURE → EXECUTION → EVIDENCE</span>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector('[data-hero-parallax]');
+  if (hero && window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+    const layer = hero.querySelector('[data-hero-topology]') as HTMLElement | null;
+    const core = hero.querySelector('[data-hero-core]') as HTMLElement | null;
+    hero.addEventListener(
+      'pointermove',
+      (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const tx = x * 12;
+        const ty = y * 8;
+        if (layer) layer.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+        if (core) core.style.transform = `translate3d(${tx * 0.5}px, ${ty * 0.5}px, 0) translateX(-50%)`;
+      },
+      { passive: true },
+    );
+  }
+</script>

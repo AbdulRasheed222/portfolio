@@ -2,9 +2,10 @@
 import { isExternalUrl, withBasePath } from '../../lib/url';
 import MetadataRail from './MetadataRail.astro';
 import StatusChip from './StatusChip.astro';
-import styles from './EngineeringDossier.module.css';
+import styles from './PublicationArtifact.module.css';
 
-type Variant = 'default' | 'featured';
+type Layout = 'flow' | 'stack' | 'ledger';
+type Accent = 'cobalt' | 'indigo' | 'slate' | 'gold';
 
 interface Props {
   referenceId: string;
@@ -13,12 +14,11 @@ interface Props {
   summary: string;
   href: string;
   status: string;
-  classification: string;
-  tier: string;
   evidenceLevel: string;
   version: string;
   readTime?: string;
-  variant?: Variant;
+  layout?: Layout;
+  accent?: Accent;
 }
 
 const {
@@ -28,12 +28,11 @@ const {
   summary,
   href,
   status,
-  classification,
-  tier,
   evidenceLevel,
   version,
   readTime,
-  variant = 'default',
+  layout = 'flow',
+  accent = 'cobalt',
 } = Astro.props;
 
 const resolvedHref = isExternalUrl(href) ? href : withBasePath(href);
@@ -45,35 +44,26 @@ const statusVariant =
       ? 'muted'
       : 'default';
 
-const metaItems = [
-  referenceId,
-  pub,
-  `TIER: ${tier}`,
-  `EVD: ${evidenceLevel}`,
-  version,
-  ...(readTime ? [`READ ${readTime}`] : []),
-];
+const metaItems = [referenceId, pub, `EVD: ${evidenceLevel}`, version, ...(readTime ? [`READ ${readTime}`] : [])];
+const accentClass = {
+  cobalt: styles.accentCobalt,
+  indigo: styles.accentIndigo,
+  slate: styles.accentSlate,
+  gold: styles.accentGold,
+}[accent];
 ---
 
-<article
-  class:list={[styles.dossier, variant === 'featured' && styles.featured]}
-  data-tier={tier.toLowerCase()}
->
-  <div class={styles.spine} aria-hidden="true"></div>
-  <div class={styles.body}>
+<article class:list={[styles.artifact, styles[layout], accentClass]} data-accent={accent}>
+  <div class={styles.glow} aria-hidden="true"></div>
+  <div class={styles.inner}>
     <header class={styles.header}>
       <MetadataRail items={metaItems} />
-      <div class={styles.chips}>
-        <StatusChip variant={statusVariant}>{status}</StatusChip>
-        <StatusChip variant="muted">{classification}</StatusChip>
-      </div>
+      <StatusChip variant={statusVariant}>{status}</StatusChip>
     </header>
     <h3 class={styles.title}>
       <a href={resolvedHref} class={styles.titleLink}>{title}</a>
     </h3>
     <p class={styles.summary}>{summary}</p>
-    <footer class={styles.footer}>
-      <span class={styles.action} aria-hidden="true">Open publication →</span>
-    </footer>
+    <span class={styles.action} aria-hidden="true">Open publication →</span>
   </div>
 </article>

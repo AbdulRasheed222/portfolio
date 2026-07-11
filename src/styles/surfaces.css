@@ -1,0 +1,85 @@
+/**
+ * Engineering OS — Polished surface materials (Stage 2D-R)
+ */
+
+.surface-lacquer {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      145deg,
+      var(--color-paint-lit) 0%,
+      var(--color-paint-mid) 38%,
+      var(--color-paint-base) 72%,
+      var(--color-paint-deep, #081830) 100%
+    );
+  border: var(--border-width) solid var(--color-border-highlight);
+  box-shadow: var(--shadow-lacquer);
+}
+
+.surface-lacquer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    118deg,
+    transparent 0%,
+    var(--color-highlight-streak) 42%,
+    transparent 58%
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.surface-lacquer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-gloss-overlay);
+  pointer-events: none;
+}
+
+.surface-satin {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 24, 39, 0.95) 0%,
+    rgba(11, 16, 32, 0.98) 100%
+  );
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-elevated);
+}
+
+.surface-matte {
+  background-color: var(--color-bg-matte);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.surface-sweep::before {
+  animation: eos-light-sweep var(--duration-sweep) var(--ease-in-out) infinite;
+}
+
+@keyframes eos-light-sweep {
+  0%,
+  100% {
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateX(120%) skewX(-12deg);
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-sweep::before {
+    animation: none;
+    opacity: 0.2;
+    transform: none;
+  }
+}

@@ -54,6 +54,12 @@
   color: var(--color-text-primary);
 }
 
+.current::after {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, var(--color-paint-bright), var(--color-accent));
+  box-shadow: 0 0 8px var(--color-paint-glow);
+}
+
 @media (min-width: 1024px) {
   .nav {
     display: block;

@@ -1,0 +1,66 @@
+---
+import styles from './HeroTopology.module.css';
+---
+
+<svg
+  class={styles.topology}
+  viewBox="0 0 1200 700"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <radialGradient id="coreGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="rgba(45, 91, 255, 0.55)" />
+      <stop offset="55%" stop-color="rgba(79, 70, 229, 0.2)" />
+      <stop offset="100%" stop-color="rgba(7, 10, 16, 0)" />
+    </radialGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(45, 91, 255, 0.15)" />
+      <stop offset="50%" stop-color="rgba(120, 180, 255, 0.55)" />
+      <stop offset="100%" stop-color="rgba(45, 91, 255, 0.15)" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#coreGlow)" />
+
+  <g class={styles.edges} stroke="url(#edgeGrad)" stroke-width="1.25" stroke-linecap="round">
+    <path class={styles.flowLine} d="M120 350 L280 220" />
+    <path class={styles.flowLine} d="M120 350 L280 350" />
+    <path class={styles.flowLine} d="M120 350 L280 480" />
+    <path class={styles.flowLine} d="M280 220 L440 280" />
+    <path class={styles.flowLine} d="M280 350 L440 350" />
+    <path class={styles.flowLine} d="M280 480 L440 420" />
+    <path class={styles.flowLine} d="M440 280 L600 320" />
+    <path class={styles.flowLine} d="M440 350 L600 350" />
+    <path class={styles.flowLine} d="M440 420 L600 380" />
+    <path class={styles.flowLine} d="M600 320 L760 300" />
+    <path class={styles.flowLine} d="M600 350 L760 350" />
+    <path class={styles.flowLine} d="M600 380 L760 400" />
+    <path class={styles.flowLine} d="M760 300 L920 340" />
+    <path class={styles.flowLine} d="M760 350 L920 350" />
+    <path class={styles.flowLine} d="M760 400 L920 360" />
+    <path class={styles.flowLine} d="M920 340 L1080 350" />
+    <path class={styles.flowLine} d="M920 350 L1080 350" />
+    <path class={styles.flowLine} d="M920 360 L1080 350" />
+  </g>
+
+  <g class={styles.nodes} fill="currentColor">
+    <circle cx="120" cy="350" r="10" class={styles.intent} />
+    <circle cx="280" cy="220" r="6" />
+    <circle cx="280" cy="350" r="7" />
+    <circle cx="280" cy="480" r="6" />
+    <circle cx="440" cy="280" r="6" />
+    <circle cx="440" cy="350" r="8" class={styles.core} />
+    <circle cx="440" cy="420" r="6" />
+    <circle cx="600" cy="320" r="6" />
+    <circle cx="600" cy="350" r="7" />
+    <circle cx="600" cy="380" r="6" />
+    <circle cx="760" cy="300" r="6" />
+    <circle cx="760" cy="350" r="7" />
+    <circle cx="760" cy="400" r="6" />
+    <circle cx="920" cy="350" r="7" />
+    <circle cx="1080" cy="350" r="10" class={styles.evidence} />
+  </g>
+</svg>

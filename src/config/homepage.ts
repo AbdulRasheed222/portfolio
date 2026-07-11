@@ -6,7 +6,9 @@ export type PublicationStatus =
 
 export type EvidenceLevel = 'VERIFIED' | 'PARTIAL' | 'GATHERING' | 'PROVISIONAL';
 
-export type EngineeringDossier = {
+export type ArtifactLayout = 'cinematic' | 'flow' | 'stack' | 'ledger';
+
+export type EngineeringPublication = {
   readonly ref: string;
   readonly pub: string;
   readonly title: string;
@@ -19,6 +21,9 @@ export type EngineeringDossier = {
   readonly evidenceLevel: EvidenceLevel;
   readonly version: string;
   readonly readTime?: string;
+  readonly layout?: ArtifactLayout;
+  readonly chapters?: readonly string[];
+  readonly accent?: 'cobalt' | 'indigo' | 'slate' | 'gold';
 };
 
 export type EngineeringPrinciple = {
@@ -32,16 +37,13 @@ const workRegistryHref = '/work/';
 export const homepage = {
   hero: {
     systemId: 'SYS-ARR',
-    systemLabel: 'ARRIVAL SURFACE',
-    version: 'VER 1.0',
-    eosVersion: 'EOS v1.0',
     eyebrow: '01 — ARRIVAL',
     name: 'Abdul Rasheed',
     positioning:
       'Full-stack software engineer building AI systems, workflow automation, and scalable business software.',
     supporting:
-      'I work across full-stack product engineering, AI systems, workflow automation, integrations, and technical architecture.',
-    metadata: ['SYS-ARR', 'VER 1.0', 'EOS v1.0'] as const,
+      'I design and ship platform software — from intelligent workflows and agent systems to full-stack products that hold up under real constraints.',
+    metadata: ['SYS-ARR', 'VER 1.1', 'EOS v1.1'] as const,
   },
 
   featuredPublication: {
@@ -49,7 +51,7 @@ export const homepage = {
     pub: 'PUB-LEEN',
     title: 'Leen — AI Operating System',
     summary:
-      'Flagship engineering publication documenting platform architecture — AI operating primitives, workflow execution, agent runtime, integrations, and governance.',
+      'Flagship engineering publication documenting an AI operating environment — primitives for agents, durable workflows, memory, integrations, and governed execution.',
     slug: 'leen-ai-operating-system',
     href: workRegistryHref,
     status: 'IN DEVELOPMENT',
@@ -58,7 +60,30 @@ export const homepage = {
     evidenceLevel: 'GATHERING',
     version: 'VER 0.1',
     readTime: '18 min',
-  } satisfies EngineeringDossier,
+    layout: 'cinematic',
+    accent: 'cobalt',
+    chapters: [
+      'Vision',
+      'Copilot V2',
+      'Workflow Engine',
+      'Agent Runtime',
+      'Memory',
+      'Apps Platform',
+      'Governance',
+    ],
+  } satisfies EngineeringPublication,
+
+  capabilityProof: {
+    systemIndex: '03 — CAPABILITY PROOF',
+    title: 'What gets built',
+    domains: [
+      'AI systems & agent platforms',
+      'Workflow & automation engines',
+      'Full-stack product delivery',
+      'Integration & platform layers',
+      'Architecture & technical leadership',
+    ] as const,
+  },
 
   publications: [
     {
@@ -66,7 +91,7 @@ export const homepage = {
       pub: 'PUB-OMNI',
       title: 'Omnichannel AI Support Platform',
       summary:
-        'Completed customer-support engineering — knowledge base, RAG, and channel adapters — that informed the evolution toward Leen.',
+        'Completed support engineering — knowledge base, RAG, Telegram and web channels — that evolved into the Leen platform direction.',
       slug: 'omnichannel-ai-support-platform',
       href: workRegistryHref,
       status: 'COMPLETED — NOT LAUNCHED',
@@ -75,13 +100,15 @@ export const homepage = {
       evidenceLevel: 'GATHERING',
       version: 'VER 1.0',
       readTime: '12 min',
+      layout: 'flow',
+      accent: 'indigo',
     },
     {
       ref: 'REF-HOTEL-001',
       pub: 'PUB-HOTEL',
       title: 'Hotel Management System',
       summary:
-        'Full-stack hospitality operations software — reservations, inventory, and guest workflows for SME hotel operations.',
+        'Hospitality operations software — reservations, room inventory, and guest workflows for SME properties.',
       slug: 'hotel-management-system',
       href: workRegistryHref,
       status: 'EVIDENCE GATHERING',
@@ -90,13 +117,15 @@ export const homepage = {
       evidenceLevel: 'PROVISIONAL',
       version: 'VER 0.1',
       readTime: '8 min',
+      layout: 'stack',
+      accent: 'slate',
     },
     {
       ref: 'REF-INV-001',
       pub: 'PUB-INV',
       title: 'Inventory Management System',
       summary:
-        'SME inventory and stock-integrity system — product tracking, adjustments, and operational reporting.',
+        'SME stock-integrity platform — movements, alerts, and operational reporting with concurrent update discipline.',
       slug: 'inventory-management-system',
       href: workRegistryHref,
       status: 'EVIDENCE GATHERING',
@@ -105,72 +134,66 @@ export const homepage = {
       evidenceLevel: 'PROVISIONAL',
       version: 'VER 0.1',
       readTime: '8 min',
+      layout: 'ledger',
+      accent: 'gold',
     },
-  ] as const satisfies readonly EngineeringDossier[],
+  ] as const satisfies readonly EngineeringPublication[],
 
   principles: [
     {
       index: '01',
       title: 'Evidence before claims',
       description:
-        'Capabilities are demonstrated through engineering publications, diagrams, and verified contribution — not technology lists.',
+        'Capabilities are demonstrated through publications, diagrams, and verified contribution — not technology lists.',
     },
     {
       index: '02',
       title: 'Architecture over accumulation',
-      description:
-        'System boundaries, data flows, and tradeoffs matter more than framework selection.',
+      description: 'Boundaries, data flows, and tradeoffs outlast framework choices.',
     },
     {
       index: '03',
       title: 'Honest evolution',
-      description:
-        'Completed work that informed later systems is presented as engineering lineage — not failure.',
+      description: 'Completed systems that informed later work are lineage — not failure.',
     },
     {
       index: '04',
       title: 'Problem-first delivery',
-      description:
-        'Every publication begins with a concrete problem, constraints, and thinking — then implementation.',
+      description: 'Every publication begins with constraints and thinking — then implementation.',
     },
     {
       index: '05',
       title: 'Contribution clarity',
-      description:
-        'Personal scope and team scope are stated explicitly in every engineering publication.',
-    },
-    {
-      index: '06',
-      title: 'Calm precision',
-      description:
-        'Interfaces, motion, and metadata communicate state without noise or spectacle.',
+      description: 'Personal and team scope are explicit in every engineering publication.',
     },
   ] as const satisfies readonly EngineeringPrinciple[],
 
   currentFocus: {
-    systemIndex: '05 — CURRENT FOCUS',
+    systemIndex: '07 — CURRENT FOCUS',
     statement:
-      'Open to full-stack and AI engineering roles in Istanbul and remote — building platform systems, intelligent workflows, and maintainable product software.',
+      'Open to full-stack and AI engineering roles in Istanbul and remote — platform systems, intelligent workflows, and maintainable product software.',
     metadata: ['ROLE: FULL-STACK / AI', 'LOC: ISTANBUL · REMOTE'] as const,
   },
 
   operatorProfile: {
     systemIndex: '06 — OPERATOR PROFILE',
-    title: 'Operator profile',
+    title: 'Abdul Rasheed Keramat',
+    role: 'Software Engineer · Platform Builder',
     summary:
       'I build software that connects business problems to maintainable systems — from product interfaces to AI workflows and platform integrations.',
     href: '/about/',
+    metadata: ['ISTANBUL', 'BSC SOFTWARE ENGINEERING', 'EN · PS · DR'] as const,
   },
 
   contactCta: {
-    systemIndex: '07 — CHANNEL',
-    heading: "Let's discuss the work",
+    systemIndex: '08 — CHANNEL',
+    heading: "Let's build what's next",
     supporting:
-      'For engineering opportunities in Istanbul or remote. Reach out by email or LinkedIn.',
+      'For engineering opportunities in Istanbul or remote. Reach out directly — responses are read personally.',
     email: 'keramat.rasheed222@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdul-rasheed-keramat-1b26b3277/',
     github: 'https://github.com/AbdulRasheed222',
     primaryLabel: 'View résumé',
-    secondaryLabel: 'Contact',
+    secondaryLabel: 'Contact page',
   },
 } as const;

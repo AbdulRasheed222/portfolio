@@ -1,0 +1,27 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import styles from './CapabilityProof.module.css';
+
+const { capabilityProof } = homepage;
+---
+
+<Section id="capability-proof" variant="compact" mode="registry" class={styles.section}>
+  <PageContainer variant="wide">
+    <div class={styles.layout}>
+      <div class={styles.intro}>
+        <span class={styles.index}>{capabilityProof.systemIndex}</span>
+        <h2 class={styles.title}>{capabilityProof.title}</h2>
+      </div>
+      <ul class={styles.domains}>
+        {capabilityProof.domains.map((domain, i) => (
+          <li class={styles.domain} style={`--i: ${i}`}>
+            <span class={styles.marker} aria-hidden="true"></span>
+            {domain}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </PageContainer>
+</Section>

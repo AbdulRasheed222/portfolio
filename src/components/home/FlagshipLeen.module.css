@@ -1,0 +1,204 @@
+.section {
+  position: relative;
+  padding-block: var(--space-9);
+  background: linear-gradient(
+    180deg,
+    rgba(45, 91, 255, 0.06) 0%,
+    transparent 50%,
+    rgba(7, 10, 16, 0.8) 100%
+  );
+}
+
+.labelRow {
+  margin-bottom: var(--space-5);
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  border: var(--border-width) solid var(--color-border-highlight);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30, 74, 140, 0.35) 0%,
+      rgba(15, 30, 60, 0.85) 40%,
+      rgba(11, 16, 32, 0.95) 100%
+    );
+  box-shadow: var(--shadow-lacquer);
+  overflow: hidden;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-highlight-streak), transparent);
+}
+
+.visual {
+  position: relative;
+  min-height: 14rem;
+  border-radius: var(--radius-lg);
+  background: rgba(7, 10, 16, 0.4);
+  border: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12rem;
+  height: 12rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(45, 91, 255, 0.35);
+  box-shadow: 0 0 48px var(--color-paint-glow);
+}
+
+.coreRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5rem;
+  height: 5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-paint-bright) 0%, var(--color-paint-violet) 70%, transparent 100%);
+  opacity: 0.7;
+  box-shadow: 0 0 32px var(--color-paint-glow);
+}
+
+.chapters {
+  position: absolute;
+  inset: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapters li {
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-cool);
+  background: rgba(11, 16, 32, 0.75);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.02em;
+}
+
+.titleLink {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.titleLink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.titleLink:hover {
+  color: var(--color-accent-hover);
+}
+
+.panel:focus-within {
+  border-color: var(--color-reflection-edge);
+}
+
+.panel:focus-within .titleLink:focus-visible::before {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-xl);
+}
+
+.summary {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+}
+
+.evidence {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cta {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    grid-template-columns: 1.1fr 1fr;
+    padding: var(--space-7);
+    gap: var(--space-8);
+    min-height: 22rem;
+  }
+
+  .visual {
+    min-height: 100%;
+  }
+
+  .orbit {
+    width: 16rem;
+    height: 16rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .orbit {
+    animation: eos-core-pulse 8s var(--ease-in-out) infinite;
+  }
+}

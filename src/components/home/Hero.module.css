@@ -1,39 +1,105 @@
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: var(--hero-min-height);
+  padding-block: calc(var(--header-height) + var(--space-6)) var(--space-8);
   overflow: hidden;
 }
 
-.blueprint {
+.backdrop {
   position: absolute;
   inset: 0;
+  z-index: var(--z-hero-visual);
   pointer-events: none;
-  background-image:
-    linear-gradient(var(--color-blueprint-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-blueprint-line) 1px, transparent 1px);
-  background-size: 4rem 4rem;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 75%);
-  opacity: 0.65;
 }
 
-.grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-7);
+.core {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: min(42rem, 85vw);
+  height: min(22rem, 45vh);
+  transform: translateX(-50%);
+  border-radius: 50% 50% 45% 55% / 40% 45% 55% 60%;
+  background:
+    radial-gradient(
+      ellipse 80% 70% at 35% 25%,
+      rgba(120, 180, 255, 0.35) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      155deg,
+      var(--color-paint-bright) 0%,
+      var(--color-paint-violet) 45%,
+      var(--color-paint-base) 100%
+    );
+  opacity: 0.55;
+  filter: blur(0.5px);
+  box-shadow:
+    0 0 80px var(--color-paint-glow),
+    0 0 160px var(--color-paint-bloom),
+    inset 0 1px 0 var(--color-highlight-streak);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.topologyLayer {
+  position: absolute;
+  inset: 8% 0 0;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.lightSweep {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.lightSweep::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -50%;
+  width: 40%;
+  height: 60%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  transform: skewX(-18deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lightSweep::before {
+    animation: eos-light-sweep var(--duration-sweep) var(--ease-in-out) infinite;
+  }
+
+  .core {
+    animation: eos-core-pulse 6s var(--ease-in-out) infinite;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: var(--z-hero-content);
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  max-width: 42rem;
+  max-width: 40rem;
 }
 
 .meta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  opacity: 0.9;
 }
 
 .eyebrow {
@@ -41,28 +107,30 @@
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-system);
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
 }
 
 .title {
-  font-size: var(--font-size-display);
+  font-size: var(--font-size-hero);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
+  letter-spacing: -0.02em;
   color: var(--color-text-primary);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
 }
 
 .positioning {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
-  max-width: 38rem;
+  max-width: 36rem;
 }
 
 .supporting {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
   color: var(--color-text-secondary);
-  max-width: 36rem;
+  max-width: 34rem;
 }
 
 .actions {
@@ -72,31 +140,19 @@
   padding-top: var(--space-2);
 }
 
-.visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  justify-self: center;
-  width: 100%;
-  max-width: 22rem;
+.flowCue {
+  position: relative;
+  z-index: var(--z-hero-content);
+  padding-block: var(--space-4);
+  text-align: center;
 }
 
-.topologyFrame {
-  width: 100%;
-  padding: var(--space-4);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: rgba(28, 31, 36, 0.45);
-}
-
-.topologyCaption {
+.flowCue span {
   font-family: var(--font-mono);
   font-size: 0.625rem;
-  letter-spacing: var(--letter-spacing-system);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  text-align: center;
 }
 
 .stagger {
@@ -110,51 +166,63 @@
     animation: eos-hero-stagger var(--duration-slow) var(--ease-enter) forwards;
   }
 
-  .delay1 {
-    animation-delay: 40ms;
+  .d1 {
+    animation-delay: 60ms;
   }
 
-  .delay2 {
-    animation-delay: 80ms;
-  }
-
-  .delay3 {
+  .d2 {
     animation-delay: 120ms;
   }
 
-  .delay4 {
-    animation-delay: 160ms;
+  .d3 {
+    animation-delay: 180ms;
   }
 
-  .delay5 {
-    animation-delay: 200ms;
+  .d4 {
+    animation-delay: 240ms;
+  }
+
+  .d5 {
+    animation-delay: 300ms;
+  }
+
+  .d6 {
+    animation-delay: 360ms;
   }
 }
 
-@media (min-width: 640px) {
-  .visual {
-    max-width: 26rem;
+@media (min-width: 768px) {
+  .hero {
+    padding-bottom: var(--space-9);
+  }
+
+  .content {
+    max-width: 44rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: var(--hero-split-text) var(--hero-split-visual);
-    gap: var(--space-8);
+  .core {
+    top: 12%;
+    width: 48rem;
+    height: 26rem;
+    opacity: 0.65;
   }
 
-  .visual {
-    justify-self: end;
-    max-width: none;
-  }
-
-  .topologyFrame {
-    padding: var(--space-5);
+  .topologyLayer {
+    inset: 0;
   }
 }
 
 @media (min-width: 1440px) {
   .content {
-    max-width: 44rem;
+    max-width: 48rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger {
+    animation: none !important;
+    opacity: 1 !important;
   }
 }

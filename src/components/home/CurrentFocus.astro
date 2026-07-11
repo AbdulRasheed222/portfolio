@@ -3,18 +3,18 @@ import { homepage } from '../../config/homepage';
 import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
-import SystemLabel from '../ui/SystemLabel.astro';
 import styles from './CurrentFocus.module.css';
 
 const { currentFocus } = homepage;
 ---
 
-<Section mode="elevated">
+<Section id="current-focus" variant="compact" class={styles.section}>
   <PageContainer>
     <div class={styles.panel}>
-      <SystemLabel>{currentFocus.systemIndex}</SystemLabel>
+      <span class={styles.index}>{currentFocus.systemIndex}</span>
       <p class={styles.statement}>{currentFocus.statement}</p>
       <MetadataRail items={currentFocus.metadata} class={styles.meta} />
+      <p class={styles.status} aria-label="Availability status">STATUS: AVAILABLE · REMOTE OK</p>
     </div>
   </PageContainer>
 </Section>

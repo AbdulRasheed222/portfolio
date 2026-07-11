@@ -4,42 +4,59 @@
   z-index: var(--z-atmosphere);
   pointer-events: none;
   overflow: hidden;
+  background: var(--color-bg-page);
+}
+
+.bloom {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: min(140vw, 90rem);
+  height: 70vh;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    var(--color-paint-bloom) 0%,
+    rgba(45, 91, 255, 0.08) 40%,
+    transparent 70%
+  );
+  opacity: 0.9;
+}
+
+.bloomSecondary {
+  position: absolute;
+  bottom: -10%;
+  right: -15%;
+  width: 60vw;
+  height: 50vh;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(79, 70, 229, 0.12) 0%,
+    transparent 65%
+  );
 }
 
 .grain {
   position: absolute;
   inset: 0;
-  opacity: 0.032;
+  opacity: 0.028;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 200px 200px;
 }
 
-.topologyWrap {
+.vignette {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-8);
-  opacity: 0.9;
-}
-
-.scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    165deg,
-    rgba(20, 22, 24, 0.55) 0%,
-    rgba(20, 22, 24, 0.12) 45%,
-    rgba(20, 22, 24, 0.65) 100%
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 40%,
+    transparent 0%,
+    rgba(7, 10, 16, 0.35) 100%
   );
 }
 
-@media (max-width: 1023px) {
-  .topologyWrap {
-    opacity: 0.45;
-    align-items: flex-start;
-    padding-top: 6rem;
+@media (prefers-reduced-motion: no-preference) {
+  .bloom {
+    animation: eos-boot-glow 3s var(--ease-in-out) forwards;
   }
 }

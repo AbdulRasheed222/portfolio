@@ -2,7 +2,18 @@
   margin-top: auto;
   padding-block: var(--space-8);
   border-top: var(--border-width) solid var(--color-border);
-  background-color: var(--color-bg-page);
+  background: linear-gradient(180deg, transparent, rgba(11, 16, 32, 0.6));
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-reflection-edge), transparent);
 }
 
 .inner {
@@ -21,12 +32,6 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-}
-
-.status {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
 }
 
 .versionBlock {

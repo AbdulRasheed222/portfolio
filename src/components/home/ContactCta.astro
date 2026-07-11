@@ -4,31 +4,34 @@ import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
 import ButtonLink from '../ui/ButtonLink.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
-import SystemLabel from '../ui/SystemLabel.astro';
 import TextLink from '../ui/TextLink.astro';
 import styles from './ContactCta.module.css';
 
 const { contactCta } = homepage;
 ---
 
-<Section variant="spacious" mode="action">
-  <PageContainer>
-    <div class={styles.panel}>
-      <SystemLabel>{contactCta.systemIndex}</SystemLabel>
-      <h2 class={styles.heading}>{contactCta.heading}</h2>
-      <p class={styles.supporting}>{contactCta.supporting}</p>
-      <MetadataRail
-        items={['EMAIL', 'LINKEDIN', 'GITHUB', 'ISTANBUL · REMOTE']}
-        class={styles.channelMeta}
-      />
-      <div class={styles.links}>
-        <TextLink href={`mailto:${contactCta.email}`}>{contactCta.email}</TextLink>
-        <TextLink href={contactCta.linkedIn} external>LinkedIn</TextLink>
-        <TextLink href={contactCta.github} external>GitHub</TextLink>
-      </div>
-      <div class={styles.actions}>
-        <ButtonLink href="/resume/" variant="primary">{contactCta.primaryLabel}</ButtonLink>
-        <ButtonLink href="/contact/" variant="secondary">{contactCta.secondaryLabel}</ButtonLink>
+<Section id="contact" variant="spacious" class={styles.section}>
+  <PageContainer variant="wide">
+    <div class={styles.closing}>
+      <div class={styles.lightField} aria-hidden="true"></div>
+      <div class={styles.inner}>
+        <span class={styles.index}>{contactCta.systemIndex}</span>
+        <h2 class={styles.heading}>{contactCta.heading}</h2>
+        <p class={styles.supporting}>{contactCta.supporting}</p>
+        <MetadataRail
+          items={['EMAIL', 'LINKEDIN', 'GITHUB', 'ISTANBUL · REMOTE']}
+          class={styles.channelMeta}
+        />
+        <div class={styles.links}>
+          <TextLink href={`mailto:${contactCta.email}`}>{contactCta.email}</TextLink>
+          <TextLink href={contactCta.linkedIn} external>LinkedIn</TextLink>
+          <TextLink href={contactCta.github} external>GitHub</TextLink>
+        </div>
+        <div class={styles.actions}>
+          <ButtonLink href="/resume/" variant="primary">{contactCta.primaryLabel}</ButtonLink>
+          <ButtonLink href="/contact/" variant="secondary">{contactCta.secondaryLabel}</ButtonLink>
+        </div>
+        <p class={styles.sysStatus} aria-label="System status">CHANNEL OPEN · RESPONSE PERSONAL</p>
       </div>
     </div>
   </PageContainer>
