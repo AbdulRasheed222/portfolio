@@ -1,0 +1,20 @@
+---
+import { site } from '../../config/site';
+import { withBasePath } from '../../lib/url';
+import MobileNavigation from '../navigation/MobileNavigation.astro';
+import PrimaryNavigation from '../navigation/PrimaryNavigation.astro';
+import PageContainer from './PageContainer.astro';
+import styles from './SiteHeader.module.css';
+---
+
+<header class={styles.header}>
+  <PageContainer>
+    <div class={styles.inner}>
+      <a href={withBasePath('/')} class={styles.identity}>{site.ownerName}</a>
+      <div class={styles.navGroup}>
+        <PrimaryNavigation />
+        <MobileNavigation />
+      </div>
+    </div>
+  </PageContainer>
+</header>

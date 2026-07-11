@@ -1,0 +1,31 @@
+---
+import styles from './SectionHeading.module.css';
+
+type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4';
+
+interface Props {
+  title: string;
+  eyebrow?: string;
+  description?: string;
+  level?: HeadingLevel;
+  id?: string;
+  class?: string;
+}
+
+const {
+  title,
+  eyebrow,
+  description,
+  level = 'h2',
+  id,
+  class: className,
+} = Astro.props;
+
+const HeadingTag = level;
+---
+
+<div class:list={[styles.heading, className]}>
+  {eyebrow && <p class={styles.eyebrow}>{eyebrow}</p>}
+  <HeadingTag class:list={[styles.title, level === 'h1' && styles.titleLevel1]} id={id}>{title}</HeadingTag>
+  {description && <p class={styles.description}>{description}</p>}
+</div>

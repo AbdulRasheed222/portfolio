@@ -1,0 +1,34 @@
+---
+import { navigation } from '../../config/navigation';
+import { isCurrentPath } from '../../lib/path';
+import { withBasePath } from '../../lib/url';
+import styles from './PrimaryNavigation.module.css';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const currentPathname = Astro.url.pathname;
+---
+
+<nav class:list={[styles.nav, className]} aria-label="Primary">
+  <ul class={styles.list}>
+    {
+      navigation.map((item) => {
+        const isCurrent = isCurrentPath(item.href, currentPathname);
+        return (
+          <li>
+            <a
+              href={withBasePath(item.href)}
+              class:list={[styles.link, isCurrent && styles.current]}
+              aria-current={isCurrent ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

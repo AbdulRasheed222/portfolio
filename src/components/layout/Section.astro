@@ -1,0 +1,33 @@
+---
+import styles from './Section.module.css';
+
+type Variant = 'default' | 'compact' | 'spacious';
+
+interface Props {
+  variant?: Variant;
+  id?: string;
+  'aria-label'?: string;
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  id,
+  'aria-label': ariaLabel,
+  class: className,
+} = Astro.props;
+
+const variantClass = {
+  default: styles.section,
+  compact: styles.compact,
+  spacious: styles.spacious,
+}[variant];
+---
+
+<section
+  class:list={[variantClass, className]}
+  id={id}
+  aria-label={ariaLabel}
+>
+  <slot />
+</section>

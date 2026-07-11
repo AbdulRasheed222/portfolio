@@ -1,0 +1,32 @@
+---
+import { navigation } from '../../config/navigation';
+import { site } from '../../config/site';
+import { withBasePath } from '../../lib/url';
+import PageContainer from './PageContainer.astro';
+import styles from './SiteFooter.module.css';
+
+const year = new Date().getFullYear();
+---
+
+<footer class={styles.footer}>
+  <PageContainer>
+    <div class={styles.inner}>
+      <div class={styles.meta}>
+        <p class={styles.name}>{site.ownerName}</p>
+        <p class={styles.status}>Portfolio in development</p>
+        <p class={styles.copyright}>
+          © {year} {site.ownerName}. All rights reserved.
+        </p>
+      </div>
+      <nav class={styles.nav} aria-label="Footer">
+        {
+          navigation.map((item) => (
+            <a href={withBasePath(item.href)} class={styles.navLink}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </PageContainer>
+</footer>
