@@ -2,19 +2,24 @@
 import styles from './Section.module.css';
 
 type Variant = 'default' | 'compact' | 'spacious';
+type Mode = 'default' | 'atmosphere' | 'reading' | 'registry' | 'elevated' | 'action';
 
 interface Props {
   variant?: Variant;
+  mode?: Mode;
   id?: string;
   'aria-label'?: string;
   class?: string;
+  reveal?: boolean;
 }
 
 const {
   variant = 'default',
+  mode = 'default',
   id,
   'aria-label': ariaLabel,
   class: className,
+  reveal = true,
 } = Astro.props;
 
 const variantClass = {
@@ -22,10 +27,19 @@ const variantClass = {
   compact: styles.compact,
   spacious: styles.spacious,
 }[variant];
+
+const modeClass = {
+  default: '',
+  atmosphere: styles.modeAtmosphere,
+  reading: styles.modeReading,
+  registry: styles.modeRegistry,
+  elevated: styles.modeElevated,
+  action: styles.modeAction,
+}[mode];
 ---
 
 <section
-  class:list={[variantClass, className]}
+  class:list={[variantClass, modeClass, reveal && styles.reveal, className]}
   id={id}
   aria-label={ariaLabel}
 >

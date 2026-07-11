@@ -1,0 +1,9 @@
+.rail {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-tight);
+}

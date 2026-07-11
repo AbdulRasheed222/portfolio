@@ -5,6 +5,15 @@
   max-width: 48rem;
 }
 
+.systemIndex {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);

@@ -1,0 +1,79 @@
+---
+import { isExternalUrl, withBasePath } from '../../lib/url';
+import MetadataRail from './MetadataRail.astro';
+import StatusChip from './StatusChip.astro';
+import styles from './EngineeringDossier.module.css';
+
+type Variant = 'default' | 'featured';
+
+interface Props {
+  referenceId: string;
+  pub: string;
+  title: string;
+  summary: string;
+  href: string;
+  status: string;
+  classification: string;
+  tier: string;
+  evidenceLevel: string;
+  version: string;
+  readTime?: string;
+  variant?: Variant;
+}
+
+const {
+  referenceId,
+  pub,
+  title,
+  summary,
+  href,
+  status,
+  classification,
+  tier,
+  evidenceLevel,
+  version,
+  readTime,
+  variant = 'default',
+} = Astro.props;
+
+const resolvedHref = isExternalUrl(href) ? href : withBasePath(href);
+
+const statusVariant =
+  status.includes('DEVELOPMENT') || status.includes('GATHERING')
+    ? 'warning'
+    : status.includes('COMPLETED')
+      ? 'muted'
+      : 'default';
+
+const metaItems = [
+  referenceId,
+  pub,
+  `TIER: ${tier}`,
+  `EVD: ${evidenceLevel}`,
+  version,
+  ...(readTime ? [`READ ${readTime}`] : []),
+];
+---
+
+<article
+  class:list={[styles.dossier, variant === 'featured' && styles.featured]}
+  data-tier={tier.toLowerCase()}
+>
+  <div class={styles.spine} aria-hidden="true"></div>
+  <div class={styles.body}>
+    <header class={styles.header}>
+      <MetadataRail items={metaItems} />
+      <div class={styles.chips}>
+        <StatusChip variant={statusVariant}>{status}</StatusChip>
+        <StatusChip variant="muted">{classification}</StatusChip>
+      </div>
+    </header>
+    <h3 class={styles.title}>
+      <a href={resolvedHref} class={styles.titleLink}>{title}</a>
+    </h3>
+    <p class={styles.summary}>{summary}</p>
+    <footer class={styles.footer}>
+      <span class={styles.action} aria-hidden="true">Open publication →</span>
+    </footer>
+  </div>
+</article>

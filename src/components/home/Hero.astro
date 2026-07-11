@@ -1,23 +1,41 @@
 ---
 import { homepage } from '../../config/homepage';
+import TopologyField from '../atmosphere/TopologyField.astro';
 import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
 import ButtonLink from '../ui/ButtonLink.astro';
+import MetadataRail from '../ui/MetadataRail.astro';
+import SystemLabel from '../ui/SystemLabel.astro';
 import styles from './Hero.module.css';
 
 const { hero } = homepage;
 ---
 
-<Section variant="compact" class={styles.hero}>
+<Section variant="compact" mode="atmosphere" class={styles.hero} reveal={false}>
+  <div class={styles.blueprint} aria-hidden="true"></div>
   <PageContainer>
-    <div class={styles.inner}>
-      <p class={styles.eyebrow}>{hero.eyebrow}</p>
-      <h1 class={styles.title}>{hero.name}</h1>
-      <p class={styles.positioning}>{hero.positioning}</p>
-      <p class={styles.supporting}>{hero.supporting}</p>
-      <div class={styles.actions}>
-        <ButtonLink href="#selected-work" variant="primary">View selected work</ButtonLink>
-        <ButtonLink href="/about/" variant="secondary">About me</ButtonLink>
+    <div class={styles.grid}>
+      <div class={styles.content}>
+        <div class={styles.meta}>
+          <SystemLabel>{hero.systemLabel}</SystemLabel>
+          <MetadataRail items={hero.metadata} />
+        </div>
+        <p class:list={[styles.eyebrow, styles.stagger, styles.delay1]}>{hero.eyebrow}</p>
+        <h1 class:list={[styles.title, styles.stagger, styles.delay2]}>{hero.name}</h1>
+        <p class:list={[styles.positioning, styles.stagger, styles.delay3]}>{hero.positioning}</p>
+        <p class:list={[styles.supporting, styles.stagger, styles.delay4]}>{hero.supporting}</p>
+        <div class:list={[styles.actions, styles.stagger, styles.delay5]}>
+          <ButtonLink href="#featured-publication" variant="primary">
+            View flagship publication
+          </ButtonLink>
+          <ButtonLink href="/work/" variant="secondary">Publication registry</ButtonLink>
+        </div>
+      </div>
+      <div class={styles.visual} aria-hidden="true">
+        <div class={styles.topologyFrame}>
+          <TopologyField variant="hero" />
+        </div>
+        <p class={styles.topologyCaption}>INTENT → STRUCTURE → EVIDENCE</p>
       </div>
     </div>
   </PageContainer>

@@ -1,0 +1,10 @@
+.label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-tight);
+}

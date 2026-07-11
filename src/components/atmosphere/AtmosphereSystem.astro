@@ -1,0 +1,24 @@
+---
+import TopologyField from './TopologyField.astro';
+import styles from './AtmosphereSystem.module.css';
+
+type Variant = 'global' | 'minimal';
+
+interface Props {
+  variant?: Variant;
+}
+
+const { variant = 'global' } = Astro.props;
+---
+
+<div class={styles.system} aria-hidden="true">
+  <div class={styles.grain}></div>
+  {
+    variant === 'global' && (
+      <div class={styles.topologyWrap}>
+        <TopologyField variant="ambient" />
+      </div>
+    )
+  }
+  <div class={styles.scrim}></div>
+</div>

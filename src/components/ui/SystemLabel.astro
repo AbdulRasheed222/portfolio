@@ -1,0 +1,12 @@
+---
+import styles from './SystemLabel.module.css';
+
+interface Props {
+  children: string;
+  class?: string;
+}
+
+const { children, class: className } = Astro.props;
+---
+
+<span class:list={[styles.label, className]}>{children}</span>

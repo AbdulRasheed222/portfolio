@@ -3,14 +3,18 @@ import { site } from '../../config/site';
 import { withBasePath } from '../../lib/url';
 import MobileNavigation from '../navigation/MobileNavigation.astro';
 import PrimaryNavigation from '../navigation/PrimaryNavigation.astro';
+import SystemLabel from '../ui/SystemLabel.astro';
 import PageContainer from './PageContainer.astro';
 import styles from './SiteHeader.module.css';
 ---
 
-<header class={styles.header}>
+<header class={styles.header} data-eos-header>
   <PageContainer>
     <div class={styles.inner}>
-      <a href={withBasePath('/')} class={styles.identity}>{site.ownerName}</a>
+      <div class={styles.identityGroup}>
+        <a href={withBasePath('/')} class={styles.identity}>{site.ownerName}</a>
+        <SystemLabel class={styles.systemTag}>Engineering OS</SystemLabel>
+      </div>
       <div class={styles.navGroup}>
         <PrimaryNavigation />
         <MobileNavigation />
@@ -18,3 +22,12 @@ import styles from './SiteHeader.module.css';
     </div>
   </PageContainer>
 </header>
+
+<script>
+  const header = document.querySelector('[data-eos-header]');
+  if (header) {
+    const sync = () => header.classList.toggle('isScrolled', window.scrollY > 48);
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+  }
+</script>
