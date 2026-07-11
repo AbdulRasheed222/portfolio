@@ -1,24 +1,51 @@
 :root {
-  /* Colour */
-  --color-bg-page: #141618;
-  --color-bg-elevated: #1c1f24;
-  --color-bg-subtle: #22262d;
-  --color-text-primary: #f2ede4;
-  --color-text-secondary: #c8c2b8;
-  --color-text-muted: #8e8880;
-  --color-border: #2e333b;
-  --color-border-strong: #3d4450;
+  /* Foundation — ink midnight */
+  --color-bg-page: #070a10;
+  --color-bg-elevated: #0b1020;
+  --color-bg-subtle: #101827;
+  --color-bg-matte: #0a0e16;
+
+  /* Text */
+  --color-text-primary: #f4f0e8;
+  --color-text-secondary: #b8c0d0;
+  --color-text-muted: #7a8494;
+  --color-text-cool: #94a3b8;
+
+  /* Borders */
+  --color-border: rgba(148, 163, 184, 0.14);
+  --color-border-strong: rgba(148, 163, 184, 0.28);
+  --color-border-highlight: rgba(255, 255, 255, 0.12);
+
+  /* Polished paint — cobalt / indigo family */
+  --color-paint-base: #0c1e3d;
+  --color-paint-deep: #081830;
+  --color-paint-mid: #15325f;
+  --color-paint-lit: #1e4a8c;
+  --color-paint-bright: #2d5bff;
+  --color-paint-violet: #4f46e5;
+  --color-paint-glow: rgba(45, 91, 255, 0.45);
+  --color-paint-bloom: rgba(79, 70, 229, 0.22);
+
+  /* Warm champagne accent */
   --color-accent: #c9a86a;
-  --color-accent-hover: #d4b87a;
-  --color-accent-soft: rgba(201, 168, 106, 0.12);
+  --color-accent-hover: #ddc08a;
+  --color-accent-soft: rgba(201, 168, 106, 0.14);
   --color-focus: #c9a86a;
-  --color-positive: #7ba882;
-  --color-warning: #c4a05a;
-  --color-critical: #c47a6e;
-  --color-bg-scrim: rgba(20, 22, 24, 0.72);
-  --color-blueprint-line: rgba(58, 74, 90, 0.22);
-  --color-glow-accent: rgba(201, 168, 106, 0.14);
-  --color-surface-glass: rgba(28, 31, 36, 0.88);
+
+  /* Surface lighting */
+  --color-highlight-streak: rgba(255, 255, 255, 0.14);
+  --color-reflection-edge: rgba(120, 180, 255, 0.35);
+  --color-ambient-glow: rgba(45, 91, 255, 0.18);
+  --color-shadow-deep: rgba(0, 0, 0, 0.55);
+  --color-gloss-overlay: rgba(255, 255, 255, 0.04);
+
+  /* Semantic */
+  --color-positive: #6ee7a8;
+  --color-warning: #e8c468;
+  --color-critical: #f08a7a;
+
+  --color-bg-scrim: rgba(7, 10, 16, 0.82);
+  --color-surface-glass: rgba(11, 16, 32, 0.72);
 
   /* Typography */
   --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
@@ -31,15 +58,16 @@
   --font-size-lg: 1.375rem;
   --font-size-xl: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
   --font-size-2xl: clamp(2rem, 1.75rem + 1.25vw, 2.75rem);
-  --font-size-3xl: clamp(2.25rem, 1.75rem + 2vw, 3rem);
-  --font-size-display: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --font-size-3xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.25rem);
+  --font-size-display: clamp(2.5rem, 1.75rem + 3vw, 4rem);
+  --font-size-hero: clamp(2.75rem, 2rem + 3.5vw, 4.5rem);
 
   --font-weight-normal: 400;
   --font-weight-semibold: 600;
 
-  --line-height-tight: 1.25;
+  --line-height-tight: 1.2;
   --line-height-base: 1.65;
-  --line-height-heading: 1.3;
+  --line-height-heading: 1.15;
 
   --letter-spacing-label: 0.08em;
   --letter-spacing-system: 0.1em;
@@ -55,36 +83,39 @@
   --space-8: 4rem;
   --space-9: 6rem;
   --space-10: 8rem;
+  --space-11: 10rem;
 
   /* Layout */
-  --container-page: 72rem;
+  --container-page: 76rem;
   --container-reading: 48rem;
-  --container-wide: 64rem;
+  --container-wide: 68rem;
   --gutter-mobile: 1rem;
   --gutter-tablet: 1.5rem;
   --gutter-desktop: 2rem;
   --header-height: 4.5rem;
-  --hero-split-text: 55fr;
-  --hero-split-visual: 45fr;
+  --hero-min-height: min(92vh, 56rem);
 
   /* Borders and radii */
   --border-width: 1px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
 
   /* Shadows */
-  --shadow-elevated: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-ambient: 0 8px 32px rgba(0, 0, 0, 0.25);
-  --shadow-dossier-hover: 0 12px 40px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 4px 24px var(--color-shadow-deep);
+  --shadow-ambient: 0 12px 48px rgba(0, 0, 0, 0.45);
+  --shadow-lacquer: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 48px var(--color-paint-bloom);
+  --shadow-glow: 0 0 32px var(--color-paint-glow);
 
   /* Motion */
   --duration-instant: 0ms;
   --duration-fast: 120ms;
   --duration-base: 200ms;
-  --duration-moderate: 320ms;
-  --duration-slow: 480ms;
-  --duration-ambient: 60s;
+  --duration-moderate: 360ms;
+  --duration-slow: 520ms;
+  --duration-ambient: 48s;
+  --duration-sweep: 8s;
   --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
   --ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
@@ -94,13 +125,16 @@
   --z-base: 1;
   --z-content: 2;
   --z-atmosphere: 0;
+  --z-hero-visual: 1;
+  --z-hero-content: 3;
   --z-header: 100;
   --z-mobile-nav: 150;
   --z-skip-link: 200;
 
-  /* Breakpoints (for reference in modules) */
+  /* Breakpoints */
   --bp-sm: 640px;
   --bp-md: 768px;
   --bp-lg: 1024px;
   --bp-xl: 1280px;
+  --bp-2xl: 1440px;
 }

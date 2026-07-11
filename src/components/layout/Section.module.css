@@ -24,8 +24,11 @@
 }
 
 .modeElevated {
-  background-color: rgba(28, 31, 36, 0.55);
-  border-block: var(--border-width) solid var(--color-border);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 16, 32, 0.4) 0%,
+    rgba(7, 10, 16, 0.8) 100%
+  );
 }
 
 .modeAction {

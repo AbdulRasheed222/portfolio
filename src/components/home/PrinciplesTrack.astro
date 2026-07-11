@@ -1,0 +1,33 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import styles from './PrinciplesTrack.module.css';
+
+const { principles } = homepage;
+---
+
+<Section id="principles" variant="spacious" mode="reading" class={styles.section}>
+  <PageContainer variant="wide">
+    <header class={styles.header}>
+      <span class={styles.index}>05 — ENGINEERING PRINCIPLES</span>
+      <h2 class={styles.title}>How systems get built</h2>
+    </header>
+
+    <ol class={styles.track}>
+      {principles.map((principle, i) => (
+        <li class:list={[styles.item, i % 2 === 1 && styles.itemAlt]} style={`--i: ${i}`}>
+          <div class={styles.rail} aria-hidden="true">
+            <span class={styles.node}></span>
+            {i < principles.length - 1 && <span class={styles.line}></span>}
+          </div>
+          <div class={styles.body}>
+            <span class={styles.number}>{principle.index}</span>
+            <h3 class={styles.principleTitle}>{principle.title}</h3>
+            <p class={styles.description}>{principle.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </PageContainer>
+</Section>

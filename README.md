@@ -6,7 +6,7 @@ This project is a static Astro site built for GitHub Pages, presenting evidence-
 
 ## Current status
 
-**Homepage structure and core routes (Stage 3 complete).** The V1 homepage composition, provisional homepage data, and structural placeholder pages are implemented. Verified case studies and personal content remain pending.
+**Stage 2D-R — Polished Product Experience** complete on `main`. The homepage has been rebuilt with ink/cobalt polished surfaces, immersive hero topology, flagship Leen presentation, publication artifacts, editorial principles track, operator portrait, and cinematic contact closing. Case-study pages remain placeholders.
 
 ## Stack
 
@@ -45,10 +45,12 @@ No production deployment has occurred yet.
 ## Documentation
 
 - [PORTFOLIO_BRIEF.md](./PORTFOLIO_BRIEF.md) — Governing project brief
+- [docs/ENGINEERING_OS.md](./docs/ENGINEERING_OS.md) — Brand language constitution
+- [docs/VISUAL_IDENTITY_V2.md](./docs/VISUAL_IDENTITY_V2.md) — Experience visual spec (Stage 2D-R implemented)
 - [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — Technical architecture
 - [docs/CONTENT_MODEL.md](./docs/CONTENT_MODEL.md) — Content strategy and case-study policy
 - [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) — Hosting and deployment plan
-- [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) — Visual direction and design boundaries
+- [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) — Tokens, surfaces, motion, components
 
 ## Content notice
 

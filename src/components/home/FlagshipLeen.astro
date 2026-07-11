@@ -1,0 +1,45 @@
+---
+import { homepage } from '../../config/homepage';
+import { isExternalUrl, withBasePath } from '../../lib/url';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import MetadataRail from '../ui/MetadataRail.astro';
+import StatusChip from '../ui/StatusChip.astro';
+import styles from './FlagshipLeen.module.css';
+
+const pub = homepage.featuredPublication;
+const resolvedHref = isExternalUrl(pub.href) ? pub.href : withBasePath(pub.href);
+const metaItems = [pub.ref, pub.pub, `TIER: ${pub.tier}`, pub.version, `READ ${pub.readTime}`];
+---
+
+<Section id="flagship-leen" variant="spacious" mode="elevated" class={styles.section} reveal={false}>
+  <PageContainer variant="wide">
+    <div class={styles.labelRow}>
+      <span class={styles.index}>02 — FLAGSHIP SYSTEM</span>
+    </div>
+
+    <article class={styles.panel}>
+      <div class={styles.visual} aria-hidden="true">
+        <div class={styles.orbit}></div>
+        <div class={styles.coreRing}></div>
+        <ul class={styles.chapters}>
+          {pub.chapters?.map((ch) => <li>{ch}</li>)}
+        </ul>
+      </div>
+
+      <div class={styles.content}>
+        <MetadataRail items={metaItems} />
+        <div class={styles.chips}>
+          <StatusChip variant="warning">{pub.status}</StatusChip>
+          <StatusChip variant="muted">{pub.classification}</StatusChip>
+        </div>
+        <h2 class={styles.title}>
+          <a href={resolvedHref} class={styles.titleLink}>{pub.title}</a>
+        </h2>
+        <p class={styles.summary}>{pub.summary}</p>
+        <p class={styles.evidence}>EVD: {pub.evidenceLevel} — publication in preparation</p>
+        <span class={styles.cta} aria-hidden="true">Enter flagship publication →</span>
+      </div>
+    </article>
+  </PageContainer>
+</Section>

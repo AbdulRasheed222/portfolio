@@ -1,21 +1,38 @@
 ---
+import { Image } from 'astro:assets';
 import { homepage } from '../../config/homepage';
+import portrait from '../../assets/images/abdul-rasheed-keramat.jpeg';
 import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
-import SystemLabel from '../ui/SystemLabel.astro';
+import MetadataRail from '../ui/MetadataRail.astro';
 import TextLink from '../ui/TextLink.astro';
 import styles from './OperatorProfilePreview.module.css';
 
 const { operatorProfile } = homepage;
 ---
 
-<Section mode="reading">
-  <PageContainer>
+<Section id="operator-profile" mode="reading" class={styles.section}>
+  <PageContainer variant="wide">
     <div class={styles.layout}>
+      <div class={styles.portraitFrame}>
+        <div class={styles.portraitGlow} aria-hidden="true"></div>
+        <Image
+          src={portrait}
+          alt="Portrait of Abdul Rasheed Keramat, software engineer"
+          width={400}
+          height={480}
+          class={styles.portrait}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
       <div class={styles.content}>
-        <SystemLabel>{operatorProfile.systemIndex}</SystemLabel>
+        <span class={styles.index}>{operatorProfile.systemIndex}</span>
+        <p class={styles.role}>{operatorProfile.role}</p>
         <h2 class={styles.title}>{operatorProfile.title}</h2>
         <p class={styles.summary}>{operatorProfile.summary}</p>
+        <MetadataRail items={operatorProfile.metadata} class={styles.meta} />
         <TextLink href={operatorProfile.href}>Read operator profile →</TextLink>
       </div>
     </div>

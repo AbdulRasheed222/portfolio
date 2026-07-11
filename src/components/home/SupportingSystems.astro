@@ -1,0 +1,40 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import PublicationArtifact from '../ui/PublicationArtifact.astro';
+import styles from './SupportingSystems.module.css';
+
+const { publications } = homepage;
+---
+
+<Section id="supporting-systems" variant="spacious" class={styles.section}>
+  <PageContainer variant="wide">
+    <header class={styles.header}>
+      <span class={styles.index}>04 — SUPPORTING SYSTEMS</span>
+      <h2 class={styles.title}>Engineering publications</h2>
+      <p class={styles.lead}>
+        Prior systems and supporting work — each documented as an engineering publication with
+        evidence and lineage.
+      </p>
+    </header>
+
+    <div class={styles.grid}>
+      {publications.map((pub) => (
+        <PublicationArtifact
+          referenceId={pub.ref}
+          pub={pub.pub}
+          title={pub.title}
+          summary={pub.summary}
+          href={pub.href}
+          status={pub.status}
+          evidenceLevel={pub.evidenceLevel}
+          version={pub.version}
+          readTime={pub.readTime}
+          layout={pub.layout === 'cinematic' ? 'flow' : pub.layout}
+          accent={pub.accent}
+        />
+      ))}
+    </div>
+  </PageContainer>
+</Section>
