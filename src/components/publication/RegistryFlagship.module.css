@@ -110,11 +110,23 @@
 }
 
 .action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-system);
   text-transform: uppercase;
   color: var(--color-accent);
+  text-decoration: none;
+}
+
+.action:hover,
+.action:focus-visible {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+  outline: none;
 }
 
 @media (min-width: 640px) {

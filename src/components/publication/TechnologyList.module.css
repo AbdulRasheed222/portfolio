@@ -2,6 +2,21 @@
   margin-top: var(--space-6);
 }
 
+.compact {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.label {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+}
+
 .title {
   margin: 0 0 var(--space-3);
   font-size: var(--font-size-sm);

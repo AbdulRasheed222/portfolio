@@ -1,0 +1,22 @@
+.brief {
+  --brief-measure: 40rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.brief p {
+  margin: 0 0 var(--space-3);
+  max-width: var(--brief-measure);
+}
+
+.brief ul,
+.brief ol {
+  margin: 0 0 var(--space-3);
+  padding-left: var(--space-4);
+  max-width: var(--brief-measure);
+}
+
+.brief li + li {
+  margin-top: var(--space-1);
+}

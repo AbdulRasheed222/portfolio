@@ -3,13 +3,14 @@ import styles from './TechnologyList.module.css';
 
 interface Props {
   technologies: string[];
+  variant?: 'default' | 'compact';
 }
 
-const { technologies } = Astro.props;
+const { technologies, variant = 'default' } = Astro.props;
 ---
 
-<div class={styles.block}>
-  <h2 class={styles.title}>Technologies</h2>
+<div class:list={[styles.block, variant === 'compact' && styles.compact]}>
+  <p class={styles.label}>{variant === 'compact' ? 'Stack' : 'Technologies'}</p>
   <ul class={styles.list}>
     {technologies.map((tech) => (
       <li>{tech}</li>

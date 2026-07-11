@@ -46,6 +46,8 @@ const data = publication.data;
       }
     </dl>
 
-    <span class={styles.action} aria-hidden="true">Read flagship case study →</span>
+    <a href={withBasePath(publicationPath(data.slug))} class={styles.action}>
+      Read flagship case study →
+    </a>
   </article>
 </section>

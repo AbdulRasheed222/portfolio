@@ -1,10 +1,21 @@
 .section {
-  padding-top: var(--space-7);
-  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
 }
 
-.section + .section {
+.sectionDefault {
+  padding-top: var(--space-7);
+}
+
+.sectionDefault + .sectionDefault {
   border-top: var(--border-width) solid var(--color-border);
+}
+
+.sectionBrief {
+  padding-top: var(--space-4);
+}
+
+.sectionBrief:first-child {
+  padding-top: 0;
 }
 
 .title {
@@ -13,6 +24,15 @@
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
   color: var(--color-text-primary);
+}
+
+.titleBrief {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
 }
 
 .subsections {

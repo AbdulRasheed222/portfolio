@@ -1,7 +1,7 @@
 ---
 import styles from './Section.module.css';
 
-type Variant = 'default' | 'compact' | 'spacious';
+type Variant = 'default' | 'compact' | 'spacious' | 'brief';
 type Mode = 'default' | 'atmosphere' | 'reading' | 'registry' | 'elevated' | 'action';
 
 interface Props {
@@ -26,6 +26,7 @@ const variantClass = {
   default: styles.section,
   compact: styles.compact,
   spacious: styles.spacious,
+  brief: styles.brief,
 }[variant];
 
 const modeClass = {

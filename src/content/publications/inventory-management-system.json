@@ -7,28 +7,26 @@
   "status": "PROVISIONAL",
   "evidenceLevel": "provisional",
   "role": "Full Stack Software Developer",
-  "timeframe": "2022 – 2024 (sector-level delivery context)",
+  "timeframe": "2022 – 2024",
   "technologies": ["Full-stack web application", "Relational database", "REST APIs", "Concurrent data handling"],
-  "contributionSummary": "Delivered inventory and operations software for SME contexts during freelance and agency work. Project-specific scope and attribution are pending verification — sector-level context is CV-supported.",
-  "maturityNotice": "Project details beyond sector-level delivery context are provisional until verified. No client names, metrics, or screenshots are stated.",
+  "contributionSummary": "Full-stack delivery across interface, backend, and data layers for SME inventory operations.",
+  "maturityNotice": "Sector-level delivery context from CV. Project-specific details are provisional until verified.",
   "order": 4,
   "accent": "gold",
   "noindex": true,
-  "statusNote": "Provisional — additional verification required before detailed publication.",
   "sections": [
     {
       "title": "Overview",
       "anchor": "overview",
       "paragraphs": [
-        "Inventory management software for small and medium businesses — tracking stock movements, alerting on thresholds, and supporting operational reporting.",
-        "This brief reflects verified sector-level delivery experience from CV baseline. Specific project naming and deployment status are not stated."
+        "Inventory management software for small and medium businesses — tracking stock movements, threshold alerts, and operational reporting for day-to-day operators."
       ]
     },
     {
       "title": "What was built",
       "anchor": "what-was-built",
       "paragraphs": [
-        "A full-stack stock-integrity application for operators managing inventory day to day."
+        "A full-stack stock-integrity application supporting multi-user inventory operations."
       ],
       "bullets": [
         "Stock movement recording and history",
@@ -41,15 +39,7 @@
       "title": "My contribution",
       "anchor": "my-contribution",
       "paragraphs": [
-        "Full-stack development across interface, backend, and data layers during the 2022–2024 delivery period. Exact team composition and per-feature attribution pending verification."
-      ]
-    },
-    {
-      "title": "Technologies and status",
-      "anchor": "technologies-and-status",
-      "paragraphs": [
-        "Built as a conventional full-stack web product with relational data modeling and API-backed interfaces.",
-        "Launch status and client references are not published until verified."
+        "Full-stack development across interface, backend, and data layers during the 2022–2024 delivery period."
       ]
     }
   ]

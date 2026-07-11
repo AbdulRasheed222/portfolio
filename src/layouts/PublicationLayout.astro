@@ -9,6 +9,7 @@ import ContributionSummary from '../components/publication/ContributionSummary.a
 import DecisionRecord from '../components/publication/DecisionRecord.astro';
 import EvidenceFigure from '../components/publication/EvidenceFigure.astro';
 import ProjectBriefFooter from '../components/publication/ProjectBriefFooter.astro';
+import ProjectBriefOpening from '../components/publication/ProjectBriefOpening.astro';
 import PublicationFooterNav from '../components/publication/PublicationFooterNav.astro';
 import PublicationOpeningBand from '../components/publication/PublicationOpeningBand.astro';
 import PublicationSection from '../components/publication/PublicationSection.astro';
@@ -47,72 +48,82 @@ const isBrief = data.format === 'project-brief';
 >
   {isFlagship && <ReadingProgress />}
 
-  <Section variant="compact" mode="reading" reveal={false}>
-    <PageContainer variant={isBrief ? 'reading' : 'wide'}>
-      <PublicationOpeningBand publication={data} />
-    </PageContainer>
-  </Section>
+  {
+    isBrief ? (
+      <Section variant="brief" mode="reading" reveal={false}>
+        <PageContainer variant="reading">
+          <article class={styles.briefArticle} data-publication-article>
+            <ProjectBriefOpening publication={data} />
+            <div class={styles.briefBody}>
+              {data.sections.map((section) => (
+                <PublicationSection section={section} variant="brief" />
+              ))}
+              <TechnologyList technologies={data.technologies} variant="compact" />
+            </div>
+            <ProjectBriefFooter />
+          </article>
+        </PageContainer>
+      </Section>
+    ) : (
+      <Section variant="compact" mode="reading" reveal={false}>
+        <PageContainer variant="wide">
+          <div class:list={[styles.publicationShell, isFlagship && styles.publicationShellFlagship]}>
+            <div class={styles.openingArea}>
+              <PublicationOpeningBand publication={data} />
+            </div>
 
-  <Section variant="compact" mode="reading" reveal={false}>
-    <PageContainer variant={isBrief ? 'reading' : 'wide'}>
-      <div class:list={[styles.layout, isFlagship && styles.layoutFlagship]}>
-        {isFlagship && (
-          <aside class={styles.sidebar}>
-            <SectionNavigation sections={data.sections} />
-          </aside>
-        )}
+            {isFlagship && (
+              <aside class={styles.sidebar}>
+                <SectionNavigation sections={data.sections} />
+              </aside>
+            )}
 
-        <article class={styles.article} data-publication-article>
-          {isCaseStudy && <SectionList sections={data.sections} />}
+            <article class={styles.article} data-publication-article>
+              {isCaseStudy && <SectionList sections={data.sections} />}
 
-          <div class={styles.body}>
-            {data.sections.map((section) => (
-              <PublicationSection section={section} />
-            ))}
+              <div class={styles.body}>
+                {data.sections.map((section) => (
+                  <PublicationSection section={section} />
+                ))}
+              </div>
+
+              {
+                data.figures?.map((figure) => (
+                  <EvidenceFigure
+                    reference={figure.reference}
+                    caption={figure.caption}
+                    alt={figure.alt}
+                    evidenceType={figure.evidenceType ?? 'structural-placeholder'}
+                    verificationStatus={figure.placeholder ? 'placeholder' : 'pending'}
+                    placeholder={figure.placeholder}
+                  />
+                ))
+              }
+
+              {
+                isFlagship &&
+                  data.decisions?.map((record) => (
+                    <DecisionRecord
+                      reference={record.reference}
+                      title={record.title}
+                      context={record.context}
+                      decision={record.decision}
+                      tradeoff={record.tradeoff}
+                      status={record.status ?? 'Documented'}
+                      verificationState="Directional — full evidence pending"
+                    />
+                  ))
+              }
+
+              <ContributionSummary summary={data.contributionSummary} />
+
+              {isCaseStudy && data.statusNote && <PublicationStatusNote note={data.statusNote} />}
+
+              <PublicationFooterNav previous={previous} next={next} />
+            </article>
           </div>
-
-          {
-            data.figures?.map((figure) => (
-              <EvidenceFigure
-                reference={figure.reference}
-                caption={figure.caption}
-                alt={figure.alt}
-                evidenceType={figure.evidenceType ?? 'structural-placeholder'}
-                verificationStatus={figure.placeholder ? 'placeholder' : 'pending'}
-                placeholder={figure.placeholder}
-              />
-            ))
-          }
-
-          {
-            isFlagship &&
-              data.decisions?.map((record) => (
-                <DecisionRecord
-                  reference={record.reference}
-                  title={record.title}
-                  context={record.context}
-                  decision={record.decision}
-                  tradeoff={record.tradeoff}
-                  status={record.status ?? 'Documented'}
-                  verificationState="Directional — full evidence pending"
-                />
-              ))
-          }
-
-          {!isBrief && <ContributionSummary summary={data.contributionSummary} />}
-
-          {isCaseStudy && data.statusNote && <PublicationStatusNote note={data.statusNote} />}
-
-          {isBrief && (
-            <>
-              <TechnologyList technologies={data.technologies} />
-              <ProjectBriefFooter statusNote={data.statusNote} />
-            </>
-          )}
-
-          {!isBrief && <PublicationFooterNav previous={previous} next={next} />}
-        </article>
-      </div>
-    </PageContainer>
-  </Section>
+        </PageContainer>
+      </Section>
+    )
+  }
 </BaseLayout>

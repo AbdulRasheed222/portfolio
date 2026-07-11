@@ -1,21 +1,30 @@
 ---
 import type { PublicationEntry } from '../../lib/publications';
+import briefReading from './project-brief-reading.module.css';
 import readingStyles from './publication-reading.module.css';
 import styles from './PublicationSection.module.css';
 
 interface Props {
   section: PublicationEntry['data']['sections'][number];
+  variant?: 'default' | 'brief';
 }
 
-const { section } = Astro.props;
+const { section, variant = 'default' } = Astro.props;
+const isBrief = variant === 'brief';
 ---
 
 <section
-  class:list={[styles.section, readingStyles.reading]}
+  class:list={[
+    styles.section,
+    isBrief ? styles.sectionBrief : styles.sectionDefault,
+    isBrief ? briefReading.brief : readingStyles.reading,
+  ]}
   id={section.anchor}
   aria-labelledby={`section-${section.anchor}`}
 >
-  <h2 class={styles.title} id={`section-${section.anchor}`}>{section.title}</h2>
+  <h2 class:list={[styles.title, isBrief && styles.titleBrief]} id={`section-${section.anchor}`}>
+    {section.title}
+  </h2>
 
   {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
 
