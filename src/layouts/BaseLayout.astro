@@ -1,5 +1,6 @@
 ---
 import { site } from '../config/site';
+import AtmosphereSystem from '../components/atmosphere/AtmosphereSystem.astro';
 import SiteFooter from '../components/layout/SiteFooter.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import '../styles/global.css';
@@ -21,11 +22,14 @@ const { title, description } = Astro.props;
     {description && <meta name="description" content={description} />}
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <SiteHeader />
-    <main id="main-content">
-      <slot />
-    </main>
-    <SiteFooter />
+    <AtmosphereSystem />
+    <div class="eos-page-shell">
+      <a class="skip-link" href="#main-content">Skip to main content</a>
+      <SiteHeader />
+      <main id="main-content">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
   </body>
 </html>

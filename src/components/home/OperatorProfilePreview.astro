@@ -1,0 +1,23 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import SystemLabel from '../ui/SystemLabel.astro';
+import TextLink from '../ui/TextLink.astro';
+import styles from './OperatorProfilePreview.module.css';
+
+const { operatorProfile } = homepage;
+---
+
+<Section mode="reading">
+  <PageContainer>
+    <div class={styles.layout}>
+      <div class={styles.content}>
+        <SystemLabel>{operatorProfile.systemIndex}</SystemLabel>
+        <h2 class={styles.title}>{operatorProfile.title}</h2>
+        <p class={styles.summary}>{operatorProfile.summary}</p>
+        <TextLink href={operatorProfile.href}>Read operator profile →</TextLink>
+      </div>
+    </div>
+  </PageContainer>
+</Section>

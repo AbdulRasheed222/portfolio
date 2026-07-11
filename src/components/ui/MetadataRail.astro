@@ -1,0 +1,13 @@
+---
+import styles from './MetadataRail.module.css';
+
+interface Props {
+  items: readonly string[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const display = items.join(' · ');
+---
+
+<p class:list={[styles.rail, className]}>{display}</p>

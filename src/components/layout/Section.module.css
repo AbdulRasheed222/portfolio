@@ -10,6 +10,37 @@
   padding-block: var(--space-9);
 }
 
+.modeAtmosphere {
+  position: relative;
+}
+
+.modeReading {
+  background-color: transparent;
+}
+
+.modeRegistry {
+  background-color: var(--color-bg-elevated);
+  border-block: var(--border-width) solid var(--color-border);
+}
+
+.modeElevated {
+  background-color: rgba(28, 31, 36, 0.55);
+  border-block: var(--border-width) solid var(--color-border);
+}
+
+.modeAction {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201, 168, 106, 0.04) 50%,
+    transparent 100%
+  );
+}
+
+.reveal {
+  animation: eos-reveal var(--duration-moderate) var(--ease-in-out) both;
+}
+
 @media (min-width: 1024px) {
   .section {
     padding-block: var(--space-9);
@@ -21,5 +52,21 @@
 
   .spacious {
     padding-block: var(--space-10);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: eos-reveal var(--duration-moderate) var(--ease-in-out) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
   }
 }

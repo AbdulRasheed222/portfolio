@@ -1,21 +1,21 @@
 ---
 import { site } from '../config/site';
-import PageContainer from '../components/layout/PageContainer.astro';
-import Section from '../components/layout/Section.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AboutIntro from '../components/home/AboutIntro.astro';
-import Capabilities from '../components/home/Capabilities.astro';
 import ContactCta from '../components/home/ContactCta.astro';
+import CurrentFocus from '../components/home/CurrentFocus.astro';
+import EngineeringPrinciples from '../components/home/EngineeringPrinciples.astro';
+import EngineeringPublications from '../components/home/EngineeringPublications.astro';
+import FeaturedPublication from '../components/home/FeaturedPublication.astro';
 import Hero from '../components/home/Hero.astro';
-import ProfessionalFocus from '../components/home/ProfessionalFocus.astro';
-import SelectedWork from '../components/home/SelectedWork.astro';
+import OperatorProfilePreview from '../components/home/OperatorProfilePreview.astro';
 ---
 
 <BaseLayout title={site.title} description={site.description}>
   <Hero />
-  <SelectedWork />
-  <Capabilities />
-  <ProfessionalFocus />
-  <AboutIntro />
+  <FeaturedPublication />
+  <EngineeringPrinciples />
+  <EngineeringPublications />
+  <CurrentFocus />
+  <OperatorProfilePreview />
   <ContactCta />
 </BaseLayout>

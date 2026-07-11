@@ -29,6 +29,15 @@
   color: var(--color-text-muted);
 }
 
+.versionBlock {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+
 .copyright {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);

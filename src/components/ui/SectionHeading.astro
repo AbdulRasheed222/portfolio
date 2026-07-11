@@ -6,6 +6,7 @@ type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4';
 interface Props {
   title: string;
   eyebrow?: string;
+  systemIndex?: string;
   description?: string;
   level?: HeadingLevel;
   id?: string;
@@ -15,6 +16,7 @@ interface Props {
 const {
   title,
   eyebrow,
+  systemIndex,
   description,
   level = 'h2',
   id,
@@ -25,6 +27,7 @@ const HeadingTag = level;
 ---
 
 <div class:list={[styles.heading, className]}>
+  {systemIndex && <p class={styles.systemIndex}>{systemIndex}</p>}
   {eyebrow && <p class={styles.eyebrow}>{eyebrow}</p>}
   <HeadingTag class:list={[styles.title, level === 'h1' && styles.titleLevel1]} id={id}>{title}</HeadingTag>
   {description && <p class={styles.description}>{description}</p>}

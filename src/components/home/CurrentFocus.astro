@@ -1,0 +1,20 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import MetadataRail from '../ui/MetadataRail.astro';
+import SystemLabel from '../ui/SystemLabel.astro';
+import styles from './CurrentFocus.module.css';
+
+const { currentFocus } = homepage;
+---
+
+<Section mode="elevated">
+  <PageContainer>
+    <div class={styles.panel}>
+      <SystemLabel>{currentFocus.systemIndex}</SystemLabel>
+      <p class={styles.statement}>{currentFocus.statement}</p>
+      <MetadataRail items={currentFocus.metadata} class={styles.meta} />
+    </div>
+  </PageContainer>
+</Section>

@@ -1,0 +1,38 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import EngineeringDossier from '../ui/EngineeringDossier.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import styles from './FeaturedPublication.module.css';
+
+const { featuredPublication: pub } = homepage;
+---
+
+<Section id="featured-publication" mode="elevated" class={styles.section}>
+  <PageContainer variant="wide">
+    <SectionHeading
+      systemIndex="02 — FEATURED PUBLICATION"
+      eyebrow="Flagship"
+      title="Engineering publication in development"
+      description="The primary long-form case study documenting Leen — AI Operating System."
+      level="h2"
+    />
+    <div class={styles.featured}>
+      <EngineeringDossier
+        referenceId={pub.ref}
+        pub={pub.pub}
+        title={pub.title}
+        summary={pub.summary}
+        href={pub.href}
+        status={pub.status}
+        classification={pub.classification}
+        tier={pub.tier}
+        evidenceLevel={pub.evidenceLevel}
+        version={pub.version}
+        readTime={pub.readTime}
+        variant="featured"
+      />
+    </div>
+  </PageContainer>
+</Section>

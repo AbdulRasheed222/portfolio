@@ -1,0 +1,45 @@
+---
+import { homepage } from '../../config/homepage';
+import PageContainer from '../layout/PageContainer.astro';
+import Section from '../layout/Section.astro';
+import EngineeringDossier from '../ui/EngineeringDossier.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import styles from './EngineeringPublications.module.css';
+
+const { publications } = homepage;
+---
+
+<Section id="engineering-publications" mode="registry">
+  <PageContainer variant="wide">
+    <SectionHeading
+      systemIndex="04 — ENGINEERING PUBLICATIONS"
+      eyebrow="Publication registry"
+      title="Supporting engineering publications"
+      description="Verified narratives and evidence are being prepared for each publication."
+      level="h2"
+    />
+    <div class={styles.grid}>
+      {
+        publications.map((publication) => (
+          <EngineeringDossier
+            referenceId={publication.ref}
+            pub={publication.pub}
+            title={publication.title}
+            summary={publication.summary}
+            href={publication.href}
+            status={publication.status}
+            classification={publication.classification}
+            tier={publication.tier}
+            evidenceLevel={publication.evidenceLevel}
+            version={publication.version}
+            readTime={publication.readTime}
+          />
+        ))
+      }
+    </div>
+    <p class={styles.note}>
+      Detailed publications with verified contribution, outcomes, and supporting evidence are in
+      preparation.
+    </p>
+  </PageContainer>
+</Section>

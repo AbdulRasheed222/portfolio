@@ -11,6 +11,7 @@
 }
 
 .link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -19,12 +20,29 @@
   font-weight: var(--font-weight-normal);
   color: var(--color-text-secondary);
   text-decoration: none;
-  border-bottom: 2px solid transparent;
   transition: color var(--duration-fast) var(--ease-out);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: var(--space-2);
+  right: var(--space-2);
+  bottom: 0.55rem;
+  height: 2px;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
 .link:hover {
   color: var(--color-accent-hover);
+}
+
+.link:hover::after,
+.current::after {
+  transform: scaleX(1);
 }
 
 .link:focus-visible {
@@ -34,7 +52,6 @@
 
 .current {
   color: var(--color-text-primary);
-  border-bottom-color: var(--color-accent);
 }
 
 @media (min-width: 1024px) {

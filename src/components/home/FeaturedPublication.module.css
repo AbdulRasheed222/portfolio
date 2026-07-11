@@ -1,0 +1,14 @@
+.section {
+  position: relative;
+}
+
+.featured {
+  margin-top: var(--space-6);
+  max-width: 52rem;
+}
+
+@media (min-width: 1024px) {
+  .featured {
+    margin-top: var(--space-7);
+  }
+}

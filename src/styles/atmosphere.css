@@ -1,0 +1,105 @@
+/**
+ * Engineering OS — Atmosphere layers (global)
+ * Layer 1: topology field, film grain, scrim utilities
+ */
+
+.eos-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.eos-atmosphere__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+.eos-atmosphere__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 22, 24, 0.4) 0%,
+    rgba(20, 22, 24, 0.15) 40%,
+    rgba(20, 22, 24, 0.55) 100%
+  );
+}
+
+.eos-page-shell {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.eos-reveal {
+  animation: eos-reveal var(--duration-moderate) var(--ease-in-out) both;
+}
+
+@keyframes eos-reveal {
+  from {
+    opacity: 0.88;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes eos-topology-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0.35rem, -0.25rem, 0);
+  }
+}
+
+@keyframes eos-hero-stagger {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eos-reveal {
+    animation: none;
+  }
+
+  .eos-topology-drift {
+    animation: none !important;
+  }
+
+  .eos-hero-stagger {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  @supports (animation-timeline: view()) {
+    .eos-reveal-view {
+      animation: eos-reveal var(--duration-moderate) var(--ease-in-out) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 28%;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+---
+import styles from './StatusChip.module.css';
+
+type Variant = 'default' | 'warning' | 'positive' | 'muted';
+
+interface Props {
+  children: string;
+  variant?: Variant;
+  class?: string;
+}
+
+const { children, variant = 'default', class: className } = Astro.props;
+
+const variantClass = {
+  default: styles.default,
+  warning: styles.warning,
+  positive: styles.positive,
+  muted: styles.muted,
+}[variant];
+---
+
+<span class:list={[styles.chip, variantClass, className]}>{children}</span>

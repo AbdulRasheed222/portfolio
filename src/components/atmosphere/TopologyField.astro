@@ -1,0 +1,50 @@
+---
+/**
+ * Semantic engineering cognition topology (Intent → Structure → Evidence).
+ * ENGINEERING_OS.md §7 — decorative atmosphere only; aria-hidden.
+ */
+import styles from './TopologyField.module.css';
+
+type Variant = 'hero' | 'ambient';
+
+interface Props {
+  variant?: Variant;
+  class?: string;
+}
+
+const { variant = 'ambient', class: className } = Astro.props;
+---
+
+<svg
+  class:list={[styles.topology, variant === 'hero' && styles.hero, className]}
+  viewBox="0 0 400 320"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g class={styles.edges} stroke="currentColor" stroke-width="1">
+    <line x1="72" y1="160" x2="148" y2="96" />
+    <line x1="72" y1="160" x2="148" y2="160" />
+    <line x1="72" y1="160" x2="148" y2="224" />
+    <line x1="148" y1="96" x2="252" y2="128" />
+    <line x1="148" y1="160" x2="252" y2="128" />
+    <line x1="148" y1="224" x2="252" y2="128" />
+    <line x1="148" y1="160" x2="252" y2="192" />
+    <line x1="252" y1="128" x2="328" y2="160" />
+    <line x1="252" y1="192" x2="328" y2="160" />
+  </g>
+  <g class={styles.nodesFar}>
+    <circle cx="148" cy="96" r="5" />
+    <circle cx="148" cy="224" r="5" />
+  </g>
+  <g class={styles.nodesMid}>
+    <circle cx="148" cy="160" r="6" />
+    <circle cx="252" cy="192" r="5" />
+  </g>
+  <g class={styles.nodesNear}>
+    <circle cx="72" cy="160" r="7" class={styles.intent} />
+    <circle cx="252" cy="128" r="6" />
+    <circle cx="328" cy="160" r="7" class={styles.evidence} />
+  </g>
+</svg>
