@@ -123,6 +123,26 @@ const tests = [
       }
     },
   ],
+  [
+    'already base-prefixed path is not doubled',
+    () => {
+      assert.equal(withBasePathFromBase(PORTFOLIO_BASE, '/portfolio/work/'), '/portfolio/work/');
+      assert.equal(
+        withBasePathFromBase('/portfolio/', '/portfolio/work/leen-ai-operating-system/'),
+        '/portfolio/work/leen-ai-operating-system/',
+      );
+    },
+  ],
+  [
+    'canonical-style join avoids duplicate portfolio segment',
+    () => {
+      const origin = 'https://abdulrasheed222.github.io/portfolio';
+      const logical = '/work/';
+      const canonical = `${origin}${logical}`;
+      assert.equal(canonical, 'https://abdulrasheed222.github.io/portfolio/work/');
+      assert.doesNotMatch(canonical, /\/portfolio\/portfolio\//);
+    },
+  ],
 ];
 
 let passed = 0;

@@ -1,21 +1,9 @@
 ---
-import type { PublicationEntry } from '../../lib/publications';
 import { withBasePath } from '../../lib/url';
-import ButtonLink from '../ui/ButtonLink.astro';
 import TextLink from '../ui/TextLink.astro';
 import styles from './ProjectBriefFooter.module.css';
-
-interface Props {
-  statusNote?: string;
-}
-
-const { statusNote } = Astro.props;
 ---
 
 <footer class={styles.footer}>
-  {statusNote && <p class={styles.status}>{statusNote}</p>}
   <TextLink href={withBasePath('/work/')}>← Back to work</TextLink>
-  <div class={styles.cta}>
-    <ButtonLink href={withBasePath('/contact/')} variant="primary">Contact</ButtonLink>
-  </div>
 </footer>

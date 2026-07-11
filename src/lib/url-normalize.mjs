@@ -89,5 +89,16 @@ export function withBasePathFromBase(baseUrl, logicalPath) {
     return logicalPath;
   }
 
+  const base = normalizeBaseUrl(baseUrl);
+  const path = normalizeLogicalPath(logicalPath);
+
+  if (base !== '/') {
+    const basePrefix = base.replace(/\/$/, '');
+
+    if (path === basePrefix || path === base || path.startsWith(`${basePrefix}/`)) {
+      return path.endsWith('/') ? path : `${path}/`;
+    }
+  }
+
   return joinBaseAndPath(baseUrl, logicalPath);
 }

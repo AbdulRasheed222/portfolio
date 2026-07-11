@@ -1,0 +1,35 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import { formatLabel } from '../../lib/publications';
+import { withBasePath } from '../../lib/url';
+import StatusChip from '../ui/StatusChip.astro';
+import TextLink from '../ui/TextLink.astro';
+import styles from './ProjectBriefOpening.module.css';
+
+interface Props {
+  publication: PublicationEntry['data'];
+}
+
+const { publication } = Astro.props;
+
+const statusVariant = publication.status.includes('PROVISIONAL') ? 'warning' : 'default';
+---
+
+<header class={styles.opening}>
+  <div class={styles.topRow}>
+    <TextLink href={withBasePath('/work/')}>← Work</TextLink>
+    <div class={styles.chips}>
+      <StatusChip variant="muted">{formatLabel(publication.format)}</StatusChip>
+      <StatusChip variant={statusVariant}>{publication.status}</StatusChip>
+    </div>
+  </div>
+
+  <h1 class={styles.title}>{publication.title}</h1>
+  <p class={styles.summary}>{publication.summary}</p>
+
+  <p class={styles.meta}>
+    {publication.role} · {publication.timeframe}
+  </p>
+
+  <p class={styles.maturity}>{publication.maturityNotice}</p>
+</header>
