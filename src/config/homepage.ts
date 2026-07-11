@@ -34,6 +34,10 @@ export type EngineeringPrinciple = {
 
 const workRegistryHref = '/work/';
 
+function publicationHref(slug: string): string {
+  return `/work/${slug}/`;
+}
+
 /** Approved public location line — do not imply visa/sponsorship status */
 export const publicLocation = 'Istanbul · Remote · Open to relocation' as const;
 
@@ -56,13 +60,13 @@ export const homepage = {
     summary:
       'Flagship engineering publication documenting an AI operating environment — primitives for agents, durable workflows, memory, integrations, and governed execution.',
     slug: 'leen-ai-operating-system',
-    href: workRegistryHref,
+    href: publicationHref('leen-ai-operating-system'),
     status: 'IN DEVELOPMENT',
     classification: 'FEATURED',
     tier: 'FLAGSHIP',
     evidenceLevel: 'GATHERING',
     version: 'VER 0.1',
-    readTime: '18 min',
+    readTime: '8 min',
     layout: 'cinematic',
     accent: 'cobalt',
     chapters: [
@@ -111,7 +115,7 @@ export const homepage = {
       summary:
         'Completed support engineering — knowledge base, RAG, Telegram and web channels — that evolved into the Leen platform direction.',
       slug: 'omnichannel-ai-support-platform',
-      href: workRegistryHref,
+      href: publicationHref('omnichannel-ai-support-platform'),
       status: 'COMPLETED — NOT LAUNCHED',
       classification: 'SUPPORTING',
       tier: 'SUPPORTING',
@@ -128,7 +132,7 @@ export const homepage = {
       summary:
         'Hospitality operations software — reservations, room inventory, and guest workflows for SME properties.',
       slug: 'hotel-management-system',
-      href: workRegistryHref,
+      href: publicationHref('hotel-management-system'),
       status: 'EVIDENCE GATHERING',
       classification: 'SUPPORTING',
       tier: 'SUPPORTING',
@@ -145,7 +149,7 @@ export const homepage = {
       summary:
         'SME stock-integrity platform — movements, alerts, and operational reporting with concurrent update discipline.',
       slug: 'inventory-management-system',
-      href: workRegistryHref,
+      href: publicationHref('inventory-management-system'),
       status: 'EVIDENCE GATHERING',
       classification: 'SUPPORTING',
       tier: 'SUPPORTING',

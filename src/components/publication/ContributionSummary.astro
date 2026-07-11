@@ -1,0 +1,14 @@
+---
+import summaryStyles from './ContributionSummary.module.css';
+
+interface Props {
+  summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<section class={summaryStyles.block} aria-labelledby="contribution-summary-heading">
+  <h2 class={summaryStyles.title} id="contribution-summary-heading">Contribution</h2>
+  <p class={summaryStyles.text}>{summary}</p>
+</section>

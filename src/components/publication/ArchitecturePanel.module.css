@@ -1,0 +1,118 @@
+.panel {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(18, 28, 48, 0.96) 0%, rgba(11, 16, 32, 0.99) 100%);
+  box-shadow: var(--shadow-elevated);
+}
+
+.reading {
+  max-width: 42rem;
+}
+
+.wide {
+  max-width: none;
+}
+
+.header {
+  margin-bottom: var(--space-4);
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+}
+
+.title {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.scope,
+.boundary {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.diagram {
+  margin-bottom: var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-matte);
+}
+
+.pendingState {
+  display: grid;
+  place-content: center;
+  gap: var(--space-2);
+  min-height: 12rem;
+  padding: var(--space-6);
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+}
+
+.pendingLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-warning);
+  text-align: center;
+}
+
+.pendingDetail {
+  max-width: 32ch;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.legend {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.legendRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-4);
+}
+
+.legend dt {
+  font-family: var(--font-mono);
+  color: var(--color-text-metadata);
+}
+
+.legend dd {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.footer {
+  border-top: var(--border-width) solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.caption {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.disclaimer {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}

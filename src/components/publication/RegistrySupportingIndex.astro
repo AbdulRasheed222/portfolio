@@ -1,0 +1,55 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import { formatLabel, publicationPath } from '../../lib/publications';
+import { withBasePath } from '../../lib/url';
+import StatusChip from '../ui/StatusChip.astro';
+import styles from './RegistrySupportingIndex.module.css';
+
+interface Props {
+  publications: PublicationEntry[];
+}
+
+const { publications } = Astro.props;
+---
+
+<section class={styles.section} aria-labelledby="registry-supporting-title">
+  <header class={styles.header}>
+    <span class={styles.label}>More work</span>
+    <h2 class={styles.title} id="registry-supporting-title">Supporting systems</h2>
+    <p class={styles.lead}>
+      A completed AI support case study and two full-stack project briefs from earlier delivery work.
+    </p>
+  </header>
+
+  <ol class={styles.list}>
+    {
+      publications.map((entry) => {
+        const data = entry.data;
+        const statusVariant =
+          data.status.includes('COMPLETED')
+            ? 'muted'
+            : data.status.includes('PROVISIONAL') || data.evidenceLevel === 'provisional'
+              ? 'warning'
+              : 'default';
+
+        return (
+          <li>
+            <article class={styles.item}>
+              <div class={styles.chips}>
+                <StatusChip variant="muted">{formatLabel(data.format)}</StatusChip>
+                <StatusChip variant={statusVariant}>{data.status}</StatusChip>
+              </div>
+              <h3 class={styles.itemTitle}>
+                <a href={withBasePath(publicationPath(data.slug))} class={styles.itemLink}>
+                  {data.title}
+                </a>
+              </h3>
+              <p class={styles.summary}>{data.summary}</p>
+              <p class={styles.meta}>{data.role} · {data.timeframe}</p>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>

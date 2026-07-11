@@ -1,0 +1,86 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import { formatEvidenceLevel, formatLabel } from '../../lib/publications';
+import { withBasePath } from '../../lib/url';
+import StatusChip from '../ui/StatusChip.astro';
+import TextLink from '../ui/TextLink.astro';
+import styles from './PublicationOpeningBand.module.css';
+
+interface Props {
+  publication: PublicationEntry['data'];
+}
+
+const { publication } = Astro.props;
+
+const statusVariant =
+  publication.status.includes('DEVELOPMENT') || publication.status.includes('GATHERING')
+    ? 'warning'
+    : publication.status.includes('COMPLETED')
+      ? 'muted'
+      : publication.status.includes('PROVISIONAL')
+        ? 'warning'
+        : 'default';
+
+const isBrief = publication.format === 'project-brief';
+const isFlagship = publication.format === 'flagship';
+const accentClass = publication.accent
+  ? styles[`accent${publication.accent.charAt(0).toUpperCase()}${publication.accent.slice(1)}`]
+  : '';
+---
+
+<header
+  class:list={[
+    styles.band,
+    isFlagship && styles.flagship,
+    isBrief && styles.brief,
+    accentClass,
+  ]}
+>
+  <div class={styles.inner}>
+    <p class={styles.eyebrow}>
+      <TextLink href={withBasePath('/work/')}>← Work</TextLink>
+    </p>
+
+    <div class={styles.chips}>
+      <StatusChip variant="muted">{formatLabel(publication.format)}</StatusChip>
+      <StatusChip variant={statusVariant}>{publication.status}</StatusChip>
+      {!isBrief && (
+        <StatusChip variant="default">EVD: {formatEvidenceLevel(publication.evidenceLevel)}</StatusChip>
+      )}
+    </div>
+
+    <h1 class={styles.title}>{publication.title}</h1>
+    <p class={styles.summary}>{publication.summary}</p>
+
+    <dl class={styles.facts}>
+      <div class={styles.fact}>
+        <dt>Role</dt>
+        <dd>{publication.role}</dd>
+      </div>
+      <div class={styles.fact}>
+        <dt>Timeframe</dt>
+        <dd>{publication.timeframe}</dd>
+      </div>
+      {
+        publication.readingTime && !isBrief && (
+          <div class={styles.fact}>
+            <dt>Reading time</dt>
+            <dd>{publication.readingTime}</dd>
+          </div>
+        )
+      }
+      {
+        !isBrief && (
+          <div class={styles.fact}>
+            <dt>Reference</dt>
+            <dd>{publication.reference}</dd>
+          </div>
+        )
+      }
+    </dl>
+
+    <aside class={styles.maturity} role="note">
+      <p>{publication.maturityNotice}</p>
+    </aside>
+  </div>
+</header>

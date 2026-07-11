@@ -1,0 +1,28 @@
+.layout {
+  display: block;
+}
+
+.sidebar {
+  margin-bottom: var(--space-5);
+}
+
+.article {
+  min-width: 0;
+}
+
+.body {
+  max-width: 42rem;
+}
+
+.layoutFlagship {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .layoutFlagship {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+}

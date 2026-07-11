@@ -1,0 +1,68 @@
+---
+import styles from './EvidenceFigure.module.css';
+
+type Variant = 'reading' | 'wide';
+type EvidenceType =
+  | 'screenshot'
+  | 'architecture-diagram'
+  | 'workflow-diagram'
+  | 'metric'
+  | 'source-code'
+  | 'structural-placeholder';
+
+type VerificationStatus = 'approved' | 'pending' | 'redacted' | 'placeholder';
+
+interface Props {
+  reference: string;
+  caption: string;
+  alt: string;
+  evidenceType: EvidenceType;
+  verificationStatus: VerificationStatus;
+  variant?: Variant;
+  sourceNote?: string;
+  redactionNotice?: string;
+  placeholder?: boolean;
+  src?: string;
+}
+
+const {
+  reference,
+  caption,
+  alt,
+  evidenceType,
+  verificationStatus,
+  variant = 'reading',
+  sourceNote,
+  redactionNotice,
+  placeholder = false,
+  src,
+} = Astro.props;
+
+const isDecorativePlaceholder = placeholder || verificationStatus === 'placeholder';
+---
+
+<figure class:list={[styles.figure, styles[variant], placeholder && styles.placeholder]}>
+  <div class={styles.frame}>
+    {
+      src && !placeholder ? (
+        <img class={styles.image} src={src} alt={alt} loading="lazy" decoding="async" />
+      ) : (
+        <div class={styles.reserve} role={isDecorativePlaceholder ? 'presentation' : undefined}>
+          <span class={styles.reserveLabel}>Evidence figure reserved</span>
+          <span class={styles.reserveDetail}>Approved asset pending</span>
+        </div>
+      )
+    }
+  </div>
+
+  <figcaption class={styles.caption}>
+    <span class={styles.captionRef}>{reference}</span>
+    <span class={styles.captionText}>{caption}</span>
+    <span class={styles.meta}>
+      <span class={styles.metaItem}>Type: {evidenceType.replace(/-/g, ' ')}</span>
+      <span class={styles.metaItem}>Verification: {verificationStatus}</span>
+      {sourceNote && <span class={styles.metaItem}>Source: {sourceNote}</span>}
+      {redactionNotice && <span class={styles.metaItem}>Redaction: {redactionNotice}</span>}
+    </span>
+  </figcaption>
+</figure>

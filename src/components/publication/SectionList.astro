@@ -1,0 +1,23 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import styles from './SectionList.module.css';
+
+interface Props {
+  sections: PublicationEntry['data']['sections'];
+}
+
+const { sections } = Astro.props;
+---
+
+<nav class={styles.nav} aria-label="Sections">
+  <p class={styles.label}>Sections</p>
+  <ul class={styles.list}>
+    {
+      sections.map((section) => (
+        <li>
+          <a class={styles.link} href={`#${section.anchor}`}>{section.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

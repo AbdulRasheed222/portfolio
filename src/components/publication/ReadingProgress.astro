@@ -1,0 +1,43 @@
+---
+import styles from './ReadingProgress.module.css';
+---
+
+<div class={styles.track} aria-hidden="true" data-reading-progress>
+  <div class={styles.bar} data-reading-progress-bar></div>
+</div>
+
+<script>
+  const progressRoot = document.querySelector('[data-reading-progress]');
+  const progressBar = document.querySelector('[data-reading-progress-bar]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (progressRoot && progressBar && !reducedMotion) {
+    let ticking = false;
+
+    const update = () => {
+      const article = document.querySelector('[data-publication-article]');
+      if (!article) return;
+
+      const rect = article.getBoundingClientRect();
+      const articleTop = window.scrollY + rect.top;
+      const articleHeight = article.offsetHeight;
+      const viewport = window.innerHeight;
+      const maxScroll = Math.max(articleHeight - viewport, 1);
+      const progress = Math.min(Math.max((window.scrollY - articleTop) / maxScroll, 0), 1);
+
+      progressBar.style.transform = `scaleX(${progress})`;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+</script>

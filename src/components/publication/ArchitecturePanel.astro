@@ -1,0 +1,70 @@
+---
+import styles from './ArchitecturePanel.module.css';
+
+interface LegendItem {
+  label: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  scope: string;
+  boundaryNote: string;
+  caption: string;
+  disclaimer: string;
+  variant?: 'reading' | 'wide';
+  pending?: boolean;
+  legend?: LegendItem[];
+}
+
+const {
+  title,
+  scope,
+  boundaryNote,
+  caption,
+  disclaimer,
+  variant = 'reading',
+  pending = false,
+  legend = [],
+} = Astro.props;
+---
+
+<section class:list={[styles.panel, styles[variant], pending && styles.pending]} aria-labelledby={`arch-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+  <header class={styles.header}>
+    <span class={styles.label}>Architecture panel</span>
+    <h3 class={styles.title} id={`arch-${title.replace(/\s+/g, '-').toLowerCase()}`}>{title}</h3>
+    <p class={styles.scope}><strong>Scope:</strong> {scope}</p>
+    <p class={styles.boundary}><strong>Boundary:</strong> {boundaryNote}</p>
+  </header>
+
+  <div class={styles.diagram} aria-hidden={pending}>
+    {
+      pending ? (
+        <div class={styles.pendingState}>
+          <span class={styles.pendingLabel}>Diagram pending</span>
+          <span class={styles.pendingDetail}>Approved architecture asset not yet available for publication</span>
+        </div>
+      ) : (
+        <slot />
+      )
+    }
+  </div>
+
+  {
+    legend.length > 0 && (
+      <dl class={styles.legend}>
+        {legend.map((item) => (
+          <div class={styles.legendRow}>
+            <dt>{item.label}</dt>
+            <dd>{item.description}</dd>
+          </div>
+        ))}
+      </dl>
+    )
+  }
+
+  <footer class={styles.footer}>
+    <p class={styles.caption}>{caption}</p>
+    <p class={styles.disclaimer} role="note">{disclaimer}</p>
+  </footer>
+</section>

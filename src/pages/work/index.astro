@@ -1,16 +1,42 @@
 ---
 import { site } from '../../config/site';
-import PlaceholderPage from '../../components/layout/PlaceholderPage.astro';
+import PageContainer from '../../components/layout/PageContainer.astro';
+import Section from '../../components/layout/Section.astro';
+import EvidencePhilosophy from '../../components/publication/EvidencePhilosophy.astro';
+import RegistryFlagship from '../../components/publication/RegistryFlagship.astro';
+import RegistryOpeningBand from '../../components/publication/RegistryOpeningBand.astro';
+import RegistrySupportingIndex from '../../components/publication/RegistrySupportingIndex.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  getFlagshipPublication,
+  getPublications,
+  getSupportingPublications,
+  WORK_REGISTRY_PATH,
+} from '../../lib/publications';
+import { canonicalUrl } from '../../lib/seo';
 
-const title = `Selected Work | ${site.ownerName}`;
-const description = 'Verified project case studies are being prepared.';
+const publications = await getPublications();
+const flagship = getFlagshipPublication(publications);
+const supporting = getSupportingPublications(publications);
+
+const title = `Work | ${site.ownerName}`;
+const description =
+  'Engineering publications — flagship Leen platform, Omnichannel AI case study, and full-stack project briefs.';
 ---
 
-<BaseLayout title={title} description={description}>
-  <PlaceholderPage
-    eyebrow="Work"
-    title="Selected Work"
-    message="Verified project case studies are being prepared."
-  />
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl(WORK_REGISTRY_PATH)}
+  ogTitle={title}
+  ogDescription={description}
+>
+  <Section variant="spacious" mode="registry" reveal={false}>
+    <PageContainer variant="wide">
+      <RegistryOpeningBand />
+      {flagship && <RegistryFlagship publication={flagship} />}
+      <RegistrySupportingIndex publications={supporting} />
+      <EvidencePhilosophy />
+    </PageContainer>
+  </Section>
 </BaseLayout>

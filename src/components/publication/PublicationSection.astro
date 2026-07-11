@@ -1,0 +1,48 @@
+---
+import type { PublicationEntry } from '../../lib/publications';
+import readingStyles from './publication-reading.module.css';
+import styles from './PublicationSection.module.css';
+
+interface Props {
+  section: PublicationEntry['data']['sections'][number];
+}
+
+const { section } = Astro.props;
+---
+
+<section
+  class:list={[styles.section, readingStyles.reading]}
+  id={section.anchor}
+  aria-labelledby={`section-${section.anchor}`}
+>
+  <h2 class={styles.title} id={`section-${section.anchor}`}>{section.title}</h2>
+
+  {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+  {
+    section.bullets && section.bullets.length > 0 && (
+      <ul>
+        {section.bullets.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    section.subsections && section.subsections.length > 0 && (
+      <div class={styles.subsections}>
+        {section.subsections.map((subsection) => (
+          <div class={styles.subsection}>
+            <h3 class={styles.subsectionTitle}>{subsection.title}</h3>
+            <ul>
+              {subsection.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    )
+  }
+</section>

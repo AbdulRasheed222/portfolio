@@ -1,0 +1,131 @@
+.band {
+  position: relative;
+  padding-block: var(--space-8);
+  border-bottom: var(--border-width) solid var(--color-border);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(11, 16, 32, 0.72) 0%,
+      rgba(7, 10, 16, 0.92) 100%
+    );
+}
+
+.band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(45, 91, 255, 0.12), transparent 55%);
+  pointer-events: none;
+}
+
+.flagship::before {
+  background: radial-gradient(ellipse 70% 55% at 0% 0%, rgba(45, 91, 255, 0.18), transparent 60%);
+}
+
+.inner {
+  position: relative;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.meta {
+  margin-bottom: var(--space-4);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.title {
+  margin: 0 0 var(--space-4);
+  max-width: 28ch;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+
+.summary {
+  margin: 0 0 var(--space-5);
+  max-width: 52ch;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+}
+
+.fact dt {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+}
+
+.fact dd {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--color-text-secondary);
+}
+
+.maturity {
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-warning);
+  background: rgba(11, 16, 32, 0.55);
+}
+
+.maturity p {
+  margin: 0;
+  max-width: 60ch;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.brief .title {
+  font-size: var(--font-size-xl);
+}
+
+.brief .facts {
+  grid-template-columns: 1fr;
+}
+
+.accentCobalt {
+  border-bottom-color: rgba(45, 91, 255, 0.25);
+}
+
+.accentIndigo {
+  border-bottom-color: rgba(79, 70, 229, 0.25);
+}
+
+.accentSlate {
+  border-bottom-color: rgba(148, 163, 184, 0.2);
+}
+
+.accentGold {
+  border-bottom-color: rgba(201, 168, 106, 0.25);
+}
+
+@media (min-width: 640px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .band {
+    padding-block: var(--space-9);
+  }
+}

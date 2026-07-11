@@ -1,0 +1,26 @@
+---
+import PublicationLayout from '../../layouts/PublicationLayout.astro';
+import { getPublications } from '../../lib/publications';
+import { site } from '../../config/site';
+
+export async function getStaticPaths() {
+  const publications = await getPublications();
+
+  return publications.map((publication) => ({
+    params: { slug: publication.data.slug },
+    props: { publication, publications },
+  }));
+}
+
+const { publication, publications } = Astro.props;
+const data = publication.data;
+const title = `${data.title} | ${site.ownerName}`;
+const description = data.summary;
+---
+
+<PublicationLayout
+  publication={publication}
+  publications={publications}
+  title={title}
+  description={description}
+/>
