@@ -3,6 +3,7 @@ import ProfilePageCta from '../components/profile/ProfilePageCta.astro';
 import ProfilePageShell from '../components/profile/ProfilePageShell.astro';
 import ResumeBody from '../components/resume/ResumeBody.astro';
 import ResumeHeader from '../components/resume/ResumeHeader.astro';
+import ActionGroup from '../components/ui/ActionGroup.astro';
 import ButtonLink from '../components/ui/ButtonLink.astro';
 import TextLink from '../components/ui/TextLink.astro';
 import { profileIdentity } from '../config/profile';
@@ -29,10 +30,10 @@ const description =
       <div class="resume-screen-only">
         <ProfilePageCta>
           Engineering publications provide deeper context on platform and project work.
-          <div slot="actions">
+          <ActionGroup slot="actions">
             <ButtonLink href="/work/" variant="primary">Browse work</ButtonLink>
             <TextLink href="/contact/">Contact →</TextLink>
-          </div>
+          </ActionGroup>
         </ProfilePageCta>
       </div>
     </div>

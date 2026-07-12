@@ -1,0 +1,27 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.group :global(> a),
+.group :global(> button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.group :global(> .action-full-row) {
+  flex: 0 0 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding-block: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .group {
+    gap: var(--space-4);
+  }
+}

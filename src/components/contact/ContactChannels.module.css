@@ -96,19 +96,7 @@
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
   margin-bottom: var(--space-5);
-}
-
-.status {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-system);
-  text-transform: uppercase;
-  color: var(--color-text-metadata);
 }
 
 @media (min-width: 640px) {

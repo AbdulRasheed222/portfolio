@@ -101,14 +101,6 @@
   border-top: var(--border-width) solid var(--color-border);
 }
 
-.sysStatus {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
 @media (min-width: 768px) {
   .inner {
     padding: var(--space-8) var(--space-9);

@@ -3,10 +3,10 @@ import AboutHero from '../components/about/AboutHero.astro';
 import AboutSections from '../components/about/AboutSections.astro';
 import ProfilePageCta from '../components/profile/ProfilePageCta.astro';
 import ProfilePageShell from '../components/profile/ProfilePageShell.astro';
+import ActionGroup from '../components/ui/ActionGroup.astro';
 import ButtonLink from '../components/ui/ButtonLink.astro';
 import TextLink from '../components/ui/TextLink.astro';
 import { profileContact, profileMailtoHref } from '../config/profile';
-import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { canonicalUrl } from '../lib/seo';
 
@@ -27,12 +27,12 @@ const description =
     <AboutSections />
     <ProfilePageCta>
       Explore engineering publications, the structured résumé, or get in touch directly.
-      <div slot="actions">
+      <ActionGroup slot="actions">
         <ButtonLink href="/work/" variant="primary">Browse work</ButtonLink>
         <ButtonLink href="/resume/" variant="secondary">View résumé</ButtonLink>
         <ButtonLink href="/contact/" variant="secondary">Contact</ButtonLink>
-        <TextLink href={profileMailtoHref()}>{profileContact.email}</TextLink>
-      </div>
+        <TextLink href={profileMailtoHref()} class="action-full-row">{profileContact.email}</TextLink>
+      </ActionGroup>
     </ProfilePageCta>
   </ProfilePageShell>
 </BaseLayout>
