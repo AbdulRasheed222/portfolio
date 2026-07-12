@@ -10,7 +10,7 @@ import styles from './FlagshipLeen.module.css';
 
 const pub = homepage.featuredPublication;
 const resolvedHref = isExternalUrl(pub.href) ? pub.href : withBasePath(pub.href);
-const metaItems = [pub.ref, pub.pub, `TIER: ${pub.tier}`, pub.version, `READ ${pub.readTime}`];
+const metaItems = [pub.ref, pub.pub, `TIER: ${pub.tier}`, `READ ${pub.readTime}`];
 ---
 
 <Section id="flagship-leen" variant="spacious" mode="elevated" class={styles.section} reveal={false}>

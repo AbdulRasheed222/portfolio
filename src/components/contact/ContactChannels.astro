@@ -1,5 +1,6 @@
 ---
 import { profileContact, profileMailtoHref, profileOpportunityStatement } from '../../config/profile';
+import ActionGroup from '../ui/ActionGroup.astro';
 import ButtonLink from '../ui/ButtonLink.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
 import TextLink from '../ui/TextLink.astro';
@@ -46,9 +47,7 @@ const channelMeta = ['EMAIL', 'LINKEDIN', 'GITHUB', profileContact.workPreferenc
   </ul>
 </div>
 
-<div class={styles.actions}>
+<ActionGroup class={styles.actions}>
   <ButtonLink href="/resume/" variant="secondary">View résumé</ButtonLink>
   <ButtonLink href="/work/" variant="secondary">Browse work</ButtonLink>
-</div>
-
-<p class={styles.status}>CHANNEL OPEN · RESPONSE PERSONAL</p>
+</ActionGroup>

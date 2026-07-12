@@ -41,18 +41,15 @@
   max-width: 28ch;
 }
 
-.versionBlock {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: var(--letter-spacing-system);
-  text-transform: uppercase;
-  color: var(--color-text-metadata);
-  line-height: var(--line-height-base);
-}
-
 .copyright {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
+}
+
+.builtWith {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-metadata);
 }
 
 .nav {

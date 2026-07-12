@@ -30,7 +30,6 @@ const {
   href,
   status,
   evidenceLevel,
-  version,
   readTime,
   layout = 'flow',
   accent = 'cobalt',
@@ -45,7 +44,7 @@ const statusVariant =
       ? 'muted'
       : 'default';
 
-const metaItems = [referenceId, pub, `EVD: ${evidenceLevel}`, version, ...(readTime ? [`READ ${readTime}`] : [])];
+const metaItems = [referenceId, pub, `EVD: ${evidenceLevel}`, ...(readTime ? [`READ ${readTime}`] : [])];
 const accentClass = {
   cobalt: styles.accentCobalt,
   indigo: styles.accentIndigo,

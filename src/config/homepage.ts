@@ -50,7 +50,7 @@ export const homepage = {
     roleSecondary: 'building AI platforms, workflow systems, and intelligent products.',
     supporting:
       'I design and ship platform software — from intelligent workflows and agent systems to full-stack products that hold up under real constraints.',
-    metadata: ['SYS-ARR', 'VER 1.1', 'EOS v1.1'] as const,
+    metadata: [publicLocation] as const,
   },
 
   featuredPublication: {
