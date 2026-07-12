@@ -1,0 +1,76 @@
+---
+import { profileAbout, profileEducation, profileExperience, profileLanguages, profileOpportunityStatement } from '../../config/profile';
+import TextLink from '../ui/TextLink.astro';
+import styles from './AboutSections.module.css';
+---
+
+<section class={styles.block} aria-labelledby="about-builds">
+  <h2 id="about-builds">What I build</h2>
+  <ul class={styles.buildList}>
+    {profileAbout.builds.map((item) => (
+      <li>
+        <strong>{item.title}</strong>
+        <span>{item.detail}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<section class={styles.block} aria-labelledby="about-current">
+  <h2 id="about-current">Current work and leadership</h2>
+  <ul>
+    {profileAbout.currentWork.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+</section>
+
+<section class={styles.block} aria-labelledby="about-approach">
+  <h2 id="about-approach">Engineering approach</h2>
+  <ul>
+    {profileAbout.approach.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+</section>
+
+<section class={styles.block} aria-labelledby="about-career">
+  <h2 id="about-career">Career path</h2>
+  <ol class={styles.timeline}>
+    {profileExperience.map((role) => (
+      <li>
+        <div class={styles.timelineHead}>
+          <span class={styles.period}>{role.period}</span>
+          <span class={styles.org}>{role.organization}</span>
+        </div>
+        <p class={styles.timelineTitle}>{role.title}</p>
+        {role.publicationSlug ? (
+          <p class={styles.timelineNote}>
+            <TextLink href={`/work/${role.publicationSlug}/`}>Read the flagship case study →</TextLink>
+          </p>
+        ) : null}
+      </li>
+    ))}
+  </ol>
+</section>
+
+<section class={styles.block} aria-labelledby="about-education">
+  <h2 id="about-education">Education and languages</h2>
+  <p>
+    {profileEducation.qualification} — {profileEducation.institution}, {profileEducation.location}.
+    Expected graduation: {profileEducation.expectedGraduation}.
+  </p>
+  <dl class={styles.languageDl}>
+    {profileLanguages.map((entry) => (
+      <div class={styles.languageRow}>
+        <dt>{entry.language}</dt>
+        <dd>{entry.proficiency}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<section class={styles.block} aria-labelledby="about-opportunity">
+  <h2 id="about-opportunity">Current opportunity preferences</h2>
+  <p>{profileOpportunityStatement}</p>
+</section>

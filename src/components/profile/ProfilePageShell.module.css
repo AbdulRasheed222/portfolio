@@ -1,0 +1,34 @@
+.shell {
+  max-width: 48rem;
+}
+
+.shellWide {
+  max-width: none;
+}
+
+.shell :global(h2) {
+  margin: var(--space-7) 0 var(--space-4);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.shell :global(h2:first-child) {
+  margin-top: 0;
+}
+
+.shell :global(p) {
+  margin: 0 0 var(--space-4);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.shell :global(ul) {
+  margin: 0 0 var(--space-5);
+  padding-left: var(--space-5);
+  color: var(--color-text-secondary);
+}
+
+.shell :global(li + li) {
+  margin-top: var(--space-2);
+}

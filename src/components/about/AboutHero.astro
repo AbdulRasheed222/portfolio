@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../../assets/images/abdul-rasheed-keramat.png';
+import {
+  profileAbout,
+  profileContact,
+  profileEducation,
+  profileIdentity,
+  profileLanguages,
+} from '../../config/profile';
+import MetadataRail from '../ui/MetadataRail.astro';
+import styles from './AboutHero.module.css';
+
+const metadata = [
+  profileContact.workPreference,
+  'BSc Software Engineering',
+  profileLanguages.map((entry) => entry.language).join(' · '),
+] as const;
+---
+
+<header class={styles.hero}>
+  <div class={styles.portraitFrame}>
+    <div class={styles.portraitGlow} aria-hidden="true"></div>
+    <Image
+      src={portrait}
+      alt="Portrait of Abdul Rasheed Keramat, software engineer"
+      width={422}
+      height={591}
+      class={styles.portrait}
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+
+  <div class={styles.content}>
+    <p class={styles.eyebrow}>Operator profile</p>
+    <h1 class={styles.name}>{profileIdentity.fullName}</h1>
+    <p class={styles.role}>{profileIdentity.tagline}</p>
+    <MetadataRail items={metadata} class={styles.meta} />
+    {profileAbout.introduction.map((paragraph) => (
+      <p class={styles.lead}>{paragraph}</p>
+    ))}
+  </div>
+</header>

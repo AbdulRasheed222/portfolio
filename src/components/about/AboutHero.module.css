@@ -1,0 +1,114 @@
+.hero {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+  margin-bottom: var(--space-6);
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(14, 20, 36, 0.94) 0%, rgba(9, 12, 20, 0.98) 100%);
+  box-shadow: var(--shadow-elevated);
+}
+
+.portraitFrame {
+  position: relative;
+  width: min(16rem, 72vw);
+  margin-inline: auto;
+  padding: var(--space-4);
+  background:
+    radial-gradient(
+      ellipse 80% 70% at 50% 35%,
+      rgba(45, 91, 255, 0.18) 0%,
+      rgba(12, 30, 61, 0.85) 45%,
+      rgba(7, 10, 16, 0.98) 100%
+    );
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-border-highlight);
+  box-shadow:
+    var(--shadow-lacquer),
+    inset 0 1px 0 var(--color-highlight-streak);
+}
+
+.portraitGlow {
+  position: absolute;
+  inset: 5%;
+  background: radial-gradient(ellipse at 50% 25%, rgba(120, 180, 255, 0.2) 0%, transparent 55%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.portrait {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 422 / 591;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.name {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+
+.role {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-cool);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.meta {
+  padding-block: var(--space-2);
+}
+
+.lead {
+  margin: 0;
+  max-width: 58ch;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.lead + .lead {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-7);
+    padding: var(--space-6) var(--space-7);
+  }
+
+  .portraitFrame {
+    width: 14rem;
+    margin-inline: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portraitFrame {
+    width: 15rem;
+  }
+}

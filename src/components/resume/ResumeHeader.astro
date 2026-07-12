@@ -1,0 +1,72 @@
+---
+import {
+  profileContact,
+  profileIdentity,
+  profileMailtoHref,
+} from '../../config/profile';
+import MetadataRail from '../ui/MetadataRail.astro';
+import ResumePrintButton from './ResumePrintButton.astro';
+import styles from './ResumeHeader.module.css';
+
+const contactMeta = [
+  profileContact.email,
+  profileContact.location,
+  profileContact.workPreference,
+] as const;
+---
+
+<header class:list={[styles.header, 'resume-header']}>
+  <div class={styles.intro}>
+    <p class={styles.eyebrow}>Career record</p>
+    <h1 class={styles.name}>{profileIdentity.fullName}</h1>
+    <p class={styles.role}>{profileIdentity.role}</p>
+    <MetadataRail items={contactMeta} class={styles.meta} />
+  </div>
+
+  <dl class={styles.contact}>
+    <div class={styles.contactRow}>
+      <dt>Email</dt>
+      <dd>
+        <a href={profileMailtoHref()} class={styles.contactLink}>{profileContact.email}</a>
+      </dd>
+    </div>
+    <div class={styles.contactRow}>
+      <dt>LinkedIn</dt>
+      <dd>
+        <a
+          href={profileContact.linkedIn}
+          class={styles.contactLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          linkedin.com/in/abdul-rasheed-keramat<span class={styles.srOnly}> (opens in a new tab)</span>
+        </a>
+      </dd>
+    </div>
+    <div class={styles.contactRow}>
+      <dt>GitHub</dt>
+      <dd>
+        <a
+          href={profileContact.github}
+          class={styles.contactLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/AbdulRasheed222<span class={styles.srOnly}> (opens in a new tab)</span>
+        </a>
+      </dd>
+    </div>
+    <div class={styles.contactRow}>
+      <dt>Location</dt>
+      <dd>{profileContact.location}</dd>
+    </div>
+    <div class={styles.contactRow}>
+      <dt>Work preference</dt>
+      <dd>{profileContact.workPreference}</dd>
+    </div>
+  </dl>
+
+<div class:list={[styles.actions, 'resume-print-control']}>
+    <ResumePrintButton />
+  </div>
+</header>

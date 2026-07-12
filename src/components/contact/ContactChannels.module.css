@@ -1,0 +1,118 @@
+.panel {
+  margin-bottom: var(--space-6);
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(14, 20, 36, 0.94) 0%, rgba(9, 12, 20, 0.98) 100%);
+  box-shadow: var(--shadow-elevated);
+}
+
+.intro {
+  margin: 0 0 var(--space-4);
+  max-width: 52ch;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.meta {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.primary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.channelLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+}
+
+.emailLink {
+  display: inline-block;
+  min-height: 44px;
+  padding-block: var(--space-2);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.emailLink:hover {
+  color: var(--color-accent-hover);
+}
+
+.emailLink:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.emailButton {
+  align-self: flex-start;
+}
+
+.channelList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.channelList li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.channelList :global(a) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.channelValue {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.status {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-system);
+  text-transform: uppercase;
+  color: var(--color-text-metadata);
+}
+
+@media (min-width: 640px) {
+  .panel {
+    padding: var(--space-6) var(--space-7);
+  }
+}

@@ -1,0 +1,115 @@
+---
+import {
+  profileCapabilityAreas,
+  profileEducation,
+  profileExperience,
+  profileExperienceNote,
+  profileLanguages,
+  profilePublicPdfDownload,
+  profileResumeSummary,
+  profileSelectedWork,
+  profileTechStack,
+} from '../../config/profile';
+import TextLink from '../ui/TextLink.astro';
+import styles from './ResumeBody.module.css';
+---
+
+<section class={styles.block} aria-labelledby="resume-summary">
+  <h2 id="resume-summary">Summary</h2>
+  <p>{profileResumeSummary}</p>
+</section>
+
+<section class={styles.block} aria-labelledby="resume-experience">
+  <h2 id="resume-experience">Experience</h2>
+  <p class={styles.experienceNote}>{profileExperienceNote}</p>
+  <div class={styles.experienceList}>
+    {profileExperience.map((role) => (
+      <article class={styles.role}>
+        <header class={styles.roleHeader}>
+          <div>
+            <h3 class={styles.roleTitle}>{role.title}</h3>
+            <p class={styles.roleOrg}>
+              {role.organization}
+              {role.location ? ` · ${role.location}` : ''}
+            </p>
+          </div>
+          <time class={styles.rolePeriod} datetime={role.period.replace(/\s/g, '')}>{role.period}</time>
+        </header>
+        <p class={styles.roleSummary}>{role.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class={styles.block} aria-labelledby="resume-selected-work">
+  <h2 id="resume-selected-work">Selected work</h2>
+  <div class={styles.selectedWorkList}>
+    {profileSelectedWork.map((project) => (
+      <article class={styles.projectCard}>
+        <h3 class={styles.projectTitle}>{project.title}</h3>
+        <p class={styles.projectMeta}>
+          {project.role} · {project.period}
+        </p>
+        <p class={styles.projectNote}>{project.note}</p>
+        <TextLink href={`/work/${project.slug}/`}>Read flagship case study →</TextLink>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class={styles.block} aria-labelledby="resume-education">
+  <h2 id="resume-education">Education</h2>
+  <p>
+    <strong>{profileEducation.qualification}</strong>
+    <br />
+    {profileEducation.institution}, {profileEducation.location} · Expected {profileEducation.expectedGraduation}
+  </p>
+</section>
+
+<section class={styles.block} aria-labelledby="resume-capabilities">
+  <h2 id="resume-capabilities">Capability areas</h2>
+  <ul class={styles.capabilityList}>
+    {profileCapabilityAreas.map((area) => (
+      <li>
+        <strong>{area.title}</strong>
+        <span>{area.context}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<section class={styles.block} aria-labelledby="resume-stack">
+  <h2 id="resume-stack">Technical stack</h2>
+  <div class={styles.stackGrid}>
+    {profileTechStack.map((group) => (
+      <div class={styles.stackGroup}>
+        <h3 class={styles.stackCategory}>{group.category}</h3>
+        <ul class={styles.stackList}>
+          {group.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class={styles.block} aria-labelledby="resume-languages">
+  <h2 id="resume-languages">Languages</h2>
+  <dl class={styles.languageDl}>
+    {profileLanguages.map((entry) => (
+      <div class={styles.languageRow}>
+        <dt>{entry.language}</dt>
+        <dd>{entry.proficiency}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+{
+  profilePublicPdfDownload === null && (
+    <p class:list={[styles.pdfNote, 'resume-pdf-note']}>
+      A downloadable PDF résumé will be published after final approval.
+    </p>
+  )
+}

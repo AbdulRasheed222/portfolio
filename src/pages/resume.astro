@@ -1,16 +1,40 @@
 ---
-import { site } from '../config/site';
-import PlaceholderPage from '../components/layout/PlaceholderPage.astro';
+import ProfilePageCta from '../components/profile/ProfilePageCta.astro';
+import ProfilePageShell from '../components/profile/ProfilePageShell.astro';
+import ResumeBody from '../components/resume/ResumeBody.astro';
+import ResumeHeader from '../components/resume/ResumeHeader.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import TextLink from '../components/ui/TextLink.astro';
+import { profileIdentity } from '../config/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { canonicalUrl } from '../lib/seo';
+import '../styles/print.css';
 
-const title = `Résumé | ${site.ownerName}`;
-const description = 'The public résumé and downloadable PDF are being prepared.';
+const title = `Résumé | ${profileIdentity.fullName}`;
+const description =
+  'Structured career record for Abdul Rasheed Keramat — experience, education, technical stack, and selected engineering work.';
 ---
 
-<BaseLayout title={title} description={description}>
-  <PlaceholderPage
-    eyebrow="Résumé"
-    title="Résumé"
-    message="The public résumé and downloadable PDF are being prepared."
-  />
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl('/resume/')}
+  ogTitle={title}
+  ogDescription={description}
+>
+  <ProfilePageShell>
+    <div class="resume-document">
+      <ResumeHeader />
+      <ResumeBody />
+      <div class="resume-screen-only">
+        <ProfilePageCta>
+          Engineering publications provide deeper context on platform and project work.
+          <div slot="actions">
+            <ButtonLink href="/work/" variant="primary">Browse work</ButtonLink>
+            <TextLink href="/contact/">Contact →</TextLink>
+          </div>
+        </ProfilePageCta>
+      </div>
+    </div>
+  </ProfilePageShell>
 </BaseLayout>
