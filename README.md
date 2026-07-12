@@ -6,7 +6,7 @@ This project is a static Astro site built for GitHub Pages, presenting evidence-
 
 ## Current status
 
-**Stage 3B — Core Portfolio Pages** complete on `main`. About, Résumé, and Contact are implemented with verified profile data, print-ready web résumé, and direct contact channels. Publication registry and homepage remain approved.
+**Stage 7A — GitHub Pages deployment** configured on `main`. About, Résumé, Contact, Work registry, and homepage are complete. Production URL: `https://abdulrasheed222.github.io/portfolio/` (pending first successful deploy).
 
 ## Stack
 
@@ -34,13 +34,22 @@ Development server: `http://localhost:4321/portfolio/`
 | `npm run build` | Build static output to `dist/` |
 | `npm run preview` | Preview production build locally |
 | `npm run verify:urls` | Validate base-path URL utilities and publication routes |
+| `npm run verify:build` | Validate production `dist/` routes, privacy, and metadata |
 | `npm run astro` | Run Astro CLI |
+
+## Deployment
+
+| Item | Value |
+|------|-------|
+| Workflow | `.github/workflows/deploy.yml` |
+| Trigger | Push to `main` or manual workflow dispatch |
+| Production URL | `https://abdulrasheed222.github.io/portfolio/` (pending until first deploy succeeds) |
+
+See [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) for GitHub Pages setup, verification, and rollback.
 
 ## Deployment target
 
-Initial URL: `https://abdulrasheed222.github.io/portfolio/`
-
-No production deployment has occurred yet.
+Production URL: `https://abdulrasheed222.github.io/portfolio/`
 
 ## Documentation
 
