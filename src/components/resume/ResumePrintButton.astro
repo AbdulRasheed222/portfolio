@@ -1,0 +1,15 @@
+---
+import styles from './ResumePrintButton.module.css';
+---
+
+<button type="button" class={styles.button} data-resume-print>
+  Print résumé
+</button>
+
+<script>
+  const printButton = document.querySelector('[data-resume-print]');
+
+  printButton?.addEventListener('click', () => {
+    window.print();
+  });
+</script>

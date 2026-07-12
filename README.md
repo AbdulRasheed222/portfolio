@@ -6,7 +6,7 @@ This project is a static Astro site built for GitHub Pages, presenting evidence-
 
 ## Current status
 
-**Stage 2E — Engineering Publication Foundation** complete on `main`. The homepage and publication registry are live with four honest placeholder publication routes, a reusable reading shell, and evidence-backed metadata. About, Résumé, and Contact remain structural placeholders.
+**Stage 3B — Core Portfolio Pages** complete on `main`. About, Résumé, and Contact are implemented with verified profile data, print-ready web résumé, and direct contact channels. Publication registry and homepage remain approved.
 
 ## Stack
 
@@ -51,6 +51,18 @@ No production deployment has occurred yet.
 - [docs/CONTENT_MODEL.md](./docs/CONTENT_MODEL.md) — Content strategy and case-study policy
 - [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) — Hosting and deployment plan
 - [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) — Tokens, surfaces, motion, components
+
+## Core pages (Stage 3B)
+
+| Route | Purpose |
+|-------|---------|
+| `/about/` | Professional narrative, portrait, career path, opportunity preferences |
+| `/resume/` | Structured web résumé with print support (`window.print()`) |
+| `/contact/` | Direct email, LinkedIn, and GitHub channels |
+
+Profile data: `src/config/profile.ts` (verified facts from CV inventory and approved homepage metadata).
+
+Public PDF résumé download is **disabled** until Abdul approves a redacted file. Private CV remains in `content-sources/` (not published).
 
 ## Content notice
 

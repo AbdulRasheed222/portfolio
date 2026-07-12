@@ -1,0 +1,54 @@
+---
+import { profileContact, profileMailtoHref, profileOpportunityStatement } from '../../config/profile';
+import ButtonLink from '../ui/ButtonLink.astro';
+import MetadataRail from '../ui/MetadataRail.astro';
+import TextLink from '../ui/TextLink.astro';
+import styles from './ContactChannels.module.css';
+
+const channelMeta = ['EMAIL', 'LINKEDIN', 'GITHUB', profileContact.workPreference] as const;
+---
+
+<div class={styles.panel}>
+  <p class={styles.intro}>{profileOpportunityStatement}</p>
+  <MetadataRail items={channelMeta} class={styles.meta} />
+
+  <div class={styles.primary}>
+    <span class={styles.channelLabel} id="contact-email-label">Email</span>
+    <a href={profileMailtoHref()} class={styles.emailLink} aria-labelledby="contact-email-label">
+      {profileContact.email}
+    </a>
+    <ButtonLink href={profileMailtoHref()} variant="primary" class={styles.emailButton}>
+      Email Abdul Rasheed
+    </ButtonLink>
+  </div>
+
+  <ul class={styles.channelList}>
+    <li>
+      <span class={styles.channelLabel}>LinkedIn</span>
+      <TextLink href={profileContact.linkedIn} external target="_blank">
+        linkedin.com/in/abdul-rasheed-keramat
+      </TextLink>
+    </li>
+    <li>
+      <span class={styles.channelLabel}>GitHub</span>
+      <TextLink href={profileContact.github} external target="_blank">
+        github.com/AbdulRasheed222
+      </TextLink>
+    </li>
+    <li>
+      <span class={styles.channelLabel}>Location</span>
+      <span class={styles.channelValue}>{profileContact.location}</span>
+    </li>
+    <li>
+      <span class={styles.channelLabel}>Work preference</span>
+      <span class={styles.channelValue}>{profileContact.workPreference}</span>
+    </li>
+  </ul>
+</div>
+
+<div class={styles.actions}>
+  <ButtonLink href="/resume/" variant="secondary">View résumé</ButtonLink>
+  <ButtonLink href="/work/" variant="secondary">Browse work</ButtonLink>
+</div>
+
+<p class={styles.status}>CHANNEL OPEN · RESPONSE PERSONAL</p>

@@ -1,0 +1,86 @@
+/* Résumé print stylesheet — progressive enhancement; page remains readable without JS */
+
+@media print {
+  @page {
+    margin: 1.25cm;
+    size: auto;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    print-color-adjust: exact;
+  }
+
+  [data-eos-print-hide],
+  .eos-page-shell .skip-link,
+  .resume-screen-only,
+  .resume-print-control,
+  .resume-pdf-note {
+    display: none !important;
+  }
+
+  [data-eos-header] {
+    position: static !important;
+  }
+
+  .resume-document {
+    max-width: none !important;
+    padding: 0 !important;
+    color: #111 !important;
+  }
+
+  .resume-document * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .resume-document .resume-header,
+  .resume-document [class*='role'],
+  .resume-document [class*='projectCard'],
+  .resume-document [class*='stackGroup'],
+  .resume-document [class*='capabilityList'] li {
+    background: #fff !important;
+    border-color: #ccc !important;
+    color: #111 !important;
+  }
+
+  .resume-document h1,
+  .resume-document h2,
+  .resume-document h3,
+  .resume-document strong,
+  .resume-document dt {
+    color: #111 !important;
+  }
+
+  .resume-document p,
+  .resume-document li,
+  .resume-document dd,
+  .resume-document span {
+    color: #222 !important;
+  }
+
+  .resume-document [class*='role'],
+  .resume-document [class*='projectCard'] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .resume-document a {
+    color: #111 !important;
+    text-decoration: underline !important;
+  }
+
+  .resume-document a[href^='http']::after,
+  .resume-document a[href^='/']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    font-weight: normal;
+    word-break: break-all;
+  }
+
+  .resume-document a[href^='mailto:']::after {
+    content: none;
+  }
+}

@@ -1,0 +1,13 @@
+---
+import styles from './ProfilePageCta.module.css';
+---
+
+<aside class={styles.cta} aria-label="Next steps">
+  <p class={styles.label}>Continue</p>
+  <p class={styles.text}>
+    <slot />
+  </p>
+  <div class={styles.actions}>
+    <slot name="actions" />
+  </div>
+</aside>

@@ -1,16 +1,38 @@
 ---
+import AboutHero from '../components/about/AboutHero.astro';
+import AboutSections from '../components/about/AboutSections.astro';
+import ProfilePageCta from '../components/profile/ProfilePageCta.astro';
+import ProfilePageShell from '../components/profile/ProfilePageShell.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import TextLink from '../components/ui/TextLink.astro';
+import { profileContact, profileMailtoHref } from '../config/profile';
 import { site } from '../config/site';
-import PlaceholderPage from '../components/layout/PlaceholderPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { canonicalUrl } from '../lib/seo';
 
-const title = `About | ${site.ownerName}`;
-const description = 'A verified professional background and working approach will be added before launch.';
+const title = `About Abdul Rasheed Keramat | Software Engineer`;
+const description =
+  'Professional background, engineering approach, and career path — Abdul Rasheed Keramat, full-stack software engineer based in Istanbul.';
 ---
 
-<BaseLayout title={title} description={description}>
-  <PlaceholderPage
-    eyebrow="About"
-    title="About"
-    message="A verified professional background and working approach will be added before launch."
-  />
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl('/about/')}
+  ogTitle={title}
+  ogDescription={description}
+>
+  <ProfilePageShell variant="wide">
+    <AboutHero />
+    <AboutSections />
+    <ProfilePageCta>
+      Explore engineering publications, the structured résumé, or get in touch directly.
+      <div slot="actions">
+        <ButtonLink href="/work/" variant="primary">Browse work</ButtonLink>
+        <ButtonLink href="/resume/" variant="secondary">View résumé</ButtonLink>
+        <ButtonLink href="/contact/" variant="secondary">Contact</ButtonLink>
+        <TextLink href={profileMailtoHref()}>{profileContact.email}</TextLink>
+      </div>
+    </ProfilePageCta>
+  </ProfilePageShell>
 </BaseLayout>

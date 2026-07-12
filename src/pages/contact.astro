@@ -1,16 +1,29 @@
 ---
+import ContactChannels from '../components/contact/ContactChannels.astro';
+import ProfileOpening from '../components/profile/ProfileOpening.astro';
+import ProfilePageShell from '../components/profile/ProfilePageShell.astro';
 import { site } from '../config/site';
-import PlaceholderPage from '../components/layout/PlaceholderPage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { canonicalUrl } from '../lib/seo';
 
-const title = `Contact | ${site.ownerName}`;
-const description = 'Verified professional contact details will be added before public launch.';
+const title = `Contact Abdul Rasheed Keramat`;
+const description =
+  'Contact Abdul Rasheed Keramat by email, LinkedIn, or GitHub. Open to full-stack, platform, backend, and AI engineering opportunities.';
 ---
 
-<BaseLayout title={title} description={description}>
-  <PlaceholderPage
-    eyebrow="Contact"
-    title="Contact"
-    message="Verified professional contact details will be added before public launch."
-  />
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl('/contact/')}
+  ogTitle={title}
+  ogDescription={description}
+>
+  <ProfilePageShell>
+    <ProfileOpening
+      eyebrow="Channel open"
+      title="Contact"
+      description="Direct outreach for engineering roles, collaborations, and platform conversations."
+    />
+    <ContactChannels />
+  </ProfilePageShell>
 </BaseLayout>

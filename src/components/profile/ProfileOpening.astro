@@ -1,0 +1,17 @@
+---
+import styles from './ProfileOpening.module.css';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}
+
+const { eyebrow, title, description } = Astro.props;
+---
+
+<header class={styles.opening}>
+  <p class={styles.eyebrow}>{eyebrow}</p>
+  <h1 class={styles.title}>{title}</h1>
+  {description && <p class={styles.description}>{description}</p>}
+</header>
