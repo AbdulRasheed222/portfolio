@@ -27,3 +27,6 @@ Thumbs.db
 # editor directories
 .idea/
 .vscode/
+
+# Private portfolio source material
+content-sources/
