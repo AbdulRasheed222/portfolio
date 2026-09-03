@@ -3,17 +3,15 @@
   "title": "Inventory Management System",
   "slug": "inventory-management-system",
   "reference": "REF-INV-001",
-  "summary": "SME stock-integrity platform — stock movements, alerts, and operational reporting with concurrent update discipline.",
-  "status": "PROVISIONAL",
-  "evidenceLevel": "provisional",
+  "summary": "Inventory software for SMEs — stock movements, threshold alerts, and operational reporting.",
+  "status": "DEVELOPED 2022 – 2024",
   "role": "Full Stack Software Developer",
   "timeframe": "2022 – 2024",
-  "technologies": ["Full-stack web application", "Relational database", "REST APIs", "Concurrent data handling"],
+  "technologies": ["Full-stack web application", "Relational database", "REST APIs"],
   "contributionSummary": "Full-stack delivery across interface, backend, and data layers for SME inventory operations.",
-  "maturityNotice": "Sector-level delivery context from CV. Project-specific details are provisional until verified.",
   "order": 4,
   "accent": "gold",
-  "noindex": true,
+  "noindex": false,
   "sections": [
     {
       "title": "Overview",
@@ -26,13 +24,12 @@
       "title": "What was built",
       "anchor": "what-was-built",
       "paragraphs": [
-        "A full-stack stock-integrity application supporting multi-user inventory operations."
+        "A full-stack application for SME inventory operations."
       ],
       "bullets": [
         "Stock movement recording and history",
         "Threshold alerts for low or critical inventory",
-        "Operational reporting for business owners",
-        "Concurrent update handling for multi-user environments"
+        "Operational reporting for business owners"
       ]
     },
     {

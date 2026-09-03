@@ -9,6 +9,7 @@ import TextLink from '../components/ui/TextLink.astro';
 import { profileContact, profileMailtoHref } from '../config/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { canonicalUrl } from '../lib/seo';
+import { profileStructuredData } from '../lib/structured-data';
 
 const title = `About Abdul Rasheed Keramat | Software Engineer`;
 const description =
@@ -21,6 +22,7 @@ const description =
   canonical={canonicalUrl('/about/')}
   ogTitle={title}
   ogDescription={description}
+  structuredData={profileStructuredData('/about/')}
 >
   <ProfilePageShell variant="wide">
     <AboutHero />

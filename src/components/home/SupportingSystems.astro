@@ -1,11 +1,17 @@
 ---
-import { homepage } from '../../config/homepage';
+import { publicationPresentation } from '../../config/homepage';
+import {
+  getPublications,
+  getSupportingPublications,
+  publicationPath,
+} from '../../lib/publications';
 import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
 import PublicationArtifact from '../ui/PublicationArtifact.astro';
 import styles from './SupportingSystems.module.css';
 
-const { publications } = homepage;
+const publications = await getPublications();
+const supporting = getSupportingPublications(publications);
 ---
 
 <Section id="supporting-systems" variant="spacious" class={styles.section}>
@@ -14,27 +20,28 @@ const { publications } = homepage;
       <span class={styles.index}>04 — SUPPORTING SYSTEMS</span>
       <h2 class={styles.title}>Engineering publications</h2>
       <p class={styles.lead}>
-        Prior systems and supporting work — each documented as an engineering publication with
-        evidence and lineage.
+        Prior systems and supporting work — each documented as an engineering publication.
       </p>
     </header>
 
     <div class={styles.grid}>
-      {publications.map((pub) => (
-        <PublicationArtifact
-          referenceId={pub.ref}
-          pub={pub.pub}
-          title={pub.title}
-          summary={pub.summary}
-          href={pub.href}
-          status={pub.status}
-          evidenceLevel={pub.evidenceLevel}
-          version={pub.version}
-          readTime={pub.readTime}
-          layout={pub.layout === 'cinematic' ? 'flow' : pub.layout}
-          accent={pub.accent}
-        />
-      ))}
+      {supporting.map((entry) => {
+        const data = entry.data;
+        const presentation = publicationPresentation[data.slug];
+        return (
+          <PublicationArtifact
+            referenceId={data.reference}
+            pub={presentation?.pub ?? data.reference}
+            title={data.title}
+            summary={data.summary}
+            href={publicationPath(data.slug)}
+            status={data.status}
+            readTime={data.readingTime}
+            layout={presentation?.layout}
+            accent={data.accent}
+          />
+        );
+      })}
     </div>
   </PageContainer>
 </Section>

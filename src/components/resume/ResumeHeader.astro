@@ -3,7 +3,9 @@ import {
   profileContact,
   profileIdentity,
   profileMailtoHref,
+  profileResumePdfPath,
 } from '../../config/profile';
+import ButtonLink from '../ui/ButtonLink.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
 import ResumePrintButton from './ResumePrintButton.astro';
 import styles from './ResumeHeader.module.css';
@@ -39,7 +41,7 @@ const contactMeta = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          linkedin.com/in/abdul-rasheed-keramat<span class={styles.srOnly}> (opens in a new tab)</span>
+          linkedin.com/in/abdul-rasheed-keramat-1b26b3277<span class={styles.srOnly}> (opens in a new tab)</span>
         </a>
       </dd>
     </div>
@@ -67,6 +69,9 @@ const contactMeta = [
   </dl>
 
 <div class:list={[styles.actions, 'resume-print-control']}>
+    <ButtonLink href={profileResumePdfPath} variant="primary" download>
+      Download PDF résumé
+    </ButtonLink>
     <ResumePrintButton />
   </div>
 </header>

@@ -41,7 +41,7 @@ const isBrief = data.format === 'project-brief';
   title={title}
   description={description}
   canonical={canonical}
-  noindex={data.noindex ?? true}
+  noindex={data.noindex}
   ogTitle={title}
   ogDescription={description}
   ogType="article"
@@ -110,7 +110,6 @@ const isBrief = data.format === 'project-brief';
                       decision={record.decision}
                       tradeoff={record.tradeoff}
                       status={record.status ?? 'Documented'}
-                      verificationState="Directional — full evidence pending"
                     />
                   ))
               }

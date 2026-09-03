@@ -3,37 +3,35 @@
   "title": "Omnichannel AI Support Platform",
   "slug": "omnichannel-ai-support-platform",
   "reference": "REF-OMNI-001",
-  "summary": "A completed customer-support platform — knowledge retrieval, RAG, and multi-channel delivery — that informed the broader Leen platform direction.",
-  "status": "COMPLETED — NOT LAUNCHED",
-  "evidenceLevel": "gathering",
+  "summary": "An earlier Muazaf support-platform project — voice and chat agents, knowledge-backed support, and multi-channel delivery. Developed, not commercially launched.",
+  "status": "DEVELOPED — NOT LAUNCHED",
   "role": "Technical leadership — platform and AI engineering",
-  "timeframe": "Prior platform work — dates pending verification",
-  "technologies": ["Python", "RAG / knowledge retrieval", "Telegram", "Web channels", "LLM integrations"],
-  "contributionSummary": "Led technical direction for support automation, knowledge retrieval, and channel integration. Team delivery was involved — solo ownership is not claimed. Detailed attribution is being documented.",
-  "maturityNotice": "Engineering was completed. The product was not commercially launched. This system evolved into the Leen platform direction — not abandoned.",
+  "technologies": ["Voice and chat agents", "Multi-channel delivery", "Knowledge-backed support", "Support-platform infrastructure"],
+  "contributionSummary": "Led technical direction for support automation, knowledge-backed responses, and channel integration. Team delivery was involved — solo ownership is not claimed.",
+  "maturityNotice": "Developed as an earlier Muazaf support-platform effort. It was not commercially launched; work subsequently shifted to the broader platform direction that became Leen.",
   "order": 2,
   "readingTime": "5 min",
   "accent": "indigo",
-  "noindex": true,
+  "noindex": false,
   "relatedSlugs": ["leen-ai-operating-system"],
-  "statusNote": "Completed — not commercially launched. Superseded by the broader Leen platform direction.",
+  "statusNote": "Developed — not commercially launched. Work then shifted to the broader platform direction that became Leen.",
   "sections": [
     {
       "title": "Overview",
       "anchor": "overview",
       "paragraphs": [
-        "An omnichannel AI support platform designed to handle customer inquiries across messaging and web channels using a knowledge base and retrieval-augmented responses.",
-        "The engineering work is complete. The product did not launch commercially. Its patterns and lessons informed the Leen AI operating environment."
+        "An omnichannel AI support platform — an earlier Muazaf project built around support automation: voice and chat agents, multiple communication channels, and knowledge-backed responses.",
+        "The product was developed but never commercially launched. After this work, the team stopped pursuing the standalone support-product direction and began the broader platform work that became Leen."
       ]
     },
     {
       "title": "Customer-support problem",
       "anchor": "customer-support-problem",
       "paragraphs": [
-        "Support teams needed consistent answers across channels without manually repeating the same information. Static FAQ pages and ad-hoc chatbots did not maintain context or retrieve from an organized knowledge base."
+        "Support teams needed consistent answers across channels without manually repeating the same information. Static FAQ pages and ad-hoc chatbots did not maintain context or draw on an organized knowledge base."
       ],
       "bullets": [
-        "Inconsistent answers across Telegram and web touchpoints",
+        "Inconsistent answers across voice, chat, and web touchpoints",
         "Knowledge scattered across documents without reliable retrieval",
         "Manual escalation when automated responses were insufficient"
       ]
@@ -42,29 +40,29 @@
       "title": "What was built",
       "anchor": "what-was-built",
       "paragraphs": [
-        "A support engineering stack combining structured knowledge, retrieval-augmented generation, and channel adapters for customer-facing interaction."
+        "A support-platform stack combining a structured knowledge base, agent-driven responses, and channel integrations for customer-facing interaction."
       ],
       "bullets": [
-        "Knowledge base with retrieval pipeline for grounded responses",
-        "Telegram and web channel integrations",
-        "Support workflow logic connecting intake, retrieval, and response",
-        "Architecture designed for extension into broader platform primitives"
+        "Voice and chat agents for customer-facing support",
+        "Knowledge base with retrieval for grounded responses",
+        "Multiple communication channels behind a shared support layer",
+        "Support-platform infrastructure connecting intake, retrieval, and response"
       ]
     },
     {
       "title": "My contribution",
       "anchor": "my-contribution",
       "paragraphs": [
-        "Technical leadership across architecture, AI integration, and channel delivery. Scope included retrieval design, integration boundaries, and engineering direction for the support stack.",
+        "Technical leadership across architecture, AI integration, and channel delivery. Scope included knowledge and retrieval design, integration boundaries, and engineering direction for the support stack.",
         "Team members contributed to implementation. This case study does not claim solo delivery."
       ]
     },
     {
-      "title": "Completion and evolution into Leen",
-      "anchor": "completion-and-evolution",
+      "title": "Outcome and shift to Leen",
+      "anchor": "outcome-and-shift-to-leen",
       "paragraphs": [
-        "Engineering reached completion without a commercial launch. The company and product direction evolved toward Leen — a broader AI operating environment rather than a standalone support tool.",
-        "This is documented as lineage and learning, not failure. The support patterns (retrieval, channels, workflow thinking) carry forward into the flagship platform."
+        "The product was developed but not commercially launched. The team stopped pursuing the standalone support-product direction, and work shifted to a broader platform direction — what is now Leen.",
+        "Leen is not a renamed support product: the support platform was an earlier, narrower effort, while Leen became a broader AI operating environment direction."
       ]
     }
   ]

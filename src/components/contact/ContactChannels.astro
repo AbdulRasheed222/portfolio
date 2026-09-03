@@ -1,5 +1,10 @@
 ---
-import { profileContact, profileMailtoHref, profileOpportunityStatement } from '../../config/profile';
+import {
+  profileContact,
+  profileMailtoHref,
+  profileOpportunityStatement,
+  profileResumePdfPath,
+} from '../../config/profile';
 import ActionGroup from '../ui/ActionGroup.astro';
 import ButtonLink from '../ui/ButtonLink.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
@@ -27,7 +32,7 @@ const channelMeta = ['EMAIL', 'LINKEDIN', 'GITHUB', profileContact.workPreferenc
     <li>
       <span class={styles.channelLabel}>LinkedIn</span>
       <TextLink href={profileContact.linkedIn} external target="_blank">
-        linkedin.com/in/abdul-rasheed-keramat
+        linkedin.com/in/abdul-rasheed-keramat-1b26b3277
       </TextLink>
     </li>
     <li>
@@ -48,6 +53,9 @@ const channelMeta = ['EMAIL', 'LINKEDIN', 'GITHUB', profileContact.workPreferenc
 </div>
 
 <ActionGroup class={styles.actions}>
+  <ButtonLink href={profileResumePdfPath} variant="primary" download>
+    Download résumé (PDF)
+  </ButtonLink>
   <ButtonLink href="/resume/" variant="secondary">View résumé</ButtonLink>
   <ButtonLink href="/work/" variant="secondary">Browse work</ButtonLink>
 </ActionGroup>

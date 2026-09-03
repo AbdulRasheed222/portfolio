@@ -9,6 +9,7 @@ import TextLink from '../components/ui/TextLink.astro';
 import { profileIdentity } from '../config/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { canonicalUrl } from '../lib/seo';
+import { profileStructuredData } from '../lib/structured-data';
 import '../styles/print.css';
 
 const title = `Résumé | ${profileIdentity.fullName}`;
@@ -22,6 +23,7 @@ const description =
   canonical={canonicalUrl('/resume/')}
   ogTitle={title}
   ogDescription={description}
+  structuredData={profileStructuredData('/resume/')}
 >
   <ProfilePageShell>
     <div class="resume-document">

@@ -4,7 +4,7 @@ export type NavigationItem = {
 };
 
 /**
- * Approved V1 primary navigation model.
+ * Primary site navigation.
  * `href` values are logical site paths without the deployment base prefix.
  */
 export const navigation = [

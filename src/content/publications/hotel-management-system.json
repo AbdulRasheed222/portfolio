@@ -3,23 +3,21 @@
   "title": "Hotel Management System",
   "slug": "hotel-management-system",
   "reference": "REF-HOTEL-001",
-  "summary": "Full-stack hospitality software for SME properties — reservations, room inventory, and guest workflows.",
-  "status": "PROVISIONAL",
-  "evidenceLevel": "provisional",
+  "summary": "Full-stack hospitality software — reservations, room inventory, and guest workflows for front-desk operations.",
+  "status": "DEVELOPED 2022 – 2024",
   "role": "Full Stack Software Developer",
   "timeframe": "2022 – 2024",
-  "technologies": ["Full-stack web application", "Relational database", "REST APIs", "Role-based access"],
+  "technologies": ["Full-stack web application", "Relational database", "REST APIs"],
   "contributionSummary": "Full-stack delivery across interface, backend, and data layers for hospitality operations software.",
-  "maturityNotice": "Sector-level delivery context from CV. Project-specific details are provisional until verified.",
   "order": 3,
   "accent": "slate",
-  "noindex": true,
+  "noindex": false,
   "sections": [
     {
       "title": "Overview",
       "anchor": "overview",
       "paragraphs": [
-        "Hotel management software for small and medium hospitality properties — reservations, room availability, and guest workflows for front-desk operations."
+        "Hotel management software for hospitality properties — reservations, room availability, and guest workflows for front-desk operations."
       ]
     },
     {

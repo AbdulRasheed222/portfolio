@@ -1,6 +1,6 @@
 ---
 import type { PublicationEntry } from '../../lib/publications';
-import { formatEvidenceLevel, formatLabel } from '../../lib/publications';
+import { formatLabel } from '../../lib/publications';
 import { withBasePath } from '../../lib/url';
 import StatusChip from '../ui/StatusChip.astro';
 import TextLink from '../ui/TextLink.astro';
@@ -12,14 +12,11 @@ interface Props {
 
 const { publication } = Astro.props;
 
-const statusVariant =
-  publication.status.includes('DEVELOPMENT') || publication.status.includes('GATHERING')
-    ? 'warning'
-    : publication.status.includes('COMPLETED')
-      ? 'muted'
-      : publication.status.includes('PROVISIONAL')
-        ? 'warning'
-        : 'default';
+const statusVariant = publication.status.includes('DEVELOPMENT')
+  ? 'warning'
+  : publication.status.includes('NOT LAUNCHED')
+    ? 'muted'
+    : 'default';
 
 const isBrief = publication.format === 'project-brief';
 const isFlagship = publication.format === 'flagship';
@@ -44,9 +41,6 @@ const accentClass = publication.accent
     <div class={styles.chips}>
       <StatusChip variant="muted">{formatLabel(publication.format)}</StatusChip>
       <StatusChip variant={statusVariant}>{publication.status}</StatusChip>
-      {!isBrief && (
-        <StatusChip variant="default">EVD: {formatEvidenceLevel(publication.evidenceLevel)}</StatusChip>
-      )}
     </div>
 
     <h1 class={styles.title}>{publication.title}</h1>
@@ -57,10 +51,14 @@ const accentClass = publication.accent
         <dt>Role</dt>
         <dd>{publication.role}</dd>
       </div>
-      <div class={styles.fact}>
-        <dt>Timeframe</dt>
-        <dd>{publication.timeframe}</dd>
-      </div>
+      {
+        publication.timeframe && (
+          <div class={styles.fact}>
+            <dt>Timeframe</dt>
+            <dd>{publication.timeframe}</dd>
+          </div>
+        )
+      }
       {
         publication.readingTime && !isBrief && (
           <div class={styles.fact}>
@@ -79,8 +77,12 @@ const accentClass = publication.accent
       }
     </dl>
 
-    <aside class={styles.maturity} role="note">
-      <p>{publication.maturityNotice}</p>
-    </aside>
+    {
+      publication.maturityNotice && (
+        <aside class={styles.maturity} role="note">
+          <p>{publication.maturityNotice}</p>
+        </aside>
+      )
+    }
   </div>
 </header>

@@ -12,7 +12,11 @@ interface Props {
 
 const { publication } = Astro.props;
 
-const statusVariant = publication.status.includes('PROVISIONAL') ? 'warning' : 'default';
+const statusVariant = publication.status.includes('DEVELOPMENT')
+  ? 'warning'
+  : publication.status.includes('COMPLETED')
+    ? 'muted'
+    : 'default';
 ---
 
 <header class={styles.opening}>
@@ -28,8 +32,8 @@ const statusVariant = publication.status.includes('PROVISIONAL') ? 'warning' : '
   <p class={styles.summary}>{publication.summary}</p>
 
   <p class={styles.meta}>
-    {publication.role} · {publication.timeframe}
+    {publication.role}{publication.timeframe && ` · ${publication.timeframe}`}
   </p>
 
-  <p class={styles.maturity}>{publication.maturityNotice}</p>
+  {publication.maturityNotice && <p class={styles.maturity}>{publication.maturityNotice}</p>}
 </header>

@@ -1,8 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const evidenceLevel = z.enum(['verified', 'partial', 'gathering', 'provisional']);
-
 const subsectionSchema = z.object({
   title: z.string(),
   items: z.array(z.string()),
@@ -45,16 +43,14 @@ const publications = defineCollection({
     summary: z.string(),
     status: z.enum([
       'IN DEVELOPMENT',
-      'EVIDENCE GATHERING',
-      'COMPLETED — NOT LAUNCHED',
-      'PROVISIONAL',
+      'DEVELOPED — NOT LAUNCHED',
+      'DEVELOPED 2022 – 2024',
     ]),
-    evidenceLevel: evidenceLevel,
     role: z.string(),
-    timeframe: z.string(),
+    timeframe: z.string().optional(),
     technologies: z.array(z.string()),
     contributionSummary: z.string(),
-    maturityNotice: z.string(),
+    maturityNotice: z.string().optional(),
     order: z.number(),
     sections: z.array(sectionSchema),
     figures: z.array(figureSchema).optional(),
@@ -62,7 +58,11 @@ const publications = defineCollection({
     statusNote: z.string().optional(),
     readingTime: z.string().optional(),
     accent: z.enum(['cobalt', 'indigo', 'slate', 'gold']).optional(),
-    noindex: z.boolean().optional(),
+    /**
+     * Explicit opt-out from search indexing. Defaults to false so a new
+     * publication is indexable unless deliberately excluded.
+     */
+    noindex: z.boolean().default(false),
     relatedSlugs: z.array(z.string()).optional(),
   }),
 });

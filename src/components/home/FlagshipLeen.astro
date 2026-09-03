@@ -1,6 +1,11 @@
 ---
-import { homepage } from '../../config/homepage';
-import { isExternalUrl, withBasePath } from '../../lib/url';
+import { publicationPresentation } from '../../config/homepage';
+import {
+  getFlagshipPublication,
+  getPublications,
+  publicationPath,
+} from '../../lib/publications';
+import { withBasePath } from '../../lib/url';
 import PageContainer from '../layout/PageContainer.astro';
 import Section from '../layout/Section.astro';
 import MetadataRail from '../ui/MetadataRail.astro';
@@ -8,9 +13,22 @@ import StatusChip from '../ui/StatusChip.astro';
 import LeenArchitecture from './LeenArchitecture.astro';
 import styles from './FlagshipLeen.module.css';
 
-const pub = homepage.featuredPublication;
-const resolvedHref = isExternalUrl(pub.href) ? pub.href : withBasePath(pub.href);
-const metaItems = [pub.ref, pub.pub, `TIER: ${pub.tier}`, `READ ${pub.readTime}`];
+const publications = await getPublications();
+const flagship = getFlagshipPublication(publications);
+
+if (!flagship) {
+  throw new Error('FlagshipLeen: no flagship publication found in the content collection.');
+}
+
+const data = flagship.data;
+const resolvedHref = withBasePath(publicationPath(data.slug));
+const pubCode = publicationPresentation[data.slug]?.pub;
+const metaItems = [
+  data.reference,
+  ...(pubCode ? [pubCode] : []),
+  'TIER: FLAGSHIP',
+  ...(data.readingTime ? [`READ ${data.readingTime}`] : []),
+];
 ---
 
 <Section id="flagship-leen" variant="spacious" mode="elevated" class={styles.section} reveal={false}>
@@ -27,14 +45,13 @@ const metaItems = [pub.ref, pub.pub, `TIER: ${pub.tier}`, `READ ${pub.readTime}`
       <div class={styles.content}>
         <MetadataRail items={metaItems} />
         <div class={styles.chips}>
-          <StatusChip variant="warning">{pub.status}</StatusChip>
-          <StatusChip variant="muted">{pub.classification}</StatusChip>
+          <StatusChip variant="warning">{data.status}</StatusChip>
+          <StatusChip variant="muted">FEATURED</StatusChip>
         </div>
         <h2 class={styles.title}>
-          <a href={resolvedHref} class={styles.titleLink}>{pub.title}</a>
+          <a href={resolvedHref} class={styles.titleLink}>{data.title}</a>
         </h2>
-        <p class={styles.summary}>{pub.summary}</p>
-        <p class={styles.evidence}>EVD: {pub.evidenceLevel} — publication in preparation</p>
+        <p class={styles.summary}>{data.summary}</p>
         <span class={styles.cta} aria-hidden="true">Enter flagship publication →</span>
       </div>
     </article>
