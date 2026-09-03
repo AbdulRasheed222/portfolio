@@ -5,11 +5,11 @@ import {
   profileExperience,
   profileExperienceNote,
   profileLanguages,
-  profilePublicPdfDownload,
   profileResumeSummary,
   profileSelectedWork,
   profileTechStack,
 } from '../../config/profile';
+import { site } from '../../config/site';
 import TextLink from '../ui/TextLink.astro';
 import styles from './ResumeBody.module.css';
 ---
@@ -33,7 +33,7 @@ import styles from './ResumeBody.module.css';
               {role.location ? ` · ${role.location}` : ''}
             </p>
           </div>
-          <time class={styles.rolePeriod} datetime={role.period.replace(/\s/g, '')}>{role.period}</time>
+          <span class={styles.rolePeriod}>{role.period}</span>
         </header>
         <p class={styles.roleSummary}>{role.summary}</p>
       </article>
@@ -51,7 +51,7 @@ import styles from './ResumeBody.module.css';
           {project.role} · {project.period}
         </p>
         <p class={styles.projectNote}>{project.note}</p>
-        <TextLink href={`/work/${project.slug}/`}>Read flagship case study →</TextLink>
+        <TextLink href={`${site.productionUrl}work/${project.slug}/`}>Read flagship case study →</TextLink>
       </article>
     ))}
   </div>
@@ -62,11 +62,11 @@ import styles from './ResumeBody.module.css';
   <p>
     <strong>{profileEducation.qualification}</strong>
     <br />
-    {profileEducation.institution}, {profileEducation.location} · Expected {profileEducation.expectedGraduation}
+    {profileEducation.institution}, {profileEducation.location} · {profileEducation.graduationYear}
   </p>
 </section>
 
-<section class={styles.block} aria-labelledby="resume-capabilities">
+<section class:list={[styles.block, 'resume-pdf-omit']} aria-labelledby="resume-capabilities">
   <h2 id="resume-capabilities">Capability areas</h2>
   <ul class={styles.capabilityList}>
     {profileCapabilityAreas.map((area) => (
@@ -105,11 +105,3 @@ import styles from './ResumeBody.module.css';
     ))}
   </dl>
 </section>
-
-{
-  profilePublicPdfDownload === null && (
-    <p class:list={[styles.pdfNote, 'resume-pdf-note']}>
-      A downloadable PDF résumé will be published after final approval.
-    </p>
-  )
-}

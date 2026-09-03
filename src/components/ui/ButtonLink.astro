@@ -11,6 +11,7 @@ interface Props {
   class?: string;
   target?: string;
   rel?: string;
+  download?: boolean | string;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   class: className,
   target,
   rel,
+  download,
 } = Astro.props;
 
 const isExternal = external ?? isExternalUrl(href);
@@ -34,6 +36,7 @@ const variantClass = variant === 'secondary' ? styles.secondary : styles.primary
   class:list={[styles.button, variantClass, className]}
   target={target}
   rel={resolvedRel}
+  download={download}
 >
   <slot />
 </a>

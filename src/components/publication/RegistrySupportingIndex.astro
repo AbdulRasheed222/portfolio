@@ -17,7 +17,7 @@ const { publications } = Astro.props;
     <span class={styles.label}>More work</span>
     <h2 class={styles.title} id="registry-supporting-title">Supporting systems</h2>
     <p class={styles.lead}>
-      A completed AI support case study and two full-stack project briefs from earlier delivery work.
+      An earlier AI support case study and two full-stack project briefs from prior delivery work.
     </p>
   </header>
 
@@ -25,12 +25,11 @@ const { publications } = Astro.props;
     {
       publications.map((entry) => {
         const data = entry.data;
-        const statusVariant =
-          data.status.includes('COMPLETED')
+        const statusVariant = data.status.includes('DEVELOPMENT')
+          ? 'warning'
+          : data.status.includes('NOT LAUNCHED')
             ? 'muted'
-            : data.status.includes('PROVISIONAL') || data.evidenceLevel === 'provisional'
-              ? 'warning'
-              : 'default';
+            : 'default';
 
         return (
           <li>
@@ -45,7 +44,7 @@ const { publications } = Astro.props;
                 </a>
               </h3>
               <p class={styles.summary}>{data.summary}</p>
-              <p class={styles.meta}>{data.role} · {data.timeframe}</p>
+              <p class={styles.meta}>{data.role}{data.timeframe && ` · ${data.timeframe}`}</p>
             </article>
           </li>
         );

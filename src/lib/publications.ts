@@ -44,10 +44,6 @@ export function getSupportingPublications(
   return publications.filter((entry) => entry.data.format !== 'flagship');
 }
 
-export function formatEvidenceLevel(level: PublicationEntry['data']['evidenceLevel']): string {
-  return level.toUpperCase();
-}
-
 export function formatLabel(format: PublicationFormat): string {
   const labels: Record<PublicationFormat, string> = {
     flagship: 'Flagship case study',

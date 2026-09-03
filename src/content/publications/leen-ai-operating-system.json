@@ -3,25 +3,24 @@
   "title": "Leen — AI Operating System",
   "slug": "leen-ai-operating-system",
   "reference": "REF-LEEN-001",
-  "summary": "An AI operating environment for agents, durable workflows, memory, integrations, and governed execution — the platform direction I co-founded and architect.",
+  "summary": "An AI operating environment for agents, durable workflows, memory, integrations, and governed execution — the platform I co-founded and lead as CTO.",
   "status": "IN DEVELOPMENT",
-  "evidenceLevel": "gathering",
-  "role": "Co-Founder and Technical Architect",
+  "role": "Co-Founder and CTO",
   "timeframe": "2025 – Present",
-  "technologies": ["TypeScript", "Python", "AI / LLM integrations", "Workflow orchestration", "Multi-tenant SaaS"],
-  "contributionSummary": "Co-founded the platform direction and serve as technical architect. Scope spans platform boundaries, core subsystem design, and engineering leadership. Detailed subsystem attribution is being documented — solo ownership of the full stack is not claimed.",
-  "maturityNotice": "Leen is in active development. This page summarizes the platform direction and my role. Production launch, customer metrics, and deployment scale are not stated until verified.",
+  "technologies": ["Next.js", "FastAPI", "PostgreSQL", "Redis", "Qdrant", "Docker", "Temporal workflow engine"],
+  "contributionSummary": "Co-founded the platform and serve as CTO. Scope spans platform boundaries, core subsystem design, and engineering leadership. Delivery is a team effort — solo ownership of the full stack is not claimed.",
+  "maturityNotice": "Leen is in active development. This page describes the platform direction and my role; it is not presented as a commercially launched product.",
   "order": 1,
   "readingTime": "8 min",
   "accent": "cobalt",
-  "noindex": true,
+  "noindex": false,
   "relatedSlugs": ["omnichannel-ai-support-platform"],
   "sections": [
     {
       "title": "What Leen is",
       "anchor": "what-leen-is",
       "paragraphs": [
-        "Leen is an AI operating environment — a platform for building and running intelligent business systems. The direction combines conversational copilots, durable workflow execution, agent runtimes, shared memory, and governed integrations into one coherent stack.",
+        "Leen (formerly Muazaf) is an AI operating environment — a platform for building and running intelligent business systems. The direction combines conversational copilots, durable workflow execution, agent runtimes, shared memory, and governed integrations into one coherent stack.",
         "The goal is not a single chatbot or automation script. It is an operating layer where business operations can be expressed, executed, and evolved with appropriate controls."
       ]
     },
@@ -83,7 +82,7 @@
       "title": "My contribution",
       "anchor": "my-contribution",
       "paragraphs": [
-        "As Co-Founder and Technical Architect, I lead platform direction, architectural boundaries, and core engineering decisions. Work spans subsystem design, integration strategy, and hands-on implementation across the stack.",
+        "As Co-Founder and CTO, I lead platform direction, architectural boundaries, and core engineering decisions. Work spans subsystem design, integration strategy, and hands-on implementation across the stack.",
         "Team contribution exists across the platform. This page does not imply solo delivery of every subsystem."
       ]
     },
@@ -96,8 +95,7 @@
       ],
       "bullets": [
         "Separate conversational, workflow, and agent layers with explicit integration contracts",
-        "Design for evolution — prior support-platform work informed this direction",
-        "Evidence-backed publication of specific ADRs deferred until diagrams and scope are verified"
+        "Earlier Muazaf support-platform work preceded and informed this direction"
       ]
     },
     {
@@ -105,12 +103,11 @@
       "anchor": "current-status-and-lessons",
       "paragraphs": [
         "Leen is in active development. Engineering continues across core subsystems. This is not presented as a commercially launched product.",
-        "Early work on customer-support automation (see Omnichannel case study) informed the broader platform direction — evolution, not abandonment."
+        "Earlier Muazaf support-platform work (see the Omnichannel case study) came first; after that effort, work shifted to this broader platform direction."
       ],
       "bullets": [
         "Platform thinking early prevents expensive rework when AI features multiply",
-        "Clear contribution boundaries matter as team scale grows",
-        "Publication of detailed metrics and customer evidence awaits verification"
+        "Clear contribution boundaries matter as team scale grows"
       ]
     }
   ],
@@ -121,7 +118,7 @@
       "context": "AI capabilities were accumulating as isolated features without shared execution or memory boundaries.",
       "decision": "Organize the platform around composable primitives — copilot, workflows, agents, memory, and governance — with explicit integration contracts.",
       "tradeoff": "Higher upfront architectural investment; clearer long-term evolution and less duplication.",
-      "status": "Active direction — detailed evidence publication pending"
+      "status": "Active direction"
     }
   ]
 }

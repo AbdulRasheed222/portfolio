@@ -1,5 +1,6 @@
 ---
 import { site } from '../config/site';
+import { withBasePath } from '../lib/url';
 import AtmosphereSystem from '../components/atmosphere/AtmosphereSystem.astro';
 import SiteFooter from '../components/layout/SiteFooter.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
@@ -14,6 +15,7 @@ interface Props {
   ogDescription?: string;
   ogImage?: string;
   ogType?: string;
+  structuredData?: object;
 }
 
 const {
@@ -25,10 +27,12 @@ const {
   ogDescription,
   ogImage,
   ogType = 'website',
+  structuredData,
 } = Astro.props;
 
 const resolvedOgTitle = ogTitle ?? title;
 const resolvedOgDescription = ogDescription ?? description;
+const socialImage = ogImage ?? `${site.productionUrl}social-card.png`;
 ---
 
 <!doctype html>
@@ -37,6 +41,7 @@ const resolvedOgDescription = ogDescription ?? description;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href={withBasePath('/favicon.svg')} />
     {description && <meta name="description" content={description} />}
     {canonical && <link rel="canonical" href={canonical} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -44,7 +49,18 @@ const resolvedOgDescription = ogDescription ?? description;
     <meta property="og:title" content={resolvedOgTitle} />
     {resolvedOgDescription && <meta property="og:description" content={resolvedOgDescription} />}
     {canonical && <meta property="og:url" content={canonical} />}
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={`${site.ownerName} — portfolio preview card`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    {resolvedOgDescription && <meta name="twitter:description" content={resolvedOgDescription} />}
+    <meta name="twitter:image" content={socialImage} />
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
   </head>
   <body>
     <AtmosphereSystem />

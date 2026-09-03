@@ -9,7 +9,6 @@ interface Props {
   decision: string;
   tradeoff: string;
   status: string;
-  verificationState: string;
   template?: boolean;
 }
 
@@ -20,7 +19,6 @@ const {
   decision,
   tradeoff,
   status,
-  verificationState,
   template = false,
 } = Astro.props;
 ---
@@ -50,10 +48,6 @@ const {
     <div class={styles.row}>
       <dt>Status</dt>
       <dd>{status}</dd>
-    </div>
-    <div class={styles.row}>
-      <dt>Verification</dt>
-      <dd>{verificationState}</dd>
     </div>
   </dl>
 </article>

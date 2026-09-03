@@ -57,8 +57,8 @@ import styles from './AboutSections.module.css';
 <section class={styles.block} aria-labelledby="about-education">
   <h2 id="about-education">Education and languages</h2>
   <p>
-    {profileEducation.qualification} — {profileEducation.institution}, {profileEducation.location}.
-    Expected graduation: {profileEducation.expectedGraduation}.
+    {profileEducation.qualification} — {profileEducation.institution}, {profileEducation.location},
+    {profileEducation.graduationYear}.
   </p>
   <dl class={styles.languageDl}>
     {profileLanguages.map((entry) => (

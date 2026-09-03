@@ -1,6 +1,8 @@
 ---
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { canonicalUrl } from '../lib/seo';
+import { homeStructuredData } from '../lib/structured-data';
 import CapabilityProof from '../components/home/CapabilityProof.astro';
 import ContactCta from '../components/home/ContactCta.astro';
 import CurrentFocus from '../components/home/CurrentFocus.astro';
@@ -11,7 +13,12 @@ import PrinciplesTrack from '../components/home/PrinciplesTrack.astro';
 import SupportingSystems from '../components/home/SupportingSystems.astro';
 ---
 
-<BaseLayout title={site.title} description={site.description}>
+<BaseLayout
+  title={site.title}
+  description={site.description}
+  canonical={canonicalUrl('/')}
+  structuredData={homeStructuredData()}
+>
   <Hero />
   <FlagshipLeen />
   <CapabilityProof />

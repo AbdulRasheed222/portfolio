@@ -16,6 +16,15 @@ const REQUIRED_ROUTES = [
   'about/index.html',
   'resume/index.html',
   'contact/index.html',
+  '404.html',
+];
+
+const REQUIRED_ASSETS = [
+  'favicon.svg',
+  'social-card.png',
+  'robots.txt',
+  'sitemap-index.xml',
+  'Abdul-Rasheed-Keramat-Resume.pdf',
 ];
 
 const FORBIDDEN_PATTERNS = [
@@ -24,7 +33,7 @@ const FORBIDDEN_PATTERNS = [
   { name: 'framework credit', pattern: /Built with Astro/i },
   { name: 'internal version label', pattern: /VER 1\.1/ },
   { name: 'internal EOS version', pattern: /EOS v1\.1/i },
-  { name: 'private phone fragment', pattern: /REDACTED-PRIVATE-PATTERN|REDACTED-PRIVATE-PATTERN/ },
+  { name: 'phone-like number sequence', pattern: /\+\d{1,3}[\s().-]*\d{3}[\s().-]*\d{3}[\s().-]*\d{2}[\s().-]*\d{2}/ },
 ];
 
 const FORBIDDEN_PATH_FRAGMENTS = [
@@ -66,6 +75,42 @@ function checkRequiredRoutes() {
     const fullPath = join(DIST, route);
     if (!existsSync(fullPath)) {
       fail(`missing required route: dist/${route}`);
+    }
+  }
+}
+
+function checkRequiredAssets() {
+  for (const asset of REQUIRED_ASSETS) {
+    if (!existsSync(join(DIST, asset))) {
+      fail(`missing required asset: dist/${asset}`);
+    }
+  }
+}
+
+/**
+ * Every page that declares robots noindex must be absent from the sitemap,
+ * and every indexable canonical route must be present in it.
+ */
+function checkSitemapConsistency(allFiles) {
+  const sitemapFiles = allFiles.filter((file) => /sitemap.*\.xml$/.test(file));
+  const sitemapContent = sitemapFiles.map((file) => readFileSync(file, 'utf8')).join('\n');
+
+  if (sitemapContent.includes('localhost')) {
+    fail('sitemap contains a localhost URL');
+  }
+
+  for (const file of allFiles.filter((f) => f.endsWith('index.html'))) {
+    const rel = relative(DIST, file).replace(/\\/g, '/');
+    const route = rel === 'index.html' ? '' : rel.replace(/index\.html$/, '');
+    const url = `${PRODUCTION_ORIGIN}/${route}`;
+    const content = readFileSync(file, 'utf8');
+    const isNoindex = /<meta name="robots" content="noindex/.test(content);
+
+    if (isNoindex && sitemapContent.includes(url)) {
+      fail(`noindexed page advertised in sitemap: ${url}`);
+    }
+    if (!isNoindex && !sitemapContent.includes(url)) {
+      fail(`indexable page missing from sitemap: ${url}`);
     }
   }
 }
@@ -135,16 +180,20 @@ if (!checkDistExists()) {
 const allFiles = walkFiles(DIST);
 
 checkRequiredRoutes();
+checkRequiredAssets();
 checkForbiddenPaths(allFiles);
 checkHtmlContent(allFiles);
 checkPortraitAsset(allFiles);
+checkSitemapConsistency(allFiles);
 
 const routeCount = REQUIRED_ROUTES.filter((route) => existsSync(join(DIST, route))).length;
 
 console.log(`PASS: ${routeCount}/${REQUIRED_ROUTES.length} required routes present`);
+console.log('PASS: required public assets present');
 console.log('PASS: no forbidden paths in dist/');
 console.log('PASS: HTML privacy and metadata checks');
 console.log('PASS: optimized portrait asset present');
+console.log('PASS: sitemap consistent with robots directives');
 console.log(`\n${routeCount}/${REQUIRED_ROUTES.length} routes verified in dist/.`);
 
 if (failures.length > 0) {

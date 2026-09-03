@@ -1,0 +1,26 @@
+---
+import ProfileOpening from '../components/profile/ProfileOpening.astro';
+import ProfilePageShell from '../components/profile/ProfilePageShell.astro';
+import ActionGroup from '../components/ui/ActionGroup.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import { site } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = `Page not found | ${site.ownerName}`;
+const description = 'This address does not resolve to a page on the portfolio.';
+---
+
+<BaseLayout title={title} description={description} noindex>
+  <ProfilePageShell>
+    <ProfileOpening
+      eyebrow="404 — No signal"
+      title="Page not found"
+      description="This address does not resolve to a page on the portfolio. The routes below are live."
+    />
+    <ActionGroup>
+      <ButtonLink href="/" variant="primary">Back to the homepage</ButtonLink>
+      <ButtonLink href="/work/" variant="secondary">Browse work</ButtonLink>
+      <ButtonLink href="/contact/" variant="secondary">Contact</ButtonLink>
+    </ActionGroup>
+  </ProfilePageShell>
+</BaseLayout>

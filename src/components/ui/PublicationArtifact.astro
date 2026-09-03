@@ -15,8 +15,6 @@ interface Props {
   summary: string;
   href: string;
   status: string;
-  evidenceLevel: string;
-  version: string;
   readTime?: string;
   layout?: Layout;
   accent?: Accent;
@@ -29,7 +27,6 @@ const {
   summary,
   href,
   status,
-  evidenceLevel,
   readTime,
   layout = 'flow',
   accent = 'cobalt',
@@ -37,14 +34,13 @@ const {
 
 const resolvedHref = isExternalUrl(href) ? href : withBasePath(href);
 
-const statusVariant =
-  status.includes('DEVELOPMENT') || status.includes('GATHERING')
-    ? 'warning'
-    : status.includes('COMPLETED')
-      ? 'muted'
-      : 'default';
+const statusVariant = status.includes('DEVELOPMENT')
+  ? 'warning'
+  : status.includes('NOT LAUNCHED')
+    ? 'muted'
+    : 'default';
 
-const metaItems = [referenceId, pub, `EVD: ${evidenceLevel}`, ...(readTime ? [`READ ${readTime}`] : [])];
+const metaItems = [referenceId, pub, ...(readTime ? [`READ ${readTime}`] : [])];
 const accentClass = {
   cobalt: styles.accentCobalt,
   indigo: styles.accentIndigo,

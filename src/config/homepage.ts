@@ -1,44 +1,26 @@
-export type PublicationStatus =
-  | 'IN DEVELOPMENT'
-  | 'EVIDENCE GATHERING'
-  | 'COMPLETED — NOT LAUNCHED'
-  | 'PROVISIONAL';
-
-export type EvidenceLevel = 'VERIFIED' | 'PARTIAL' | 'GATHERING' | 'PROVISIONAL';
-
-export type ArtifactLayout = 'cinematic' | 'flow' | 'stack' | 'ledger';
-
-export type EngineeringPublication = {
-  readonly ref: string;
-  readonly pub: string;
-  readonly title: string;
-  readonly summary: string;
-  readonly slug: string;
-  readonly href: string;
-  readonly status: PublicationStatus;
-  readonly classification: 'FEATURED' | 'SUPPORTING';
-  readonly tier: 'FLAGSHIP' | 'SUPPORTING';
-  readonly evidenceLevel: EvidenceLevel;
-  readonly version: string;
-  readonly readTime?: string;
-  readonly layout?: ArtifactLayout;
-  readonly chapters?: readonly string[];
-  readonly accent?: 'cobalt' | 'indigo' | 'slate' | 'gold';
-};
-
 export type EngineeringPrinciple = {
   readonly index: string;
   readonly title: string;
   readonly description: string;
 };
 
-const workRegistryHref = '/work/';
+export type ArtifactLayout = 'flow' | 'stack' | 'ledger';
 
-function publicationHref(slug: string): string {
-  return `/work/${slug}/`;
-}
+/**
+ * Presentation-only metadata for publication cards, keyed by publication slug.
+ * All publication content (title, summary, status, role, reading time) comes
+ * from the content collection in `src/content/publications/`.
+ */
+export const publicationPresentation: Record<
+  string,
+  { readonly pub: string; readonly layout?: ArtifactLayout }
+> = {
+  'leen-ai-operating-system': { pub: 'PUB-LEEN' },
+  'omnichannel-ai-support-platform': { pub: 'PUB-OMNI', layout: 'flow' },
+  'hotel-management-system': { pub: 'PUB-HOTEL', layout: 'stack' },
+  'inventory-management-system': { pub: 'PUB-INV', layout: 'ledger' },
+};
 
-/** Approved public location line — do not imply visa/sponsorship status */
 export const publicLocation = 'Istanbul · Remote · Open to relocation' as const;
 
 export const homepage = {
@@ -52,33 +34,6 @@ export const homepage = {
       'I design and ship platform software — from intelligent workflows and agent systems to full-stack products that hold up under real constraints.',
     metadata: [publicLocation] as const,
   },
-
-  featuredPublication: {
-    ref: 'REF-LEEN-001',
-    pub: 'PUB-LEEN',
-    title: 'Leen — AI Operating System',
-    summary:
-      'Flagship engineering publication documenting an AI operating environment — primitives for agents, durable workflows, memory, integrations, and governed execution.',
-    slug: 'leen-ai-operating-system',
-    href: publicationHref('leen-ai-operating-system'),
-    status: 'IN DEVELOPMENT',
-    classification: 'FEATURED',
-    tier: 'FLAGSHIP',
-    evidenceLevel: 'GATHERING',
-    version: 'VER 0.1',
-    readTime: '8 min',
-    layout: 'cinematic',
-    accent: 'cobalt',
-    chapters: [
-      'Vision',
-      'Copilot V2',
-      'Workflow Engine',
-      'Agent Runtime',
-      'Memory',
-      'Apps Platform',
-      'Governance',
-    ],
-  } satisfies EngineeringPublication,
 
   capabilityProof: {
     systemIndex: '03 — CAPABILITY PROOF',
@@ -107,66 +62,12 @@ export const homepage = {
     ] as const,
   },
 
-  publications: [
-    {
-      ref: 'REF-OMNI-001',
-      pub: 'PUB-OMNI',
-      title: 'Omnichannel AI Support Platform',
-      summary:
-        'Completed support engineering — knowledge base, RAG, Telegram and web channels — that evolved into the Leen platform direction.',
-      slug: 'omnichannel-ai-support-platform',
-      href: publicationHref('omnichannel-ai-support-platform'),
-      status: 'COMPLETED — NOT LAUNCHED',
-      classification: 'SUPPORTING',
-      tier: 'SUPPORTING',
-      evidenceLevel: 'GATHERING',
-      version: 'VER 1.0',
-      readTime: '12 min',
-      layout: 'flow',
-      accent: 'indigo',
-    },
-    {
-      ref: 'REF-HOTEL-001',
-      pub: 'PUB-HOTEL',
-      title: 'Hotel Management System',
-      summary:
-        'Hospitality operations software — reservations, room inventory, and guest workflows for SME properties.',
-      slug: 'hotel-management-system',
-      href: publicationHref('hotel-management-system'),
-      status: 'EVIDENCE GATHERING',
-      classification: 'SUPPORTING',
-      tier: 'SUPPORTING',
-      evidenceLevel: 'PROVISIONAL',
-      version: 'VER 0.1',
-      readTime: '8 min',
-      layout: 'stack',
-      accent: 'slate',
-    },
-    {
-      ref: 'REF-INV-001',
-      pub: 'PUB-INV',
-      title: 'Inventory Management System',
-      summary:
-        'SME stock-integrity platform — movements, alerts, and operational reporting with concurrent update discipline.',
-      slug: 'inventory-management-system',
-      href: publicationHref('inventory-management-system'),
-      status: 'EVIDENCE GATHERING',
-      classification: 'SUPPORTING',
-      tier: 'SUPPORTING',
-      evidenceLevel: 'PROVISIONAL',
-      version: 'VER 0.1',
-      readTime: '8 min',
-      layout: 'ledger',
-      accent: 'gold',
-    },
-  ] as const satisfies readonly EngineeringPublication[],
-
   principles: [
     {
       index: '01',
       title: 'Evidence before claims',
       description:
-        'Capabilities are demonstrated through publications, diagrams, and verified contribution — not technology lists.',
+        'Capabilities are demonstrated through publications and explicit contribution boundaries — not technology lists.',
     },
     {
       index: '02',
@@ -176,7 +77,7 @@ export const homepage = {
     {
       index: '03',
       title: 'Honest evolution',
-      description: 'Completed systems that informed later work are lineage — not failure.',
+      description: 'Earlier systems that informed later work are lineage — not failure.',
     },
     {
       index: '04',
@@ -195,7 +96,7 @@ export const homepage = {
     statusLabel: 'Open to Opportunities',
     locationLabel: publicLocation,
     statement:
-      'Seeking full-stack and AI engineering roles — platform systems, intelligent workflows, and maintainable product software.',
+      'Open to compelling full-stack, platform, backend, and AI engineering opportunities.',
   },
 
   operatorProfile: {

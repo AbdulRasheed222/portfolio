@@ -9,14 +9,7 @@ export type SiteConfig = {
 
 export const site = {
   ownerName: 'Abdul Rasheed',
-
-  /** Provisional public site title — refine after résumé and positioning review. */
   title: 'Abdul Rasheed | Software Engineer',
-
-  /**
-   * Provisional public description — derived from the approved positioning
-   * statement in PORTFOLIO_BRIEF.md. Not a verified résumé claim.
-   */
   description:
     'Full-stack software engineer building AI systems, workflow automation, and scalable business software.',
 

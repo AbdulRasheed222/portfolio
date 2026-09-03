@@ -2,8 +2,12 @@
 
 @media print {
   @page {
-    margin: 1.25cm;
+    margin: 1.1cm;
     size: auto;
+  }
+
+  html {
+    color-scheme: light;
   }
 
   html,
@@ -13,12 +17,123 @@
     print-color-adjust: exact;
   }
 
+  .eos-page-shell,
+  main,
+  main * {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
   [data-eos-print-hide],
   .eos-page-shell .skip-link,
   .resume-screen-only,
   .resume-print-control,
-  .resume-pdf-note {
+  .resume-pdf-note,
+  .resume-pdf-omit {
     display: none !important;
+  }
+
+  /* Compact recruiter/ATS layout — print artifact only; the web page is unchanged. */
+  .resume-document {
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .resume-document h1 {
+    font-size: 20pt !important;
+  }
+
+  .resume-document h2 {
+    font-size: 12.5pt !important;
+    margin-top: 0.4cm !important;
+  }
+
+  .resume-document h3 {
+    font-size: 11pt !important;
+  }
+
+  .resume-document p {
+    margin-top: 0.12cm !important;
+  }
+
+  .resume-document section,
+  .resume-document [class*='_block'] {
+    margin: 0.28cm 0 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-document .resume-header {
+    padding: 0 0 0.25cm !important;
+    margin: 0 !important;
+  }
+
+  /* The uppercase metadata rail duplicates the contact list below it. */
+  .resume-document .resume-header [class*='_rail'] {
+    display: none !important;
+  }
+
+  .resume-document [class*='contact_'] {
+    padding: 0.22cm 0.3cm !important;
+    margin: 0.25cm 0 0 !important;
+    gap: 0.12cm 0.6cm !important;
+  }
+
+  .resume-document [class*='role_'],
+  .resume-document [class*='projectCard'] {
+    padding: 0.2cm 0.3cm !important;
+    margin: 0.18cm 0 0 !important;
+  }
+
+  .resume-document [class*='stackGrid'] {
+    display: block !important;
+  }
+
+  .resume-document [class*='stackGroup'] {
+    padding: 0.08cm 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+  }
+
+  .resume-document [class*='stackCategory'] {
+    display: inline !important;
+    margin-right: 0.2cm !important;
+  }
+
+  .resume-document [class*='stackList'] {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .resume-document [class*='stackList'] li {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: none !important;
+  }
+
+  .resume-document [class*='stackList'] li:not(:last-child)::after {
+    content: ' · ';
+  }
+
+  .resume-document [class*='languageDl'] {
+    margin: 0 !important;
+  }
+
+  .resume-document [class*='languageRow'] {
+    display: inline-block !important;
+    margin: 0 0.6cm 0 0 !important;
+  }
+
+  .resume-document [class*='languageRow'] dt,
+  .resume-document [class*='languageRow'] dd {
+    display: inline !important;
+    margin: 0 !important;
+  }
+
+  .resume-document [class*='languageRow'] dt::after {
+    content: ' — ';
   }
 
   [data-eos-header] {
@@ -72,8 +187,7 @@
     text-decoration: underline !important;
   }
 
-  .resume-document a[href^='http']::after,
-  .resume-document a[href^='/']::after {
+  .resume-document a[href^='http']::after {
     content: ' (' attr(href) ')';
     font-size: 0.8em;
     font-weight: normal;
