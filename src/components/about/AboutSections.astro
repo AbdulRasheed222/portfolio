@@ -64,8 +64,7 @@ import styles from './AboutSections.module.css';
 <section class={styles.block} aria-labelledby="about-education">
   <h2 id="about-education">Education and languages</h2>
   <p>
-    {profileEducation.qualification} — {profileEducation.institution}, {profileEducation.location},
-    {profileEducation.period} ({profileEducation.status.toLowerCase()}).
+    {`${profileEducation.qualification} — ${profileEducation.institution}, ${profileEducation.location}, ${profileEducation.period} (${profileEducation.status.toLowerCase()}).`}
   </p>
   <p>
     {profileSecondaryEducation.qualification} — {profileSecondaryEducation.institution}.
