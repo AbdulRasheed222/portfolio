@@ -33,7 +33,7 @@ export const profileOpportunityStatement =
 export const profileAbout = {
   introduction: [
     'I am a software engineer who builds products and platforms across full-stack delivery, AI systems, and workflow automation. I work from problem framing through architecture to maintainable implementation.',
-    'My recent work spans enterprise platform leadership at AkwadX Technologies and co-founding the technical direction behind Leen — an AI operating environment currently in development.',
+    'I am CTO at AkwadX Technologies in Istanbul, where I led the architecture and development of Leen — an AI operating environment built inside AkwadX and now being registered as an independent company. I am in the final semester of a BSc in Software Engineering at Üsküdar University.',
   ],
   builds: [
     {
@@ -50,8 +50,8 @@ export const profileAbout = {
     },
   ],
   currentWork: [
-    'Chief Technology Officer at AkwadX Technologies — technology vision, system architecture, and engineering direction for enterprise digital platforms and AI systems.',
-    'Co-Founder and CTO at Leen (formerly Muazaf) — an AI operating environment for workflows, agents, and integrations. In active development; not presented as commercially launched.',
+    'Chief Technology Officer at AkwadX Technologies — system architecture, relational database design, APIs and integrations, secure access control, and deployment for enterprise SaaS platforms and AI systems.',
+    'Leen (formerly Muazaf) — the AI operating environment for workflows, agents, and integrations that I led within AkwadX. It is now being registered as a separate company, where I am Co-Founder and CTO. In active development; not presented as commercially launched.',
   ],
   approach: [
     'Start with the problem and constraints — not the framework list.',
@@ -60,42 +60,59 @@ export const profileAbout = {
   ],
 } as const;
 
-export const profileExperience = [
+type ExperienceEntry = {
+  readonly title: string;
+  readonly organization: string;
+  readonly location: string | null;
+  readonly period: string;
+  readonly summary: string;
+  readonly highlights: readonly string[];
+  readonly publicationSlug?: string;
+};
+
+export const profileExperience: readonly ExperienceEntry[] = [
   {
     title: 'Chief Technology Officer',
     organization: 'AkwadX Technologies',
     location: 'Istanbul',
-    period: '2024 – Present',
+    period: 'Mar 2024 – Present',
     summary:
-      'Technology vision and architecture for enterprise digital platforms and AI systems — scalable SaaS design, backend architecture, engineering coordination, and technical strategy.',
-  },
-  {
-    title: 'Co-Founder and CTO',
-    organization: 'Leen (formerly Muazaf)',
-    location: null,
-    period: '2025 – Present',
-    summary:
-      'Co-found and architect an AI operating environment for workflows, agents, memory, and integrations. Platform in active development — see the flagship case study for scope and status.',
+      'Lead technology architecture and delivery for enterprise SaaS platforms and AI systems. Design multi-tenant SaaS architecture and backend services; design and maintain relational databases (PostgreSQL); build REST APIs and system integrations; implement secure data infrastructure, including authentication and access control; manage deployments using Docker, Nginx and CI/CD on VPS/cloud environments.',
+    highlights: [
+      'Led the architecture and development of Leen (formerly Muazaf), AkwadX’s AI operating platform for agents, durable workflows and system integrations (Next.js, FastAPI, PostgreSQL, Redis, Qdrant, Temporal, Docker). Leen is now being registered as a separate company.',
+      'Built the Omnichannel AI Support Platform, an earlier AkwadX product with voice and chat agents and knowledge-backed support across multiple channels.',
+    ],
     publicationSlug: 'leen-ai-operating-system',
   },
   {
     title: 'Full Stack Software Developer',
-    organization: 'AkwadX Technologies / Freelance',
-    location: null,
-    period: '2022 – 2024',
+    organization: 'AkwadX Technologies',
+    location: 'Istanbul',
+    period: 'Mar 2022 – Feb 2024',
     summary:
-      'Full-stack applications across fintech, education, and hospitality — including school management SaaS platforms, inventory systems for SMEs, and hotel management software.',
+      'Designed and developed full-stack web applications across fintech, education and hospitality. Built backend services and REST APIs (Node.js/Express, Python FastAPI), designed relational database schemas (PostgreSQL, MySQL), developed React/Next.js front ends, managed code in Git, and deployed applications on VPS environments.',
+    highlights: [
+      'Delivered a hotel management system covering reservations, room inventory and front-desk guest workflows.',
+      'Delivered an inventory management system for SMEs with stock-movement tracking, low-stock threshold alerts and operational reporting.',
+      'Built school management SaaS platforms serving educational organisations.',
+    ],
   },
-] as const;
+];
 
 export const profileExperienceNote =
-  'The AkwadX Technologies and Leen roles are separate, current professional engagements.';
+  'Leen (formerly Muazaf) was developed within AkwadX Technologies and is now being registered as an independent company.';
 
 export const profileEducation = {
   qualification: 'Bachelor of Science in Software Engineering',
   institution: 'Üsküdar University',
   location: 'Istanbul',
-  graduationYear: '2026',
+  period: '2022 – Expected 2027',
+  status: 'Final semester in progress',
+} as const;
+
+export const profileSecondaryEducation = {
+  qualification: 'High School Diploma',
+  institution: 'Hera Private High School',
 } as const;
 
 export const profileLanguages = [
@@ -107,8 +124,12 @@ export const profileLanguages = [
 export const profileTechStack = [
   { category: 'Frontend', items: ['React.js', 'Next.js', 'Tailwind CSS'] },
   { category: 'Backend', items: ['Node.js', 'Express.js', 'Python', 'FastAPI'] },
-  { category: 'Data', items: ['PostgreSQL', 'MySQL', 'Redis', 'Qdrant'] },
-  { category: 'Infrastructure', items: ['Docker', 'Nginx', 'VPS deployment'] },
+  { category: 'Data', items: ['SQL', 'PostgreSQL', 'MySQL', 'Redis', 'Qdrant'] },
+  { category: 'Infrastructure', items: ['Docker', 'Nginx', 'VPS deployment', 'CI/CD', 'Git'] },
+  {
+    category: 'Engineering practice',
+    items: ['REST API design', 'Authentication and access control', 'Multi-tenant SaaS architecture'],
+  },
   {
     category: 'AI and systems',
     items: ['LLM APIs', 'RAG architecture', 'API integrations', 'System design', 'Temporal workflow engine'],
@@ -119,14 +140,14 @@ export const profileSelectedWork = [
   {
     title: 'Leen — AI Operating System',
     slug: 'leen-ai-operating-system',
-    role: 'Co-Founder and CTO',
+    role: 'Lead architect at AkwadX · Co-Founder and CTO of the spin-out',
     period: '2025 – Present',
-    note: 'In active development. Scope, architecture, and contribution are documented in the flagship engineering publication.',
+    note: 'Developed within AkwadX Technologies; now being registered as an independent company. In active development. Scope, architecture, and contribution are documented in the flagship engineering publication.',
   },
 ] as const;
 
 export const profileResumeSummary =
-  'Software engineer with experience building SaaS platforms, AI systems, and full-stack products. Currently CTO at AkwadX Technologies and co-founder of Leen (formerly Muazaf), an AI operating environment in active development. Focused on architecture, backend systems, AI integration, and product delivery across fintech, education, and SME operations.';
+  'Software engineer and CTO at AkwadX Technologies with 4+ years building SaaS platforms, AI systems, and full-stack products. Hands-on across relational database design (PostgreSQL, MySQL), REST APIs and system integrations, authentication and access control, and Docker-based deployment. Led the architecture of Leen (formerly Muazaf), an AI operating platform developed within AkwadX and now being registered as an independent company. Final-semester BSc Software Engineering student at Üsküdar University.';
 
 export const profileContactIntro = profileOpportunityStatement;
 

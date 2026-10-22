@@ -6,6 +6,7 @@ import {
   profileExperienceNote,
   profileLanguages,
   profileResumeSummary,
+  profileSecondaryEducation,
   profileSelectedWork,
   profileTechStack,
 } from '../../config/profile';
@@ -36,12 +37,19 @@ import styles from './ResumeBody.module.css';
           <span class={styles.rolePeriod}>{role.period}</span>
         </header>
         <p class={styles.roleSummary}>{role.summary}</p>
+        {role.highlights.length > 0 ? (
+          <ul class={styles.roleHighlights}>
+            {role.highlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        ) : null}
       </article>
     ))}
   </div>
 </section>
 
-<section class={styles.block} aria-labelledby="resume-selected-work">
+<section class:list={[styles.block, 'resume-pdf-omit']} aria-labelledby="resume-selected-work">
   <h2 id="resume-selected-work">Selected work</h2>
   <div class={styles.selectedWorkList}>
     {profileSelectedWork.map((project) => (
@@ -59,10 +67,17 @@ import styles from './ResumeBody.module.css';
 
 <section class={styles.block} aria-labelledby="resume-education">
   <h2 id="resume-education">Education</h2>
-  <p>
+  <p class={styles.educationEntry}>
     <strong>{profileEducation.qualification}</strong>
     <br />
-    {profileEducation.institution}, {profileEducation.location} · {profileEducation.graduationYear}
+    {profileEducation.institution}, {profileEducation.location} · {profileEducation.period}
+    <br />
+    <span class={styles.educationStatus}>{profileEducation.status}</span>
+  </p>
+  <p class={styles.educationEntry}>
+    <strong>{profileSecondaryEducation.qualification}</strong>
+    <br />
+    {profileSecondaryEducation.institution}
   </p>
 </section>
 

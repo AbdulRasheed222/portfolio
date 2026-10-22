@@ -106,7 +106,7 @@ export const homepage = {
     summary:
       'I build software that connects business problems to maintainable systems — from product interfaces to AI workflows and platform integrations.',
     href: '/about/',
-    metadata: [publicLocation, 'BSC SOFTWARE ENGINEERING', 'English • Pashto • Dari'] as const,
+    metadata: [publicLocation, 'BSC SOFTWARE ENGINEERING · FINAL SEMESTER', 'English • Pashto • Dari'] as const,
   },
 
   contactCta: {
