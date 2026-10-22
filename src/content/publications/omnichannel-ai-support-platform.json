@@ -3,12 +3,12 @@
   "title": "Omnichannel AI Support Platform",
   "slug": "omnichannel-ai-support-platform",
   "reference": "REF-OMNI-001",
-  "summary": "An earlier Muazaf support-platform project — voice and chat agents, knowledge-backed support, and multi-channel delivery. Developed, not commercially launched.",
+  "summary": "An earlier AkwadX Technologies support-platform project, developed under the Muazaf name — voice and chat agents, knowledge-backed support, and multi-channel delivery. Developed, not commercially launched.",
   "status": "DEVELOPED — NOT LAUNCHED",
   "role": "Technical leadership — platform and AI engineering",
   "technologies": ["Voice and chat agents", "Multi-channel delivery", "Knowledge-backed support", "Support-platform infrastructure"],
   "contributionSummary": "Led technical direction for support automation, knowledge-backed responses, and channel integration. Team delivery was involved — solo ownership is not claimed.",
-  "maturityNotice": "Developed as an earlier Muazaf support-platform effort. It was not commercially launched; work subsequently shifted to the broader platform direction that became Leen.",
+  "maturityNotice": "Developed at AkwadX Technologies as an earlier Muazaf support-platform effort. It was not commercially launched; work subsequently shifted to the broader platform direction that became Leen.",
   "order": 2,
   "readingTime": "5 min",
   "accent": "indigo",
@@ -20,7 +20,7 @@
       "title": "Overview",
       "anchor": "overview",
       "paragraphs": [
-        "An omnichannel AI support platform — an earlier Muazaf project built around support automation: voice and chat agents, multiple communication channels, and knowledge-backed responses.",
+        "An omnichannel AI support platform — an earlier AkwadX project (developed under the Muazaf name) built around support automation: voice and chat agents, multiple communication channels, and knowledge-backed responses.",
         "The product was developed but never commercially launched. After this work, the team stopped pursuing the standalone support-product direction and began the broader platform work that became Leen."
       ]
     },

@@ -1,5 +1,12 @@
 ---
-import { profileAbout, profileEducation, profileExperience, profileLanguages, profileOpportunityStatement } from '../../config/profile';
+import {
+  profileAbout,
+  profileEducation,
+  profileExperience,
+  profileLanguages,
+  profileOpportunityStatement,
+  profileSecondaryEducation,
+} from '../../config/profile';
 import TextLink from '../ui/TextLink.astro';
 import styles from './AboutSections.module.css';
 ---
@@ -58,7 +65,10 @@ import styles from './AboutSections.module.css';
   <h2 id="about-education">Education and languages</h2>
   <p>
     {profileEducation.qualification} — {profileEducation.institution}, {profileEducation.location},
-    {profileEducation.graduationYear}.
+    {profileEducation.period} ({profileEducation.status.toLowerCase()}).
+  </p>
+  <p>
+    {profileSecondaryEducation.qualification} — {profileSecondaryEducation.institution}.
   </p>
   <dl class={styles.languageDl}>
     {profileLanguages.map((entry) => (

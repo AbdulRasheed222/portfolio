@@ -176,10 +176,44 @@
     color: #222 !important;
   }
 
-  .resume-document [class*='role'],
-  .resume-document [class*='projectCard'] {
+  /* Let long role cards flow across pages; keep each header with its first lines. */
+  .resume-document [class*='projectCard'],
+  .resume-document [class*='roleHighlights'] li {
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .resume-document [class*='roleHeader'] {
+    break-after: avoid;
+    page-break-after: avoid;
+    margin-bottom: 0.1cm !important;
+  }
+
+  .resume-document [class*='roleSummary'],
+  .resume-document [class*='roleHighlights'],
+  .resume-document [class*='experienceNote'],
+  .resume-document [class*='educationStatus'] {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .resume-document [class*='roleHighlights'] {
+    margin: 0.12cm 0 0 !important;
+    padding-left: 0.45cm !important;
+    gap: 0.06cm !important;
+  }
+
+  .resume-document [class*='experienceNote'] {
+    margin: 0 0 0.1cm !important;
+  }
+
+  .resume-document [class*='educationEntry'] + [class*='educationEntry'] {
+    margin-top: 0.15cm !important;
+  }
+
+  /* Contact links already show their readable address. */
+  .resume-document .resume-header a[href^='http']::after {
+    content: none;
   }
 
   .resume-document a {

@@ -19,12 +19,13 @@ function personNode() {
     description: site.description,
     sameAs: [profileContact.github, profileContact.linkedIn],
     /*
-     * AkwadX Technologies is the registered company; Leen is a platform/project
-     * role and is deliberately not encoded as a schema.org Organization —
-     * the visible pages describe that role.
+     * AkwadX Technologies is the employer. Leen was developed within AkwadX
+     * and is being registered separately; it is not encoded as an Organization
+     * until registration is complete.
      */
     worksFor: { '@type': 'Organization', name: 'AkwadX Technologies' },
-    alumniOf: {
+    // Current student (final semester): affiliation, not alumniOf.
+    affiliation: {
       '@type': 'CollegeOrUniversity',
       name: profileEducation.institution,
     },
