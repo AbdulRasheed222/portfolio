@@ -4,6 +4,7 @@ import {
   getFlagshipPublication,
   getPublications,
   publicationPath,
+  statusVariant,
 } from '../../lib/publications';
 import { withBasePath } from '../../lib/url';
 import PageContainer from '../layout/PageContainer.astro';
@@ -45,7 +46,7 @@ const metaItems = [
       <div class={styles.content}>
         <MetadataRail items={metaItems} />
         <div class={styles.chips}>
-          <StatusChip variant="warning">{data.status}</StatusChip>
+          <StatusChip variant={statusVariant(data.status)}>{data.status}</StatusChip>
           <StatusChip variant="muted">FEATURED</StatusChip>
         </div>
         <h2 class={styles.title}>

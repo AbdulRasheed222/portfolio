@@ -154,3 +154,10 @@
     padding: var(--space-7);
   }
 }
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}

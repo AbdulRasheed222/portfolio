@@ -44,6 +44,15 @@ export function getSupportingPublications(
   return publications.filter((entry) => entry.data.format !== 'flagship');
 }
 
+export type StatusVariant = 'default' | 'warning' | 'positive' | 'muted';
+
+export function statusVariant(status: string): StatusVariant {
+  if (status === 'LIVE' || status === 'EARLY ACCESS' || status === 'OPEN SOURCE') return 'positive';
+  if (status.includes('DEVELOPMENT')) return 'warning';
+  if (status.includes('NOT LAUNCHED')) return 'muted';
+  return 'default';
+}
+
 export function formatLabel(format: PublicationFormat): string {
   const labels: Record<PublicationFormat, string> = {
     flagship: 'Flagship case study',

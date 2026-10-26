@@ -28,7 +28,7 @@ export const profileIdentity = {
 } as const;
 
 export const profileOpportunityStatement =
-  'Open to compelling full-stack, platform, backend, and AI engineering opportunities — in Istanbul, remotely, or with relocation.';
+  'Available for freelance AI and full-stack projects worldwide, and open to full-time roles in Istanbul, remotely, or with relocation.';
 
 export const profileAbout = {
   introduction: [
@@ -51,7 +51,8 @@ export const profileAbout = {
   ],
   currentWork: [
     'Chief Technology Officer at AkwadX Technologies — system architecture, relational database design, APIs and integrations, secure access control, and deployment for enterprise SaaS platforms and AI systems.',
-    'Leen (formerly Muazaf) — the AI operating environment for workflows, agents, and integrations that I led within AkwadX. It is now being registered as a separate company, where I am Co-Founder and CTO. In active development; not presented as commercially launched.',
+    'Leen (formerly Muazaf) — the AI operating environment for workflows, agents, and integrations that I led within AkwadX. It is now being registered as a separate company, where I am Co-Founder and CTO. Open for sign-up at leen.so, and still early.',
+    'AnswerVera — a live AI support bot for small businesses that answers only from the business’s own documents, with a cited source behind every claim. Built solo, end to end.',
   ],
   approach: [
     'Start with the problem and constraints — not the framework list.',

@@ -1,7 +1,8 @@
 ---
 import type { PublicationEntry } from '../../lib/publications';
-import { formatLabel } from '../../lib/publications';
+import { formatLabel, statusVariant } from '../../lib/publications';
 import { withBasePath } from '../../lib/url';
+import ButtonLink from '../ui/ButtonLink.astro';
 import StatusChip from '../ui/StatusChip.astro';
 import TextLink from '../ui/TextLink.astro';
 import styles from './PublicationOpeningBand.module.css';
@@ -12,11 +13,7 @@ interface Props {
 
 const { publication } = Astro.props;
 
-const statusVariant = publication.status.includes('DEVELOPMENT')
-  ? 'warning'
-  : publication.status.includes('NOT LAUNCHED')
-    ? 'muted'
-    : 'default';
+const variant = statusVariant(publication.status);
 
 const isBrief = publication.format === 'project-brief';
 const isFlagship = publication.format === 'flagship';
@@ -40,7 +37,7 @@ const accentClass = publication.accent
 
     <div class={styles.chips}>
       <StatusChip variant="muted">{formatLabel(publication.format)}</StatusChip>
-      <StatusChip variant={statusVariant}>{publication.status}</StatusChip>
+      <StatusChip variant={variant}>{publication.status}</StatusChip>
     </div>
 
     <h1 class={styles.title}>{publication.title}</h1>
@@ -76,6 +73,22 @@ const accentClass = publication.accent
         )
       }
     </dl>
+
+    {
+      publication.links && publication.links.length > 0 && (
+        <div class={styles.links}>
+          {publication.links.map((link, index) => (
+            <ButtonLink
+              href={link.href}
+              variant={index === 0 ? 'primary' : 'secondary'}
+              target="_blank"
+            >
+              {link.label} ↗
+            </ButtonLink>
+          ))}
+        </div>
+      )
+    }
 
     {
       publication.maturityNotice && (

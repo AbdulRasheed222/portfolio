@@ -4,12 +4,13 @@
   "slug": "leen-ai-operating-system",
   "reference": "REF-LEEN-001",
   "summary": "An AI operating environment for agents, durable workflows, memory, integrations, and governed execution — developed within AkwadX Technologies under my technical leadership, and now being registered as an independent company where I am Co-Founder and CTO.",
-  "status": "IN DEVELOPMENT",
+  "status": "EARLY ACCESS",
   "role": "Co-Founder and CTO",
   "timeframe": "2025 – Present",
   "technologies": ["Next.js", "FastAPI", "PostgreSQL", "Redis", "Qdrant", "Docker", "Temporal workflow engine"],
   "contributionSummary": "Led the platform's architecture and development as CTO of AkwadX Technologies, and am Co-Founder and CTO of the company now being registered for it. Scope spans platform boundaries, core subsystem design, and engineering leadership. Delivery is a team effort — solo ownership of the full stack is not claimed.",
-  "maturityNotice": "Leen is in active development. It was built inside AkwadX Technologies and is being spun out as a separate company. This page describes the platform direction and my role; it is not presented as a commercially launched product.",
+  "maturityNotice": "Leen is open for sign-up at leen.so with a 7-day free trial, and it is early: engineering continues across core subsystems. It was built inside AkwadX Technologies and is being spun out as a separate company.",
+  "links": [{ "label": "Visit leen.so", "href": "https://leen.so" }],
   "order": 1,
   "readingTime": "8 min",
   "accent": "cobalt",
@@ -102,7 +103,7 @@
       "title": "Current status and lessons",
       "anchor": "current-status-and-lessons",
       "paragraphs": [
-        "Leen is in active development. Engineering continues across core subsystems. This is not presented as a commercially launched product.",
+        "Leen is open for sign-up at leen.so with a 7-day free trial. It is early, and engineering continues across core subsystems.",
         "Earlier Muazaf support-platform work (see the Omnichannel case study) came first; after that effort, work shifted to this broader platform direction."
       ],
       "bullets": [

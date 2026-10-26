@@ -1,0 +1,64 @@
+{
+  "format": "project-brief",
+  "title": "AI SaaS Starter",
+  "slug": "ai-saas-starter",
+  "reference": "REF-STARTER-001",
+  "summary": "An open-source starter for AI SaaS products on FastAPI and Next.js: workspaces with tested tenant isolation, cited answers over documents, Stripe billing, background jobs, and a setup script that removes the modules you don't need.",
+  "status": "OPEN SOURCE",
+  "role": "Author and maintainer",
+  "timeframe": "2026",
+  "technologies": [
+    "Python",
+    "FastAPI",
+    "Next.js",
+    "PostgreSQL / pgvector",
+    "Clerk",
+    "Stripe",
+    "Claude API"
+  ],
+  "contributionSummary": "Designed and wrote the starter, its tests, and its CI.",
+  "links": [
+    {
+      "label": "View on GitHub",
+      "href": "https://github.com/AbdulRasheed222/starter_pack"
+    }
+  ],
+  "order": 3,
+  "accent": "cobalt",
+  "noindex": false,
+  "relatedSlugs": [
+    "answervera"
+  ],
+  "sections": [
+    {
+      "title": "Overview",
+      "anchor": "overview",
+      "paragraphs": [
+        "Most AI SaaS products need the same foundation before the first real feature: sign-in, workspaces and roles, a safe way to keep each customer's data apart, billing, and a reliable way to call a model over the customer's own documents. This starter provides that foundation, taken from patterns proven in AnswerVera."
+      ]
+    },
+    {
+      "title": "What was built",
+      "anchor": "what-was-built",
+      "paragraphs": [
+        "A FastAPI backend and a Next.js web app, with modules toggled by a setup script."
+      ],
+      "bullets": [
+        "Workspaces with owner, admin and member roles, and expiring single-use invites",
+        "A tenant-isolation test that calls every API route as an outsider and requires a 404",
+        "Document upload, pgvector search, and streamed answers with verified citations, from Claude or any OpenAI-compatible server",
+        "A usage ledger with per-workspace AI budgets",
+        "Stripe billing with signed, deduplicated webhooks",
+        "A Postgres job queue with retries, and email through Resend",
+        "English, Turkish and Arabic, including a right-to-left layout"
+      ]
+    },
+    {
+      "title": "My contribution",
+      "anchor": "my-contribution",
+      "paragraphs": [
+        "I designed and wrote the starter, its test suite, and the CI that checks every combination of modules."
+      ]
+    }
+  ]
+}
