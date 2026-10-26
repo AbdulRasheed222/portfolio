@@ -9,7 +9,7 @@
   "technologies": ["Voice and chat agents", "Multi-channel delivery", "Knowledge-backed support", "Support-platform infrastructure"],
   "contributionSummary": "Led technical direction for support automation, knowledge-backed responses, and channel integration. Team delivery was involved — solo ownership is not claimed.",
   "maturityNotice": "Developed at AkwadX Technologies as an earlier Muazaf support-platform effort. It was not commercially launched; work subsequently shifted to the broader platform direction that became Leen.",
-  "order": 2,
+  "order": 4,
   "readingTime": "5 min",
   "accent": "indigo",
   "noindex": false,

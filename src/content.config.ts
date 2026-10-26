@@ -33,6 +33,11 @@ const decisionSchema = z.object({
   status: z.string().optional(),
 });
 
+const linkSchema = z.object({
+  label: z.string(),
+  href: z.string().url(),
+});
+
 const publications = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/publications' }),
   schema: z.object({
@@ -42,6 +47,9 @@ const publications = defineCollection({
     reference: z.string(),
     summary: z.string(),
     status: z.enum([
+      'LIVE',
+      'EARLY ACCESS',
+      'OPEN SOURCE',
       'IN DEVELOPMENT',
       'DEVELOPED — NOT LAUNCHED',
       'DEVELOPED 2022 – 2024',
@@ -50,6 +58,8 @@ const publications = defineCollection({
     timeframe: z.string().optional(),
     technologies: z.array(z.string()),
     contributionSummary: z.string(),
+    /** Public links shown in the publication opening: live product, repository. */
+    links: z.array(linkSchema).optional(),
     maturityNotice: z.string().optional(),
     order: z.number(),
     sections: z.array(sectionSchema),

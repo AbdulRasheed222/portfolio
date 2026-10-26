@@ -1,0 +1,89 @@
+{
+  "format": "case-study",
+  "title": "AnswerVera — Cited AI Support for Small Businesses",
+  "slug": "answervera",
+  "reference": "REF-AV-001",
+  "summary": "A live support bot for small businesses that answers customers only from the business's own documents, shows the source sentence behind every claim, and hands anything it cannot back up to the owner.",
+  "status": "LIVE",
+  "role": "Solo builder — product, architecture, and implementation",
+  "timeframe": "2026",
+  "technologies": [
+    "Python",
+    "FastAPI",
+    "Next.js",
+    "PostgreSQL",
+    "Qdrant",
+    "Claude API (native citations)",
+    "Clerk",
+    "Telegram Bot API",
+    "Docker",
+    "Railway",
+    "Vercel"
+  ],
+  "contributionSummary": "I designed and built the whole product: ingestion, retrieval, answering and citation checks, the website widget, the owner dashboard, the Telegram bot, and the evaluation suite. The code is private; I walk through it on request.",
+  "links": [
+    {
+      "label": "Try the live demo",
+      "href": "https://www.answervera.com"
+    },
+    {
+      "label": "How quality is measured",
+      "href": "https://www.answervera.com/how-we-measure"
+    }
+  ],
+  "order": 2,
+  "readingTime": "4 min",
+  "accent": "slate",
+  "noindex": false,
+  "relatedSlugs": [
+    "ai-saas-starter",
+    "leen-ai-operating-system"
+  ],
+  "sections": [
+    {
+      "title": "The problem",
+      "anchor": "the-problem",
+      "paragraphs": [
+        "Small businesses answer the same customer questions all day: prices, opening hours, policies, bookings. Generic AI chatbots can answer them, but they also invent prices and policies with confidence, and an owner has no way to tell which answers to trust.",
+        "AnswerVera is built around one rule: if an answer cannot be traced to the business's own documents, the bot does not give it."
+      ]
+    },
+    {
+      "title": "How it works",
+      "anchor": "how-it-works",
+      "paragraphs": [
+        "An owner uploads price lists, policies and FAQs as PDF, Word, Markdown or text, or imports pages from their website. The bot then answers customers on the owner's website, through a one-line script tag, and on the owner's own Telegram bot."
+      ],
+      "bullets": [
+        "Hybrid retrieval: dense multilingual embeddings plus keyword vectors in Qdrant, merged with reciprocal rank fusion, so exact prices and names are found as reliably as paraphrased questions.",
+        "Answers from Claude using the API's native citations, so every claim comes back tied to a quoted sentence.",
+        "Every quote is checked word for word against the stored passage; unsupported answers are withdrawn and the bot refuses instead.",
+        "Questions the documents cannot answer become follow-ups in the owner's inbox, so no customer is left without a reply.",
+        "Customers can ask in English, Turkish or Arabic, even when the documents are in another language.",
+        "Bookings with Google Calendar, conversations with short-term memory, and answers streamed word by word."
+      ]
+    },
+    {
+      "title": "Quality is measured",
+      "anchor": "quality-is-measured",
+      "paragraphs": [
+        "Every change runs against a 94-question test set for a fictional dental clinic, including questions with typos, cross-language questions, false premises, misuse attempts, and questions the documents deliberately cannot answer. A second model grades each answer against the full documents, and the grader is itself tested on answers with known grades before every run.",
+        "Results are published on the live site. The questions were written by me after reading the documents, so the next real test is a question set written by people who have not."
+      ]
+    },
+    {
+      "title": "Safety and cost controls",
+      "anchor": "safety-and-cost",
+      "paragraphs": [
+        "Each business has its own vector collection, and every search is also filtered by business ID. Every model call is costed into a usage ledger with a global daily budget and per-business monthly limits; over a limit, the customer gets a hand-off message and the question is kept for the owner. Telegram bot tokens are encrypted at rest."
+      ]
+    },
+    {
+      "title": "My contribution",
+      "anchor": "my-contribution",
+      "paragraphs": [
+        "I built AnswerVera alone, end to end: backend, web app, widget, infrastructure on Railway and Vercel with Clerk sign-in, and the evaluation pipeline that runs in CI."
+      ]
+    }
+  ]
+}

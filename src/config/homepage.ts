@@ -16,7 +16,9 @@ export const publicationPresentation: Record<
   { readonly pub: string; readonly layout?: ArtifactLayout }
 > = {
   'leen-ai-operating-system': { pub: 'PUB-LEEN' },
-  'omnichannel-ai-support-platform': { pub: 'PUB-OMNI', layout: 'flow' },
+  answervera: { pub: 'PUB-AV', layout: 'flow' },
+  'ai-saas-starter': { pub: 'PUB-STARTER', layout: 'ledger' },
+  'omnichannel-ai-support-platform': { pub: 'PUB-OMNI', layout: 'stack' },
   'hotel-management-system': { pub: 'PUB-HOTEL', layout: 'stack' },
   'inventory-management-system': { pub: 'PUB-INV', layout: 'ledger' },
 };
@@ -93,10 +95,10 @@ export const homepage = {
 
   currentFocus: {
     systemIndex: '07 — CURRENT FOCUS',
-    statusLabel: 'Open to Opportunities',
+    statusLabel: 'Available for freelance work',
     locationLabel: publicLocation,
     statement:
-      'Open to compelling full-stack, platform, backend, and AI engineering opportunities.',
+      'Available for freelance projects: adding AI features to existing products — answers grounded in your documents, agents, and workflow automation — or building new ones end to end. Also open to full-time roles.',
   },
 
   operatorProfile: {
@@ -113,7 +115,7 @@ export const homepage = {
     systemIndex: '08 — CHANNEL',
     heading: "Let's build what's next",
     supporting:
-      'Open to engineering opportunities in Istanbul, remotely, or with relocation flexibility. Reach out directly — I read every message personally.',
+      'Available for freelance projects worldwide, and open to roles in Istanbul, remotely, or with relocation. Reach out directly — I read every message personally.',
     email: 'keramat.rasheed222@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdul-rasheed-keramat-1b26b3277/',
     github: 'https://github.com/AbdulRasheed222',
