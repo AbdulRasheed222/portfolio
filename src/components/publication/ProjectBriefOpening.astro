@@ -1,7 +1,8 @@
 ---
 import type { PublicationEntry } from '../../lib/publications';
-import { formatLabel } from '../../lib/publications';
+import { formatLabel, statusVariant } from '../../lib/publications';
 import { withBasePath } from '../../lib/url';
+import ButtonLink from '../ui/ButtonLink.astro';
 import StatusChip from '../ui/StatusChip.astro';
 import TextLink from '../ui/TextLink.astro';
 import styles from './ProjectBriefOpening.module.css';
@@ -12,11 +13,7 @@ interface Props {
 
 const { publication } = Astro.props;
 
-const statusVariant = publication.status.includes('DEVELOPMENT')
-  ? 'warning'
-  : publication.status.includes('COMPLETED')
-    ? 'muted'
-    : 'default';
+const variant = statusVariant(publication.status);
 ---
 
 <header class={styles.opening}>
@@ -24,7 +21,7 @@ const statusVariant = publication.status.includes('DEVELOPMENT')
     <TextLink href={withBasePath('/work/')}>← Work</TextLink>
     <div class={styles.chips}>
       <StatusChip variant="muted">{formatLabel(publication.format)}</StatusChip>
-      <StatusChip variant={statusVariant}>{publication.status}</StatusChip>
+      <StatusChip variant={variant}>{publication.status}</StatusChip>
     </div>
   </div>
 
@@ -34,6 +31,22 @@ const statusVariant = publication.status.includes('DEVELOPMENT')
   <p class={styles.meta}>
     {publication.role}{publication.timeframe && ` · ${publication.timeframe}`}
   </p>
+
+  {
+    publication.links && publication.links.length > 0 && (
+      <div class={styles.links}>
+        {publication.links.map((link, index) => (
+          <ButtonLink
+            href={link.href}
+            variant={index === 0 ? 'primary' : 'secondary'}
+            target="_blank"
+          >
+            {link.label} ↗
+          </ButtonLink>
+        ))}
+      </div>
+    )
+  }
 
   {publication.maturityNotice && <p class={styles.maturity}>{publication.maturityNotice}</p>}
 </header>

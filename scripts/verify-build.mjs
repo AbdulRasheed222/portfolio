@@ -10,6 +10,8 @@ const REQUIRED_ROUTES = [
   'index.html',
   'work/index.html',
   'work/leen-ai-operating-system/index.html',
+  'work/answervera/index.html',
+  'work/ai-saas-starter/index.html',
   'work/omnichannel-ai-support-platform/index.html',
   'work/hotel-management-system/index.html',
   'work/inventory-management-system/index.html',

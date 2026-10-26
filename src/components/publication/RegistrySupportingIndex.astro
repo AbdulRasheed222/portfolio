@@ -1,6 +1,6 @@
 ---
 import type { PublicationEntry } from '../../lib/publications';
-import { formatLabel, publicationPath } from '../../lib/publications';
+import { formatLabel, publicationPath, statusVariant } from '../../lib/publications';
 import { withBasePath } from '../../lib/url';
 import StatusChip from '../ui/StatusChip.astro';
 import styles from './RegistrySupportingIndex.module.css';
@@ -17,7 +17,7 @@ const { publications } = Astro.props;
     <span class={styles.label}>More work</span>
     <h2 class={styles.title} id="registry-supporting-title">Supporting systems</h2>
     <p class={styles.lead}>
-      An earlier AI support case study and two full-stack project briefs from prior delivery work.
+      Live and open-source AI products, an earlier AI support case study, and two full-stack project briefs from prior delivery work.
     </p>
   </header>
 
@@ -25,18 +25,14 @@ const { publications } = Astro.props;
     {
       publications.map((entry) => {
         const data = entry.data;
-        const statusVariant = data.status.includes('DEVELOPMENT')
-          ? 'warning'
-          : data.status.includes('NOT LAUNCHED')
-            ? 'muted'
-            : 'default';
+        const variant = statusVariant(data.status);
 
         return (
           <li>
             <article class={styles.item}>
               <div class={styles.chips}>
                 <StatusChip variant="muted">{formatLabel(data.format)}</StatusChip>
-                <StatusChip variant={statusVariant}>{data.status}</StatusChip>
+                <StatusChip variant={variant}>{data.status}</StatusChip>
               </div>
               <h3 class={styles.itemTitle}>
                 <a href={withBasePath(publicationPath(data.slug))} class={styles.itemLink}>
